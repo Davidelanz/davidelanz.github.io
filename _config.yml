@@ -7,7 +7,7 @@ description: "Robotics Engineer 🤖
   and the Art world."
 baseurl: "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 # repository          : ""     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
-theme: davidelanza-portfolio
+theme: _theme
 # remote_theme        : EIKONproject/portfolYOU
 
 ### Sitemap ###
