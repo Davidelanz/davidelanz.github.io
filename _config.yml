@@ -1,0 +1,98 @@
+### Site Settings ###
+title: "Davide Lanza [dev]"
+tagline: "Robotics Engineer"
+description: "Robotics Engineer 🤖
+  and Computational Cognition enthusiast,
+  currently playing with Neural Networks
+  and the Art world."
+baseurl: "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+# repository          : ""     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
+theme: davidelanza-portfolio
+# remote_theme        : EIKONproject/portfolYOU
+
+### Sitemap ###
+url: "https://dev.davidelanza.it" # the base hostname & protocol for your site
+
+### Plugins ###
+plugins:
+  - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+### Navbar Settings ###
+nav_exclude: # The following paths are excluded from navbar
+  - pages/tags.html
+  - pages/404.html
+  - pages/index.md
+
+### Author Info ###
+author:
+  name: Davide Lanza
+  image: /assets/images/landing.jpg
+  # behance           : your_username
+  # dribbble          : your_username
+  email: info@davidelanza.it
+  # facebook          : your_username
+  github: Davidelanz
+  # gitlab            : your_username
+  instagram: davidelanz
+  # kaggle            : your_username
+  linkedin: lanzadavide
+  # medium            : your_username
+  scholar: citations?user=Lqx6VqEAAAAJ
+  # soundcloud        : your_username
+  # spotify           : your_username
+  stackoverflow: 13975476
+# tumblr            : your_username.tumblr.com
+# twitch            : your_username
+# twitter           : your_username
+# vimeo             : your_username
+# youtube           : your_channel_name
+# keybase           : your_username
+
+### Posts ###
+permalink: /blog/:title.html
+
+### Collections ###
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name.html
+  publications:
+    output: true
+    permalink: /publications/:name.html
+
+### Disqus ###
+disqus:
+  shortname: your-short-name-disqus # Your website Shortname on disqus
+
+### Analytics ###
+analytics:
+  enabled: false # Set true to enable analytics
+  google:
+    tracking_id: your-google-tracking-id
+
+### Defaults for collections ###
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: false # Set to true to enable disqus comments
+
+### Exclude from processing ###
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - "*.log"

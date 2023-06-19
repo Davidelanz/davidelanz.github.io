@@ -1,0 +1,24 @@
+
+<div class="card-columns m-3 mt-5">
+
+  <!-- Publications -->
+  {% for publication in site.publications %}
+
+    {%- assign publication_type  = "local" -%}
+    {%- assign publication_id    = publication.name | slugify -%}
+    {%- assign publication_img   = publication.image -%}
+    {%- assign publication_name  = publication.name -%}
+    {%- assign publication_desc  = publication.description -%}
+    {%- assign publication_tools = publication.tools -%}
+
+    {%- if publication.external_url -%}
+      {%- assign publication_url = publication.external_url -%}
+    {%- else -%}
+      {%- assign publication_url = publication.url | relative_url -%}
+    {%- endif -%}
+
+    {% include publications/publication-card.html %}
+
+  {% endfor %}
+
+</div>

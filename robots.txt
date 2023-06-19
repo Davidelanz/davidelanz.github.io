@@ -1,0 +1,13 @@
+---
+layout: none
+---
+
+# Default
+User-agent: *
+Allow: /
+
+# Example
+# User-agent: Googlebot
+# Disallow: /modules/
+
+Sitemap: {{ '/sitemap.xml' | relative_url }}

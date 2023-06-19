@@ -1,0 +1,1721 @@
+<meta charset=utf-8>
+<title>Processing.Py Tutorials</title>
+<meta name=Author
+    content="Casey Reas &amp; Ben Fry with Python Mode text by Miles Peyton, Allison Parrish, James Gilles, and Jonathan Feinberg">
+<meta name=Publisher content=Processing>
+<meta name=Keywords
+    content="Processing, Processing, Interactive Media, Electronic Arts, Programming, Java, Ben Fry, Casey Reas, Python">
+<meta name=Description
+    content="Python Mode for Processing extends the Processing Development Environment with the Python programming language.">
+<meta name=Copyright
+    content="All contents copyright Ben Fry, Casey Reas,  MIT Media Laboratory, Miles Peyton, Allsion Parrish, James Gilles, Jonathan Feinberg, Golan Levin">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
+        background-color: #fff;
+        -webkit-text-size-adjust: none;
+        font-size: 100%;
+        font-weight: normal;
+        color: #000000
+    }
+
+    img {
+        border: 0px solid #000000
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: normal;
+        color: #2c7bb5
+    }
+
+    #container {
+        width: 80%;
+        margin: 0 auto;
+        background-color: white
+    }
+
+    .content {
+        width: 100%;
+        float: left;
+        position: relative;
+        line-height: 110%;
+        font-size: 1em
+    }
+
+    h1,
+    h3 {
+        color: #5A5A5A;
+        font-family: 'Enriqueta', georgia, times, serif;
+        font-weight: 400;
+        line-height: 1.6em
+    }
+
+    h1,
+    h3 {
+        word-spacing: 0.2em
+    }
+
+    em {
+        font-family: 'Enriqueta' !important;
+        font-style: normal !important
+    }
+
+    h1 {
+        font-size: 2em
+    }
+
+    h3 {
+        font-size: 1.7em
+    }
+
+    pre {
+        color: #000000
+    }
+
+    li {
+        margin-bottom: 1em
+    }
+
+    img {
+        margin: auto;
+        max-width: 40%;
+        display: block;
+    }
+
+    pre {
+        margin-bottom: 30px;
+        margin-top: 0
+    }
+
+    div.pyreference {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3
+    }
+
+    div.pycategory {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid
+    }
+
+    .pycategory ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 1em
+    }
+
+    .pycategory li {
+        margin: 0
+    }
+
+    .pyreference h3 {
+        margin: 0;
+        font-size: 1.25em
+    }
+
+    .pyreference h5 {
+        margin: 1em 0 0 0;
+        font-size: 1em;
+        font-weight: normal;
+        color: #252525
+    }
+</style>
+</head>
+
+<body id=Langauge-en data-gr-c-s-loaded=true>
+    <div id=container>
+        <h1 style="font-size:3em; line-height: 140%; border-bottom:1px dotted #000000;">
+            Processing.py tutorials
+        </h1>
+
+        <p class=license>
+            Processing is an open project intiated by
+            <a href="http://benfry.com/">Ben Fry</a>
+            and
+            <a href="http://reas.com">Casey Reas</a>.
+            It is developed by a
+            <a href="http://processing.org/about/people/">small team of volunteers</a>.
+            <br>
+            <br>
+            <!-- Creative Commons License -->
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                <img alt="Creative Commons License" style="border: none"
+                    src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
+            </a>
+            <br>
+            These tutorial are for Python Mode in
+            Processing 3+. If you see any errors or have comments, please
+            <a href=https://github.com/jdf/processing-py-site/issues> let the author know</a>.
+            This tutorial was adapted from the book,
+            <a href=http://www.processing.org/learning/books/#reasfry2>Getting Started with Processing</a>,
+            by Casey Reas and Ben Fry, O’Reilly / Make 2010. Copyright © 2010 Casey
+            Reas and Ben Fry. All rights reserved.<br>
+            <br>
+        </p>
+
+        <h1>
+            <a name="Toc">
+                Table of Contents
+            </a>
+        </h1>
+        <ul>
+            <li>
+                <a href="#ch1">
+                    Ch. 1 - Getting Started
+                </a>
+                (by Casey Reas and Ben Fry)
+            </li>
+            <li>
+                <a href="#ref">
+                    Processing.py Reference
+                </a>
+            </li>
+            <li>
+                <a href="#ch2">
+                    Ch.2 - Processing Overview
+                </a>
+                (by Casey Reas and Ben Fry)
+            </li>
+            <li>
+                <a href="#ch3">
+                    Ch.3 - Coordinate System and Shapes
+                </a>
+                (by Daniel Shiffman)
+            </li>
+            <li>
+                <a href="#ch4">
+                    Ch.4 - Color
+                </a>
+                (by Daniel Shiffman)
+            </li>
+            <li>
+                <a href="#ch5">
+                    Ch.5 - Objects
+                </a>
+                (by Daniel Shiffman)
+            </li>
+            <li>
+                <a href="#ch6">
+                    Ch.6 - Interactivity
+                </a>
+                (by Casey Reas and Ben Fry)
+            </li>
+            <li>
+                <a href="#ch7">
+                    Ch.7 - Typography
+                </a>
+                (by Casey Reas and Ben Fry)
+            </li>
+            <li>
+                <a href="#ch8">
+                    Ch.8 - Strings and Drawing Text
+                </a>
+                (by Daniel Shiffman)
+            </li>
+        </ul>
+
+        <h1>
+            <a name="ch1">Ch.1 - Getting Started</a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+
+            <p>Welcome to Python Mode for Processing!</p>
+
+            <p>Start by visiting <a href="http://processing.org/download">http://processing.org/download</a>
+                and selecting the Mac, Windows, or Linux version, depending
+                on what machine you have. Installation on each machine is
+                straightforward:</p>
+
+            <ul>
+                <li>On Windows, you'll have a .zip file. Double-click it,
+                    and drag the folder inside to a location on your hard
+                    disk. It could be Program Files or simply the desktop,
+                    but the important thing is for the processing folder to
+                    be pulled out of that .zip file. Then double-click
+                    processing.exe to start.</li>
+
+                <li>The Mac OS X version is also a .zip file.
+                    Double-click it and drag the Processing icon to the
+                    Applications folder. If you're using someone else's
+                    machine and can't modify the Applications folder, just
+                    drag the application to the desktop. Then double-click
+                    the Processing icon to start.</li>
+
+                <li>The Linux version is a .tar.gz file, which should be
+                    familiar to most Linux users. Download the file to your
+                    home directory, then open a terminal window, and
+                    type:<br>
+                    <tt>tar xvfz processing-xxxx.tgz</tt><br>
+                    (Replace xxxx with the rest of the file's name, which is
+                    the version number.) This will create a folder named
+                    processing-2.0 or something similar. Then change to that
+                    directory:<br>
+                    <tt>cd processing-xxxx</tt><br>
+                    and run it:<br>
+                    <tt>./processing</tt></li>
+            </ul>
+
+            <p>With any luck, the main Processing window will now be
+                visible. Everyone's setup is different, so if the program
+                didn't start, or you're otherwise stuck, visit the <a
+                    href="http://wiki.processing.org/w/Troubleshooting">troubleshooting
+                    page</a> for possible solutions.</p>
+
+
+
+            <p><img src="./imgs/Fig_02_01.gif" width="500" height="369" alt="PDE"><br>
+                <em>The Processing Development Environment.</em></p>
+
+
+
+            <h3>Python Mode</h3>
+
+            <p>Processing doesn't include support for the Python
+                programming language by default. In order to enable Python
+                support, you'll need to install an add-on called Python
+                Mode. You can do this by clicking on the drop-down menu on
+                the right side of the tool bar and selecting "Add Mode..."
+                A window with the title "Mode Manager" will appear. Scroll
+                down until you see "Python" and press "Install." <a
+                    href="https://github.com/jdf/processing.py#python-mode-for-processing">
+                    More information here</a>.</p>
+
+            <p>After you've installed Python Mode, you can switch back
+                and forth between the Python and Java versions of
+                Processing using the drop-down menu in the tool bar. If you
+                find yourself getting strange syntax errors or exceptions
+                when running your program, make sure you have the right
+                mode selected!</p>
+
+            <h3>Your First Program</h3>
+
+            <p>You're now running the Processing Development
+                Environment (or PDE), with Python Mode installed. There's
+                not much to it; the large area is the Text Editor, and
+                there's a row of buttons across the top; this is the
+                toolbar. Below the editor is the Message Area, and below
+                that is the Console. The Message Area is used for one line
+                messages, and the Console is used for more technical
+                details.</p>
+
+            <p>In the editor, type the following:</p>
+            <pre><span style="color: #006699;">ellipse</span>(50, 50, 80, 80)
+  
+  </pre>
+
+            <p>This line of code means "draw an ellipse, with the
+                center 50 pixels over from the left and 50 pixels down from
+                the top, with a width and height of 80 pixels." Click the
+                Run button, which looks like this:</p>
+
+            <p><img src="./imgs/Menu-Play.gif" width="60" height="60" alt="Run"></p>
+
+            <p>If you've typed everything correctly, you'll see this
+                appear in the Display Window:</p>
+
+            <p><img src="./imgs/Ex_02_01.gif" width="100" height="100"></p>
+
+            <p>If you didn't type it correctly, the Message Area will
+                turn red and complain about an error. If this happens, make
+                sure that you've copied the example code exactly: the
+                numbers should be contained within parentheses and have
+                commas between each of them.</p>
+
+            <p>One of the most difficult things about getting started
+                with programming is that you have to be very specific about
+                the syntax. The Processing software isn't always smart
+                enough to know what you mean, and can be quite fussy about
+                the placement of punctuation. You'll get used to it with a
+                little practice.</p>
+
+            <p>Next, we'll skip ahead to a sketch that's a little more
+                exciting. Delete the text from the last example, and try
+                this:</p>
+
+            <p><img src="./imgs/Ex_02_02.gif" width="480" height="120"></p>
+            <pre><span style="color: #33997E;">def</span> <span style="color: #006699;"><b>setup</b></span>():
+      <span style="color: #006699;">size</span>(480, 120)
+  
+  <span style="color: #33997E;">def</span> <span style="color: #006699;"><b>draw</b></span>():
+      <span style="color: #669900;">if</span> <span style="color: #D94A7A;"> mousePressed</span>:
+          <span style="color: #006699;">fill</span>(0)
+      <span style="color: #669900;">else</span>:
+          <span style="color: #006699;">fill</span>(255)
+      <span style="color: #006699;">ellipse</span>(<span style="color: #D94A7A;">mouseX</span>, <span style="color: #D94A7A;">mouseY</span>, 80, 80)
+  </pre>
+
+            <p>This program creates a window that is 480 pixels wide
+                and 120 pixels high, and then starts drawing white circles
+                at the position of the mouse. When a mouse button is
+                pressed, the circle color changes to black. We'll explain
+                more about the elements of this program in detail later.
+                For now, run the code, move the mouse, and click to
+                experience it.</p>
+
+            <p>Note: Be careful about how you indent each line!
+                Indentation is important in Python, and indenting
+                incorrectly or inconsistently can cause your program to
+                work differently from how you intended, or not work at all.
+                You can use any number of spaces, as long as you're
+                consistent about the number of spaces you use. (Many Python
+                programmers prefer four spaces, others prefer two.) You can
+                also use the tab key to indent your code, but don't use
+                tabs and spaces for indentation in the same program.</p>
+
+            <h3>Show</h3>
+
+            <p>So far we've covered only the Run button, though you've
+                probably guessed what the Stop button next to it does:</p>
+
+            <p><img src="./imgs/Menu-Stop.gif" width="60" height="60" alt="Stop"></p>
+
+            <p>If you don't want to use the buttons, you can always use
+                the Sketch menu, which reveals the shortcut Ctrl-R (or
+                Cmd-R on the Mac) for Run. Below Run in the Sketch menu is
+                Present, which clears the rest of the screen to present
+                your sketch all by itself:</p>
+
+            <p><img src="./imgs/Menu-SketchPresent.gif" width="180" height="139" alt="Sketch menu"></p>
+
+            <p>You can also use Present from the toolbar by holding
+                down the Shift key as you click the Run button.</p>
+
+            <h3>Save</h3>
+
+            <p>The next command that's important is Save. It's the
+                downward arrow on the toolbar:</p>
+
+            <p><img src="./imgs/Menu-Save.gif" width="60" height="60" alt="Save"></p>
+
+            <p>You can also find it under the File menu. By default,
+                your programs are saved to the "sketchbook," which is a
+                folder that collects your programs for easy access.
+                Clicking the Open button on the toolbar (the arrow pointing
+                up) will bring up a list of all the sketches in your
+                sketchbook, as well as a list of examples that are
+                installed with the Processing software:</p>
+
+            <p><img src="./imgs/Menu-Open.gif" width="60" height="60" alt="Open"></p>
+
+            <p>It's always a good idea to save your sketches often. As
+                you try different things, keep saving with different names,
+                so that you can always go back to an earlier version. This
+                is especially helpful if - no, when - something
+                breaks. You can also see where the sketch is located on the
+                disk with Show Sketch Folder under the Sketch menu.</p>
+
+            <p>You can also create a new sketch by pressing the New
+                button on the toolbar:</p>
+
+            <p><img src="./imgs/Menu-New.gif" width="60" height="60" alt="New"></p>
+            <!-- commenting this out because Export Application is not yet supported?
+          <h3>Share</h3>
+  
+          <p>Another theme of Processing is sharing your work. The Export Application button on
+  the toolbar:</p>
+  
+          <p><img src="imgs/Menu-Export.gif" width="60" height="60" alt="Export" /></p>
+  
+  
+          <p>will bundle your code into an application for your choice of Mac, Windows, or Linux depending on which platform you are using.
+  This is an easy way to make self-contained, double-clickable versions of your projects.
+          </p>
+  
+          <p>You can also find Export Application under the File menu.</p> -->
+
+            <h3>Examples and Reference</h3>
+
+            <p>Learning how to program with Processing and Python
+                involves exploring lots of code: running, altering,
+                breaking, and enhancing it until you have reshaped it into
+                something new. With this in mind, the Processing software
+                download includes dozens of examples that demonstrate
+                different features of the software. To open an example,
+                select Examples from the File menu or click the Open icon
+                in the PDE. The examples are grouped into categories based
+                on their function, such as Form, Motion, and Image. Find an
+                interesting topic in the list and try an example.</p>
+            <!-- this also appears to not exist in Python Mode
+          <p>If you see a part of the program you're unfamiliar with that is colored
+  orange (this means it's a part of Processing), select its name, and then
+  click on "Find in Reference" from the Help menu. You can also right-click
+  the text (or Ctrl-click on a Mac) and choose Find in Reference from the
+  menu that appears. This will open the reference for the selected code
+  element in your web browser. <a href="http://www.processing.org/reference/">
+          The reference is also available online</a>.</p> -->
+
+            <p>The Processing Reference explains every code element
+                with a description and examples. The reference programs are
+                much shorter (usually four or five lines) and easier to
+                follow than the longer code found in the Examples folder.
+                We recommend keeping the reference open while you're
+                reading this book and while you're programming. It can be
+                navigated by topic or alphabetically; sometimes it's
+                fastest to do a text search within your browser window.</p>
+
+            <p>The reference was written with the beginner in mind; we
+                hope that we've made it clear and understandable. We're
+                grateful to the many people who've spotted errors over the
+                years and reported them. If you think you can improve a
+                reference entry or you find a mistake, please let us know
+                by clicking on the link at the top of each reference
+                page.</p>
+
+        </div>
+
+
+        <h1>
+            <a name="ref">Processing.py Reference</a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=pyreference>
+            <div class=pycategory>
+                <h3>Structure</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/comment.html># (comment)</a></li>
+                    <li><a href=https://py.processing.org/reference/multilinecomment.html>''' ''' (multiline
+                            comment)</a></li>
+                    <li><a href=https://py.processing.org/reference/parentheses.html>() (parentheses)</a></li>
+                    <li><a href=https://py.processing.org/reference/comma.html>, (comma)</a></li>
+                    <li><a href=https://py.processing.org/reference/dot.html>. (dot)</a></li>
+                    <li><a href=https://py.processing.org/reference/colon.html>: (Colon)</a></li>
+                    <li><a href=https://py.processing.org/reference/assign.html>= (assign)</a></li>
+                    <li><a href=https://py.processing.org/reference/False.html>False</a></li>
+                    <li><a href=https://py.processing.org/reference/globals.html>Globals</a></li>
+                    <li><a href=https://py.processing.org/reference/None.html>None</a></li>
+                    <li><a href=https://py.processing.org/reference/slice.html>Slice</a></li>
+                    <li><a href=https://py.processing.org/reference/string_formatting.html>String Formatting</a>
+                    </li>
+                    <li><a href=https://py.processing.org/reference/True.html>True</a></li>
+                    <li><a href=https://py.processing.org/reference/indexbrackets.html>[] (Index brackets)</a></li>
+                    <li><a href=https://py.processing.org/reference/add_library.html>add_library</a></li>
+                    <li><a href=https://py.processing.org/reference/class.html>class</a></li>
+                    <li><a href=https://py.processing.org/reference/def.html>def</a></li>
+                    <li><a href=https://py.processing.org/reference/del.html>del</a></li>
+                    <li><a href=https://py.processing.org/reference/draw.html>draw()</a></li>
+                    <li><a href=https://py.processing.org/reference/except.html>except</a></li>
+                    <li><a href=https://py.processing.org/reference/exit.html>exit()</a></li>
+                    <li><a href=https://py.processing.org/reference/in.html>in</a></li>
+                    <li><a href=https://py.processing.org/reference/len.html>len()</a></li>
+                    <li><a href=https://py.processing.org/reference/loop.html>loop()</a></li>
+                    <li><a href=https://py.processing.org/reference/noLoop.html>noLoop()</a></li>
+                    <li><a href=https://py.processing.org/reference/pass.html>pass</a></li>
+                    <li><a href=https://py.processing.org/reference/popStyle.html>popStyle()</a></li>
+                    <li><a href=https://py.processing.org/reference/pushStyle.html>pushStyle()</a></li>
+                    <li><a href=https://py.processing.org/reference/range.html>range()</a></li>
+                    <li><a href=https://py.processing.org/reference/redraw.html>redraw()</a></li>
+                    <li><a href=https://py.processing.org/reference/return.html>return</a></li>
+                    <li><a href=https://py.processing.org/reference/setup.html>setup()</a></li>
+                    <li><a href=https://py.processing.org/reference/super.html>super</a></li>
+                    <li><a href=https://py.processing.org/reference/try.html>try</a></li>
+                    <li><a href=https://py.processing.org/reference/curlybraces.html>{} (Curly braces)</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Environment</h3>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/cursor.html>cursor()</a></li>
+                    <li><a href=https://py.processing.org/reference/displayHeight.html>displayHeight</a></li>
+                    <li><a href=https://py.processing.org/reference/displayWidth.html>displayWidth</a></li>
+                    <li><a href=https://py.processing.org/reference/focused.html>focused</a></li>
+                    <li><a href=https://py.processing.org/reference/frameCount.html>frameCount</a></li>
+                    <li><a href=https://py.processing.org/reference/frameRate_var.html>frameRate</a></li>
+                    <li><a href=https://py.processing.org/reference/frameRate.html>frameRate()</a></li>
+                    <li><a href=https://py.processing.org/reference/fullScreen.html>fullScreen()</a></li>
+                    <li><a href=https://py.processing.org/reference/height.html>height</a></li>
+                    <li><a href=https://py.processing.org/reference/noCursor.html>noCursor()</a></li>
+                    <li><a href=https://py.processing.org/reference/size.html>size()</a></li>
+                    <li><a href=https://py.processing.org/reference/width.html>width</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Data</h3>
+                <h5>Primitive</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/Boolean.html>Boolean</a></li>
+                    <li><a href=https://py.processing.org/reference/float.html>float</a></li>
+                    <li><a href=https://py.processing.org/reference/int.html>int</a></li>
+                </ul>
+                <h5>Composite</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/dictionary.html>Dictionary</a></li>
+                    <li><a href=https://py.processing.org/reference/Object.html>Object</a></li>
+                    <li><a href=https://py.processing.org/reference/tuple.html>Tuple</a></li>
+                    <li><a href=https://py.processing.org/reference/string.html>string</a></li>
+                </ul>
+                <h5>Conversion</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/binary.html>binary()</a></li>
+                    <li><a href=https://py.processing.org/reference/floatconvert.html>float()</a></li>
+                    <li><a href=https://py.processing.org/reference/hex.html>hex()</a></li>
+                    <li><a href=https://py.processing.org/reference/intconvert.html>int()</a></li>
+                    <li><a href=https://py.processing.org/reference/list.html>list()</a></li>
+                    <li><a href=https://py.processing.org/reference/strconvert.html>str()</a></li>
+                    <li><a href=https://py.processing.org/reference/unbinary.html>unbinary()</a></li>
+                    <li><a href=https://py.processing.org/reference/unhex.html>unhex()</a></li>
+                </ul>
+                <h5>Dictionary Methods</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/dict_items.html>.items()</a></li>
+                    <li><a href=https://py.processing.org/reference/dict_iteritems.html>.iteritems()</a></li>
+                    <li><a href=https://py.processing.org/reference/dict_keys.html>.keys()</a></li>
+                    <li><a href=https://py.processing.org/reference/dict_update.html>.update()</a></li>
+                    <li><a href=https://py.processing.org/reference/dict_values.html>.values()</a></li>
+                </ul>
+                <h5>List Methods</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/list_append.html>.append()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_extend.html>.extend()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_index.html>.index()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_insert.html>.insert()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_pop.html>.pop()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_remove.html>.remove()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_reverse.html>.reverse()</a></li>
+                    <li><a href=https://py.processing.org/reference/list_sort.html>.sort()</a></li>
+                </ul>
+                <h5>String Methods</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/string_find.html>.find()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_join.html>.join()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_lower.html>.lower()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_replace.html>.replace()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_split.html>.split()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_startswith.html>.startswith()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_strip.html>.strip()</a></li>
+                    <li><a href=https://py.processing.org/reference/string_upper.html>.upper()</a></li>
+                </ul>
+                <h5>List Functions</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/reversed.html>reversed()</a></li>
+                    <li><a href=https://py.processing.org/reference/sorted.html>sorted()</a></li>
+                </ul>
+                <h5>String Functions</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/match.html>match()</a></li>
+                    <li><a href=https://py.processing.org/reference/matchAll.html>matchAll()</a></li>
+                    <li><a href=https://py.processing.org/reference/nf.html>nf()</a></li>
+                    <li><a href=https://py.processing.org/reference/nfc.html>nfc()</a></li>
+                    <li><a href=https://py.processing.org/reference/nfp.html>nfp()</a></li>
+                    <li><a href=https://py.processing.org/reference/nfs.html>nfs()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Control</h3>
+                <h5>Relational Operators</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/inequality.html>!= (inequality)</a></li>
+                    <li><a href=https://py.processing.org/reference/lessthan.html>&lt; (less than)</a></li>
+                    <li><a href=https://py.processing.org/reference/lessthanorequalto.html>&lt;= (less than or equal
+                            to)</a></li>
+                    <li><a href=https://py.processing.org/reference/equality.html>== (equality)</a></li>
+                    <li><a href=https://py.processing.org/reference/greaterthan.html>&gt; (greater than)</a></li>
+                    <li><a href=https://py.processing.org/reference/greaterthanorequalto.html>&gt;= (greater than or
+                            equal to)</a></li>
+                </ul>
+                <h5>Iteration</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/for.html>for</a></li>
+                    <li><a href=https://py.processing.org/reference/while.html>while</a></li>
+                </ul>
+                <h5>Conditionals</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/conditional.html>Conditional Expressions</a>
+                    </li>
+                    <li><a href=https://py.processing.org/reference/break.html>break</a></li>
+                    <li><a href=https://py.processing.org/reference/continue.html>continue</a></li>
+                    <li><a href=https://py.processing.org/reference/else.html>else</a></li>
+                    <li><a href=https://py.processing.org/reference/if.html>if</a></li>
+                </ul>
+                <h5>Logical Operators</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/logicalAND.html>&amp;&amp; (logical AND)</a>
+                    </li>
+                    <li><a href=https://py.processing.org/reference/logicalNOT.html>not (logical NOT)</a></li>
+                    <li><a href=https://py.processing.org/reference/logicalOR.html>or (logical OR)</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Shape</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/createShape.html>createShape()</a></li>
+                </ul>
+                <h5>2D Primitives</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/arc.html>arc()</a></li>
+                    <li><a href=https://py.processing.org/reference/circle.html>circle()</a></li>
+                    <li><a href=https://py.processing.org/reference/ellipse.html>ellipse()</a></li>
+                    <li><a href=https://py.processing.org/reference/line.html>line()</a></li>
+                    <li><a href=https://py.processing.org/reference/point.html>point()</a></li>
+                    <li><a href=https://py.processing.org/reference/quad.html>quad()</a></li>
+                    <li><a href=https://py.processing.org/reference/rect.html>rect()</a></li>
+                    <li><a href=https://py.processing.org/reference/square.html>square()</a></li>
+                    <li><a href=https://py.processing.org/reference/triangle.html>triangle()</a></li>
+                </ul>
+                <h5>Curves</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/bezier.html>bezier()</a></li>
+                    <li><a href=https://py.processing.org/reference/bezierDetail.html>bezierDetail()</a></li>
+                    <li><a href=https://py.processing.org/reference/bezierPoint.html>bezierPoint()</a></li>
+                    <li><a href=https://py.processing.org/reference/bezierTangent.html>bezierTangent()</a></li>
+                    <li><a href=https://py.processing.org/reference/curve.html>curve()</a></li>
+                    <li><a href=https://py.processing.org/reference/curveDetail.html>curveDetail()</a></li>
+                    <li><a href=https://py.processing.org/reference/curvePoint.html>curvePoint()</a></li>
+                    <li><a href=https://py.processing.org/reference/curveTangent.html>curveTangent()</a></li>
+                    <li><a href=https://py.processing.org/reference/curveTightness.html>curveTightness()</a></li>
+                </ul>
+                <h5>3D Primitives</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/box.html>box()</a></li>
+                    <li><a href=https://py.processing.org/reference/sphere.html>sphere()</a></li>
+                    <li><a href=https://py.processing.org/reference/sphereDetail.html>sphereDetail()</a></li>
+                </ul>
+                <h5>Attributes</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/ellipseMode.html>ellipseMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/noSmooth.html>noSmooth()</a></li>
+                    <li><a href=https://py.processing.org/reference/rectMode.html>rectMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/smooth.html>smooth()</a></li>
+                    <li><a href=https://py.processing.org/reference/strokeCap.html>strokeCap()</a></li>
+                    <li><a href=https://py.processing.org/reference/strokeJoin.html>strokeJoin()</a></li>
+                    <li><a href=https://py.processing.org/reference/strokeWeight.html>strokeWeight()</a></li>
+                </ul>
+                <h5>Vertex</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/beginContour.html>beginContour()</a></li>
+                    <li><a href=https://py.processing.org/reference/beginShape.html>beginShape()</a></li>
+                    <li><a href=https://py.processing.org/reference/bezierVertex.html>bezierVertex()</a></li>
+                    <li><a href=https://py.processing.org/reference/curveVertex.html>curveVertex()</a></li>
+                    <li><a href=https://py.processing.org/reference/endContour.html>endContour()</a></li>
+                    <li><a href=https://py.processing.org/reference/endShape.html>endShape()</a></li>
+                    <li><a href=https://py.processing.org/reference/quadraticVertex.html>quadraticVertex()</a></li>
+                    <li><a href=https://py.processing.org/reference/texture.html>texture()</a></li>
+                    <li><a href=https://py.processing.org/reference/textureMode.html>textureMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/vertex.html>vertex()</a></li>
+                </ul>
+                <h5>Loading &amp; Displaying</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/loadShape.html>loadShape()</a></li>
+                    <li><a href=https://py.processing.org/reference/shape.html>shape()</a></li>
+                    <li><a href=https://py.processing.org/reference/shapeMode.html>shapeMode()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Input</h3>
+                <h5>Mouse</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/mouseButton.html>mouseButton</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseClicked.html>mouseClicked()</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseDragged.html>mouseDragged()</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseMoved.html>mouseMoved()</a></li>
+                    <li><a href=https://py.processing.org/reference/mousePressed_var.html>mousePressed</a></li>
+                    <li><a href=https://py.processing.org/reference/mousePressed.html>mousePressed()</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseReleased.html>mouseReleased()</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseWheel.html>mouseWheel()</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseX.html>mouseX</a></li>
+                    <li><a href=https://py.processing.org/reference/mouseY.html>mouseY</a></li>
+                    <li><a href=https://py.processing.org/reference/pmouseX.html>pmouseX</a></li>
+                    <li><a href=https://py.processing.org/reference/pmouseY.html>pmouseY</a></li>
+                </ul>
+                <h5>Keyboard</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/key.html>key</a></li>
+                    <li><a href=https://py.processing.org/reference/keyCode.html>keyCode</a></li>
+                    <li><a href=https://py.processing.org/reference/keyPressed_var.html>keyPressed</a></li>
+                    <li><a href=https://py.processing.org/reference/keyPressed.html>keyPressed()</a></li>
+                    <li><a href=https://py.processing.org/reference/keyReleased.html>keyReleased()</a></li>
+                    <li><a href=https://py.processing.org/reference/keyTyped.html>keyTyped()</a></li>
+                </ul>
+                <h5>Files</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/createReader.html>createReader()</a></li>
+                    <li><a href=https://py.processing.org/reference/loadBytes.html>loadBytes()</a></li>
+                    <li><a href=https://py.processing.org/reference/loadStrings.html>loadStrings()</a></li>
+                    <li><a href=https://py.processing.org/reference/selectFolder.html>selectFolder()</a></li>
+                    <li><a href=https://py.processing.org/reference/selectInput.html>selectInput()</a></li>
+                </ul>
+                <h5>Time &amp; Date</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/day.html>day()</a></li>
+                    <li><a href=https://py.processing.org/reference/hour.html>hour()</a></li>
+                    <li><a href=https://py.processing.org/reference/millis.html>millis()</a></li>
+                    <li><a href=https://py.processing.org/reference/minute.html>minute()</a></li>
+                    <li><a href=https://py.processing.org/reference/month.html>month()</a></li>
+                    <li><a href=https://py.processing.org/reference/second.html>second()</a></li>
+                    <li><a href=https://py.processing.org/reference/year.html>year()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Output</h3>
+                <h5>Text Area</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/print.html>print()</a></li>
+                    <li><a href=https://py.processing.org/reference/println.html>println()</a></li>
+                </ul>
+                <h5>Image</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/save.html>save()</a></li>
+                    <li><a href=https://py.processing.org/reference/saveFrame.html>saveFrame()</a></li>
+                </ul>
+                <h5>Files</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/beginRaw.html>beginRaw()</a></li>
+                    <li><a href=https://py.processing.org/reference/createWriter.html>createWriter()</a></li>
+                    <li><a href=https://py.processing.org/reference/endRaw.html>endRaw()</a></li>
+                    <li><a href=https://py.processing.org/reference/saveBytes.html>saveBytes()</a></li>
+                    <li><a href=https://py.processing.org/reference/saveStrings.html>saveStrings()</a></li>
+                    <li><a href=https://py.processing.org/reference/selectOutput.html>selectOutput()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Transform</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/applyMatrix.html>applyMatrix()</a></li>
+                    <li><a href=https://py.processing.org/reference/popMatrix.html>popMatrix()</a></li>
+                    <li><a href=https://py.processing.org/reference/printMatrix.html>printMatrix()</a></li>
+                    <li><a href=https://py.processing.org/reference/pushMatrix.html>pushMatrix()</a></li>
+                    <li><a href=https://py.processing.org/reference/resetMatrix.html>resetMatrix()</a></li>
+                    <li><a href=https://py.processing.org/reference/rotate.html>rotate()</a></li>
+                    <li><a href=https://py.processing.org/reference/rotateX.html>rotateX()</a></li>
+                    <li><a href=https://py.processing.org/reference/rotateY.html>rotateY()</a></li>
+                    <li><a href=https://py.processing.org/reference/rotateZ.html>rotateZ()</a></li>
+                    <li><a href=https://py.processing.org/reference/scale.html>scale()</a></li>
+                    <li><a href=https://py.processing.org/reference/shearX.html>shearX()</a></li>
+                    <li><a href=https://py.processing.org/reference/shearY.html>shearY()</a></li>
+                    <li><a href=https://py.processing.org/reference/translate.html>translate()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Lights, Camera</h3>
+                <h5>Lights</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/ambientLight.html>ambientLight()</a></li>
+                    <li><a href=https://py.processing.org/reference/directionalLight.html>directionalLight()</a>
+                    </li>
+                    <li><a href=https://py.processing.org/reference/lightFalloff.html>lightFalloff()</a></li>
+                    <li><a href=https://py.processing.org/reference/lightSpecular.html>lightSpecular()</a></li>
+                    <li><a href=https://py.processing.org/reference/lights.html>lights()</a></li>
+                    <li><a href=https://py.processing.org/reference/noLights.html>noLights()</a></li>
+                    <li><a href=https://py.processing.org/reference/normal.html>normal()</a></li>
+                    <li><a href=https://py.processing.org/reference/pointLight.html>pointLight()</a></li>
+                    <li><a href=https://py.processing.org/reference/spotLight.html>spotLight()</a></li>
+                </ul>
+                <h5>Camera</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/beginCamera.html>beginCamera()</a></li>
+                    <li><a href=https://py.processing.org/reference/camera.html>camera()</a></li>
+                    <li><a href=https://py.processing.org/reference/endCamera.html>endCamera()</a></li>
+                    <li><a href=https://py.processing.org/reference/frustum.html>frustum()</a></li>
+                    <li><a href=https://py.processing.org/reference/ortho.html>ortho()</a></li>
+                    <li><a href=https://py.processing.org/reference/perspective.html>perspective()</a></li>
+                    <li><a href=https://py.processing.org/reference/printCamera.html>printCamera()</a></li>
+                    <li><a href=https://py.processing.org/reference/printProjection.html>printProjection()</a></li>
+                </ul>
+                <h5>Coordinates</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/modelX.html>modelX()</a></li>
+                    <li><a href=https://py.processing.org/reference/modelY.html>modelY()</a></li>
+                    <li><a href=https://py.processing.org/reference/modelZ.html>modelZ()</a></li>
+                    <li><a href=https://py.processing.org/reference/screenX.html>screenX()</a></li>
+                    <li><a href=https://py.processing.org/reference/screenY.html>screenY()</a></li>
+                    <li><a href=https://py.processing.org/reference/screenZ.html>screenZ()</a></li>
+                </ul>
+                <h5>Material Properties</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/ambient.html>ambient()</a></li>
+                    <li><a href=https://py.processing.org/reference/emissive.html>emissive()</a></li>
+                    <li><a href=https://py.processing.org/reference/shininess.html>shininess()</a></li>
+                    <li><a href=https://py.processing.org/reference/specular.html>specular()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Color</h3>
+                <h5>Setting</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/background.html>background()</a></li>
+                    <li><a href=https://py.processing.org/reference/clear.html>clear()</a></li>
+                    <li><a href=https://py.processing.org/reference/colorMode.html>colorMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/fill.html>fill()</a></li>
+                    <li><a href=https://py.processing.org/reference/noFill.html>noFill()</a></li>
+                    <li><a href=https://py.processing.org/reference/noStroke.html>noStroke()</a></li>
+                    <li><a href=https://py.processing.org/reference/stroke.html>stroke()</a></li>
+                </ul>
+                <h5>Creating &amp; Reading</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/alpha.html>alpha()</a></li>
+                    <li><a href=https://py.processing.org/reference/blendColor.html>blendColor()</a></li>
+                    <li><a href=https://py.processing.org/reference/blue.html>blue()</a></li>
+                    <li><a href=https://py.processing.org/reference/brightness.html>brightness()</a></li>
+                    <li><a href=https://py.processing.org/reference/color.html>color()</a></li>
+                    <li><a href=https://py.processing.org/reference/green.html>green()</a></li>
+                    <li><a href=https://py.processing.org/reference/hue.html>hue()</a></li>
+                    <li><a href=https://py.processing.org/reference/lerpColor.html>lerpColor()</a></li>
+                    <li><a href=https://py.processing.org/reference/red.html>red()</a></li>
+                    <li><a href=https://py.processing.org/reference/saturation.html>saturation()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Image</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/PImage.html>PImage</a></li>
+                    <li><a href=https://py.processing.org/reference/createImage.html>createImage()</a></li>
+                </ul>
+                <h5>Loading &amp; Displaying</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/image.html>image()</a></li>
+                    <li><a href=https://py.processing.org/reference/imageMode.html>imageMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/loadImage.html>loadImage()</a></li>
+                    <li><a href=https://py.processing.org/reference/noTint.html>noTint()</a></li>
+                    <li><a href=https://py.processing.org/reference/requestImage.html>requestImage()</a></li>
+                    <li><a href=https://py.processing.org/reference/tint.html>tint()</a></li>
+                </ul>
+                <h5>Textures</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/textureWrap.html>textureWrap()</a></li>
+                </ul>
+                <h5>Pixels</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/blend.html>blend()</a></li>
+                    <li><a href=https://py.processing.org/reference/copy.html>copy()</a></li>
+                    <li><a href=https://py.processing.org/reference/filter.html>filter()</a></li>
+                    <li><a href=https://py.processing.org/reference/get.html>get()</a></li>
+                    <li><a href=https://py.processing.org/reference/loadPixels.html>loadPixels()</a></li>
+                    <li><a href=https://py.processing.org/reference/pixels.html>pixels</a></li>
+                    <li><a href=https://py.processing.org/reference/set.html>set()</a></li>
+                    <li><a href=https://py.processing.org/reference/updatePixels.html>updatePixels()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Rendering</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/PGraphics.html>PGraphics</a></li>
+                    <li><a href=https://py.processing.org/reference/blendMode.html>blendMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/clip.html>clip()</a></li>
+                    <li><a href=https://py.processing.org/reference/createGraphics.html>createGraphics()</a></li>
+                    <li><a href=https://py.processing.org/reference/noClip.html>noClip()</a></li>
+                </ul>
+                <h5>Shaders</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/PShader.html>PShader</a></li>
+                    <li><a href=https://py.processing.org/reference/loadShader.html>loadShader()</a></li>
+                    <li><a href=https://py.processing.org/reference/resetShader.html>resetShader()</a></li>
+                    <li><a href=https://py.processing.org/reference/shader.html>shader()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Typography</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/PFont.html>PFont</a></li>
+                </ul>
+                <h5>Loading &amp; Displaying</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/createFont.html>createFont()</a></li>
+                    <li><a href=https://py.processing.org/reference/loadFont.html>loadFont()</a></li>
+                    <li><a href=https://py.processing.org/reference/text.html>text()</a></li>
+                    <li><a href=https://py.processing.org/reference/textFont.html>textFont()</a></li>
+                </ul>
+                <h5>Attributes</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/textAlign.html>textAlign()</a></li>
+                    <li><a href=https://py.processing.org/reference/textLeading.html>textLeading()</a></li>
+                    <li><a href=https://py.processing.org/reference/textMode.html>textMode()</a></li>
+                    <li><a href=https://py.processing.org/reference/textSize.html>textSize()</a></li>
+                    <li><a href=https://py.processing.org/reference/textWidth.html>textWidth()</a></li>
+                </ul>
+                <h5>Metrics</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/textAscent.html>textAscent()</a></li>
+                    <li><a href=https://py.processing.org/reference/textDescent.html>textDescent()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Math</h3>
+                <h5>PVector</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/PVector.html>PVector</a></li>
+                </ul>
+                <h5>Operators</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/modulo.html>% (modulo)</a></li>
+                    <li><a href=https://py.processing.org/reference/multiply.html>* (multiply)</a></li>
+                    <li><a href=https://py.processing.org/reference/multiplyassign.html>*= (multiply assign)</a>
+                    </li>
+                    <li><a href=https://py.processing.org/reference/addition.html>+ (addition)</a></li>
+                    <li><a href=https://py.processing.org/reference/addassign.html>+= (add assign)</a></li>
+                    <li><a href=https://py.processing.org/reference/minus.html>- (minus)</a></li>
+                    <li><a href=https://py.processing.org/reference/subtractassign.html>-= (subtract assign)</a>
+                    </li>
+                    <li><a href=https://py.processing.org/reference/divide.html>/ (divide)</a></li>
+                    <li><a href=https://py.processing.org/reference/divideassign.html>/= (divide assign)</a></li>
+                </ul>
+                <h5>Bitwise Operators</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/bitwiseAND.html>&amp; (bitwise AND)</a></li>
+                    <li><a href=https://py.processing.org/reference/leftshift.html>&lt;&lt; (left shift)</a></li>
+                    <li><a href=https://py.processing.org/reference/rightshift.html>&gt;&gt; (right shift)</a></li>
+                    <li><a href=https://py.processing.org/reference/bitwiseOR.html>| (bitwise OR)</a></li>
+                </ul>
+                <h5>Calculation</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/abs.html>abs()</a></li>
+                    <li><a href=https://py.processing.org/reference/ceil.html>ceil()</a></li>
+                    <li><a href=https://py.processing.org/reference/constrain.html>constrain()</a></li>
+                    <li><a href=https://py.processing.org/reference/dist.html>dist()</a></li>
+                    <li><a href=https://py.processing.org/reference/exp.html>exp()</a></li>
+                    <li><a href=https://py.processing.org/reference/floor.html>floor()</a></li>
+                    <li><a href=https://py.processing.org/reference/lerp.html>lerp()</a></li>
+                    <li><a href=https://py.processing.org/reference/log.html>log()</a></li>
+                    <li><a href=https://py.processing.org/reference/mag.html>mag()</a></li>
+                    <li><a href=https://py.processing.org/reference/map.html>map()</a></li>
+                    <li><a href=https://py.processing.org/reference/max.html>max()</a></li>
+                    <li><a href=https://py.processing.org/reference/min.html>min()</a></li>
+                    <li><a href=https://py.processing.org/reference/norm.html>norm()</a></li>
+                    <li><a href=https://py.processing.org/reference/pow.html>pow()</a></li>
+                    <li><a href=https://py.processing.org/reference/round.html>round()</a></li>
+                    <li><a href=https://py.processing.org/reference/sq.html>sq()</a></li>
+                    <li><a href=https://py.processing.org/reference/sqrt.html>sqrt()</a></li>
+                </ul>
+                <h5>Trigonometry</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/acos.html>acos()</a></li>
+                    <li><a href=https://py.processing.org/reference/asin.html>asin()</a></li>
+                    <li><a href=https://py.processing.org/reference/atan.html>atan()</a></li>
+                    <li><a href=https://py.processing.org/reference/atan2.html>atan2()</a></li>
+                    <li><a href=https://py.processing.org/reference/cos.html>cos()</a></li>
+                    <li><a href=https://py.processing.org/reference/degrees.html>degrees()</a></li>
+                    <li><a href=https://py.processing.org/reference/radians.html>radians()</a></li>
+                    <li><a href=https://py.processing.org/reference/sin.html>sin()</a></li>
+                    <li><a href=https://py.processing.org/reference/tan.html>tan()</a></li>
+                </ul>
+                <h5>Random</h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/noise.html>noise()</a></li>
+                    <li><a href=https://py.processing.org/reference/noiseDetail.html>noiseDetail()</a></li>
+                    <li><a href=https://py.processing.org/reference/noiseSeed.html>noiseSeed()</a></li>
+                    <li><a href=https://py.processing.org/reference/random.html>random()</a></li>
+                    <li><a href=https://py.processing.org/reference/randomGaussian.html>randomGaussian()</a></li>
+                    <li><a href=https://py.processing.org/reference/randomSeed.html>randomSeed()</a></li>
+                </ul>
+            </div>
+            <div class=pycategory>
+                <h3>Constants</h3>
+                <h5></h5>
+                <ul>
+                    <li><a href=https://py.processing.org/reference/HALF_PI.html>HALF_PI (1.57079...)</a></li>
+                    <li><a href=https://py.processing.org/reference/PI.html>PI (3.14159...)</a></li>
+                    <li><a href=https://py.processing.org/reference/QUARTER_PI.html>QUARTER_PI (0.78539...)</a></li>
+                    <li><a href=https://py.processing.org/reference/TAU.html>TAU (6.28318...)</a></li>
+                    <li><a href=https://py.processing.org/reference/TWO_PI.html>TWO_PI (6.28318...)</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <h1>
+            <a name="ch2">Ch.2 - Processing Overview</a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+            <p>Processing is a simple programming environment that was
+                created to make it easier to develop visually oriented
+                applications with an emphasis on animation and providing
+                users with instant feedback through interaction. The
+                developers wanted a means to "sketch" ideas in
+                code. As its capabilities have expanded over the past
+                decade, Processing has come to be used for more advanced
+                production-level work in addition to its sketching role.
+                Originally built as a domain-specific extension to Java
+                targeted towards artists and designers, Processing has
+                evolved into a full-blown design and prototyping tool used
+                for large-scale installation work, motion graphics, and
+                complex data visualization.<br>
+                <br>
+                Python Mode for Processing is an extension to Processing,
+                allowing you to write Processing programs in the Python
+                programming language (instead of the Java-like Processing
+                programming language). Program elements in Processing are
+                fairly simple, regardless of which language you're learning
+                to program in. If you're familiar with Python, it's best to
+                forget that Processing has anything to do with it for a
+                while, until you get the hang of how the API works.<br>
+                <br>
+                The latest version of Processing can be downloaded at
+                <a href="http://processing.org/download"><em>http://processing.org/download</em></a><br>
+                <br>
+                An important goal for the project was to make this type of
+                programming accessible to a wider audience. For this
+                reason, Processing is free to download, free to use, and
+                open source. But projects developed using the Processing
+                environment and core libraries can be used for any purpose.
+                This model is identical to GCC, the GNU Compiler
+                Collection. GCC and its associated libraries (e.g. libc)
+                are open source under the GNU Public License (GPL), which
+                stipulates that changes to the code must be made available.
+                However, programs created with GCC (examples too numerous
+                to mention) are not themselves required to be open
+                source.<br>
+                <br>
+                Python Mode for Processing consists of:</p>
+
+            <ul>
+                <li>The Processing Development Environment (PDE). This is
+                    the software that runs when you double-click the
+                    Processing icon. The PDE is an Integrated Development
+                    Environment (IDE) with a minimalist set of features
+                    designed as a simple introduction to programming or for
+                    testing one-off ideas.</li>
+
+                <li>A collection of functions (also referred to as
+                    commands or methods) that make up the "core"
+                    programming interface, or API, as well as several
+                    libraries that support more advanced features such as
+                    sending data over a network, reading live images from a
+                    webcam, and saving complex imagery in PDF format.</li>
+
+                <li>The Python Mode add-on, which makes it possible to
+                    write programs in Python that look and behave like
+                    Processing programs and have access the Processing
+                    API.</li>
+
+                <li>An active online community, based at <a
+                        href="http://processing.org/"><em>http://processing.org</em></a>.</li>
+            </ul><br>
+            For this reason, references to "Processing" can
+            be somewhat ambiguous. Are we talking about the API, the
+            language, the development environment, or the web site?
+            We'll be careful in this text when referring to each.
+
+            <h3>Sketching with Processing</h3>
+
+            <p>A Processing program is called a <em>sketch</em>. The
+                idea is to make programming feel more like scripting, and
+                adopt the process of scripting to quickly write code.
+                Sketches are stored in the <em>sketchbook</em>, a folder
+                that's used as the default location for saving all of your
+                projects. Sketches that are stored in the sketchbook can be
+                accessed from File &#8594; Sketchbook. Alternatively, File
+                &#8594; Open... can be used to open a sketch from elsewhere
+                on the system.<br>
+                <br>
+                Advanced programmers need not use the PDE, and may instead
+                choose to use its libraries with the Python environment of
+                choice. However, if you're just getting started, it's
+                recommended that you use the PDE for your first few
+                projects to gain familiarity with the way things are done.
+                To better address our target audience, the conceptual model
+                (how programs work, how interfaces are built, and how files
+                are handled) is somewhat different from other programming
+                environments.<br></p>
+
+            <h3>Hello world</h3>
+
+            <p>The Processing equivalent of a "Hello World" program is
+                simply to draw a line:<br></p>
+            <pre><span style="color: #006699;">line</span>(15, 25, 70, 90)
+</pre><br>
+            Enter this example and press the Run button, which is an
+            icon that looks like the Play button from any audio or
+            video device. Your code will appear in a new window, with a
+            gray background and a black line from coordinate (15, 25)
+            to (70, 90). The (0, 0) coordinate is the upper left-hand
+            corner of the display window. Building on this program to
+            change the size of the display window and set the
+            background color, type in the code below:<br>
+            <br>
+            <pre><span style="color: #006699;">size</span>(400, 400)
+<span style="color: #006699;">background</span>(192, 64, 0)
+<span style="color: #006699;">stroke</span>(255)
+<span style="color: #006699;">line</span>(150, 25, 270, 350)
+
+</pre><br>
+            This version sets the window size to 400 x 400 pixels, sets
+            the background to an orange-red, and draws the line in
+            white, by setting the stroke color to 255. By default,
+            colors are specified in the range 0 to 255. Other
+            variations of the parameters to the <tt>stroke()</tt>
+            function provide alternate results:<br>
+            <br>
+            <pre>stroke(255)               # sets the stroke color to white
+stroke(255, 255, 255)     # identical to the line above
+stroke(255, 128, 0)       # bright orange (red 255, green 128, blue 0)
+stroke("#FF8000")         # bright orange as a web color
+stroke(255, 128, 0, 128)  # bright orange with 50% transparency
+</pre><br>
+            The same alternatives work for the <tt>fill()</tt>
+            function, which sets the fill color, and the
+            <tt>background()</tt> function, which clears the display
+            window. Like all Processing functions that affect drawing
+            properties, the fill and stroke colors affect all geometry
+            drawn to the screen until the next fill and stroke
+            functions.<br>
+            <br>
+
+            <h3>Hello mouse</h3>
+
+            <p>A program written as a list of statements (like the
+                previous examples) is called a <em>static</em> sketch. In a
+                static sketch, a series of functions are used to perform
+                tasks or create a single image without any animation or
+                interaction. Interactive programs are drawn as a series of
+                frames, which you can create by adding functions titled
+                <tt>setup()</tt> and <tt>draw()</tt> as shown in the code
+                below. These are built-in functions that are called
+                automatically.<br>
+                <br></p>
+            <pre><span style="color: #33997E;">def</span> <span style="color: #006699;"><b>setup</b></span>():
+    <span style="color: #006699;">size</span>(400, 400)
+    <span style="color: #006699;">stroke</span>(255)
+    <span style="color: #006699;">background</span>(192, 64, 0)
+
+<span style="color: #33997E;">def</span> <span style="color: #006699;"><b>draw</b></span>():
+    <span style="color: #006699;">line</span>(150, 25, <span style="color: #D94A7A;">mouseX</span>, <span style="color: #D94A7A;">mouseY</span>)
+</pre><br>
+            The <tt>setup()</tt> block runs once, and the
+            <tt>draw()</tt> block runs repeatedly. As such,
+            <tt>setup()</tt> can be used for any initialization; in
+            this case, setting the screen size, making the background
+            orange, and setting the stroke color to white. The
+            <tt>draw()</tt> block is used to handle animation. The
+            <tt>size()</tt> function must always be the first line
+            inside <tt>setup()</tt>.<br>
+            <br>
+            Because the <tt>background()</tt> function is used only
+            once, the screen will fill with lines as the mouse is
+            moved. To draw just a single line that follows the mouse,
+            move the <tt>background()</tt> function to the
+            <tt>draw()</tt> function, which will clear the display
+            window (filling it with orange) each time <tt>draw()</tt>
+            runs.<br>
+            <br>
+            <pre><span style="color: #33997E;">def</span> <span style="color: #006699;"><b>setup</b></span>():
+    <span style="color: #006699;">size</span>(400, 400)
+    <span style="color: #006699;">stroke</span>(255)
+
+<span style="color: #33997E;">def</span> <span style="color: #006699;"><b>draw</b></span>():
+    <span style="color: #006699;">background</span>(192, 64, 0)
+    <span style="color: #006699;">line</span>(150, 25, <span style="color: #D94A7A;">mouseX</span>, <span style="color: #D94A7A;">mouseY</span>)
+</pre><br>
+            Static programs are most commonly used for extremely simple
+            examples, or for scripts that run in a linear fashion and
+            then exit. For instance, a static program might start, draw
+            a page to a PDF file, and exit.<br>
+            <br>
+            Most programs will use the <tt>setup()</tt> and
+            <tt>draw()</tt> blocks. More advanced mouse handling can
+            also be introduced; for instance, the
+            <tt>mousePressed()</tt> function will be called whenever
+            the mouse is pressed. In the following example, when the
+            mouse is pressed, the screen is cleared via the
+            <tt>background()</tt> function:<br>
+            <br>
+            <pre><span style="color: #33997E;">def</span> <span style="color: #006699;"><b>setup</b></span>():
+    <span style="color: #006699;">size</span>(400, 400)
+    <span style="color: #006699;">stroke</span>(255)
+      
+<span style="color: #33997E;">def</span> <span style="color: #006699;"><b>draw</b></span>():
+    <span style="color: #006699;">line</span>(150, 25, <span style="color: #D94A7A;">mouseX</span>, <span style="color: #D94A7A;">mouseY</span>)
+     
+<span style="color: #33997E;">def</span> <span style="color: #D94A7A;">mousePressed</span>():
+    <span style="color: #006699;">background</span>(192, 64, 0)
+</pre><br>
+            <!--More about static versus active mode programs can be found in the Programming Modes section of the reference, which can be viewed from Help &rarr; Environment, or online at <a href="http://processing.org/reference/environment/"><em>http://processing.org/reference/environment</em></a><br />-->
+            <!-- commenting out for now             
+                <h3>Exporting and distributing your work</h3>
+                
+                
+                <p>One of the most significant features of the Processing environment is its ability to bundle your sketch into an application with just one click. Select File &rarr; Export Application to package your current sketch as an application. This will bundle your sketch as an application for Windows, Mac OS X, or Linux depending on which operating system you're exporting from. The application folders are overwritten whenever you export&mdash;make a copy or remove them from the sketch folder before making changes to the contents of the folder. Alternatively, you can turn off the automatic file erasure in the Preferences.<br />
+          <br />
+        More about the export features can be found in the reference at <a href="http://processing.org/reference/environment/#Export"><em>http://processing.org/reference/environment/#Export</em></a><br />
+      </p>
+-->
+
+            <h3>Creating images from your work</h3>
+
+            <p>If you don't want to distribute the actual project, you
+                might want to create images of its output instead. Images
+                are saved with the <tt>saveFrame()</tt> function. Adding
+                <tt>saveFrame()</tt> at the end of <tt>draw()</tt> will
+                produce a numbered sequence of TIFF-format images of the
+                program's output, named <em>screen-0001.tif</em>,
+                <em>screen-0002.tif</em>, and so on. A new file will be
+                saved each time <tt>draw()</tt> runs - watch out,
+                this can quickly fill your sketch folder with hundreds of
+                files. You can also specify your own name and file type for
+                the file to be saved with a function like:</p>
+            <pre>saveFrame("output.png")
+</pre><br>
+            To do the same for a numbered sequence, use # (hash marks)
+            where the numbers should be placed:<br>
+            <br>
+            <pre>saveFrame("output-####.png")
+</pre><br>
+            For high quality output, you can write geometry to PDF
+            files instead of the screen, as described in the later
+            section about the <tt>size()</tt> function.<br>
+
+            <h3>Examples and reference</h3>
+
+            <p>While many programmers learn to code in school, others
+                teach themselves and learn on their own. Learning on your
+                own involves looking at lots of other code: running,
+                altering, breaking, and enhancing it until you can reshape
+                it into something new. With this learning model in mind,
+                the Processing software download includes hundreds of
+                examples that demonstrate different features of the
+                environment and API.<br>
+                <br>
+                The examples can be accessed from the File &#8594; Examples
+                menu. They're grouped into categories based on their
+                function (such as Motion, Typography, and Image) or the
+                libraries they use (PDF, Network, and Video).<br>
+                <br>
+                Find an interesting topic in the list and try an example.
+                You'll see functions that are familiar, e.g.
+                <tt>stroke()</tt>, <tt>line()</tt>, and
+                <tt>background()</tt>, as well as others that have not yet
+                been covered.
+                <!-- FIXME: include this again after reference works in IDE
+                                        To see how a function works, select its name, and then right-click and choose Find in Reference from the pop-up menu (Find in Reference can also be found beneath the Help menu). This will open the reference for that function in your default web browser.<br />
+          <br />
+                                        In addition to a description of the function's syntax, each reference page includes an example that uses the function. The reference examples are much shorter (usually four or five lines apiece) and easier to follow than the longer code examples. <br />-->
+            </p>
+
+            <h3>More about size()</h3>
+
+            <p>The <tt>size()</tt> function sets the global variables
+                width and height. For objects whose size is dependent on
+                the screen, always use the width and height variables
+                instead of a number. This prevents problems when the size()
+                line is altered.</p>
+            <pre><span style="color: #006699;">size</span>(400, 400)
+
+<span style="color: #666666;"># The wrong way to specify the middle of the screen</span>
+<span style="color: #006699;">ellipse</span>(200, 200, 50, 50); 
+
+<span style="color: #666666;"># Always the middle, no matter how the size() line changes</span>
+<span style="color: #006699;">ellipse</span>(<span style="color: #D94A7A;">width</span>/2, <span style="color: #D94A7A;">height</span>/2, 50, 50);
+</pre><br>
+            In the earlier examples, the <tt>size()</tt> function
+            specified only a width and height for the window to be
+            created. An optional parameter to the <tt>size()</tt>
+            function specifies how graphics are rendered. A renderer
+            handles how the Processing API is implemented for a
+            particular output function (whether the screen, or a screen
+            driven by a high-end graphics card, or a PDF file). The
+            default renderer does an excellent job with high-quality 2D
+            vector graphics, but at the expense of speed. In
+            particular, working with pixels directly is slow. Several
+            other renderers are included with Processing, each having a
+            unique function. At the risk of getting too far into the
+            specifics, here's a description of the other possible
+            drawing modes to use with Processing.<br>
+            <br>
+            <pre>size(400, 400, P2D)
+</pre><br>
+            The P2D renderer uses OpenGL for faster rendering of
+            two-dimensional graphics, while using Processing's simpler
+            graphics APIs and the Processing development environment's
+            easy application export.<br>
+            <br>
+            <pre>size(400, 400, P3D)
+</pre><br>
+            The P3D renderer also uses OpenGL for faster rendering. It
+            can draw three-dimensional objects and two-dimensional
+            object in space as well as lighting, texture, and
+            materials.<br>
+            <br>
+            <pre>size(400, 400, PDF, "output.pdf")
+</pre><br>
+            The PDF renderer draws all geometry to a file instead of
+            the screen. To use PDF, in addition to altering your size()
+            function, you must select Import Library, then PDF from the
+            Sketch menu. This is a cousin of the default renderer, but
+            instead writes directly to PDF files.<br>
+            <br>
+
+            <h3>Loading and displaying data</h3>
+
+            <p>One of the unique aspects of the Processing API is the
+                way files are handled. The <tt>loadImage()</tt> and
+                <tt>loadStrings()</tt> functions each expect to find a file
+                inside a folder named <em>data</em>, which is a
+                subdirectory of the sketch folder.<br>
+                <br>
+                File handling functions include <tt>loadStrings()</tt>,
+                which reads a text file into an array of String objects,
+                and <tt>loadImage()</tt> which reads an image into a PImage
+                object, the container for image data in Processing.<br>
+                <br></p>
+            <pre><span style="color: #666666;"># Examples of loading a text file and a JPEG image</span>
+<span style="color: #666666;"># from the data folder of a sketch.</span>
+lines = <span style="color: #006699;">loadStrings</span>(<span style="color: #7D4793;">"something.txt"</span>)
+img = <span style="color: #006699;">loadImage</span>(<span style="color: #7D4793;">"picture.jpg"</span>)
+</pre><br>
+            The <tt>loadStrings()</tt> function returns an array of
+            Python string objects, which is assigned to a variable
+            named <tt>lines</tt>; it will presumably be used later in
+            the program under this name. The reason
+            <tt>loadStrings</tt> creates an array is that it splits the
+            <em>something.txt</em> file into its individual lines. The
+            following function returns a <tt>PImage</tt> object, which
+            is assigned to a variable named <tt>img</tt>.<br>
+            <br>
+            To add a file to the data folder of a Processing sketch,
+            use the Sketch &#8594; Add File menu option, or drag the
+            file into the editor window of the PDE. The data folder
+            will be created if it does not exist already.<br>
+            <br>
+            To view the contents of the sketch folder, use the Sketch
+            &#8594; Show Sketch Folder menu option. This opens the
+            sketch window in your operating system's file browser.<br>
+
+            <h3>Libraries add new features</h3>
+
+            <p>A <em>library</em> is a collection of code in a
+                specified format that makes it easy to use within
+                Processing. Libraries have been important to the growth of
+                the project, because they let developers make new features
+                accessible to users without needing to make them part of
+                the core Processing API.<br>
+                <br>
+                Several core libraries come with Processing. These can be
+                seen in the Libraries section of the online reference (also
+                available from the Help menu from within the PDE.) These
+                libraries can be seen at <a
+                    href="http://processing.org/reference/libraries/"><em>http://processing.org/reference/libraries/</em></a><br>
+                <br>
+                One example is the PDF Export library. This library makes
+                it possible to write PDF files directly from Processing.
+                These vector graphics files can be scaled to any size and
+                output at very high resolutions.<br>
+                <br>
+                To use the PDF library in a Python Mode project, choose
+                Sketch &#8594; Import Library &#8594; pdf. This will add the
+                following line to the top of the sketch:</p>
+            <pre>add_library('pdf')
+</pre><br>
+            This line instructs Processing to use the indicated library
+            when running the sketch.<br>
+            <br>
+            Now that the PDF library is imported, you may use it to
+            create a file. For instance, the following line of code
+            creates a new PDF file named <em>lines.pdf</em> that you
+            can draw to.<br>
+            <br>
+            <pre>beginRecord(PDF, "lines.pdf")
+</pre><br>
+            Each drawing function such as <tt>line()</tt> and
+            <tt>ellipse()</tt> will now draw to the screen as well as
+            to the PDF.<br>
+            <br>
+            Other libraries provide features such as reading images
+            from a camera, sending and receiving MIDI and OSC commands,
+            sophisticated 3D camera control, and access to MySQL
+            databases.<br>
+
+            <h3>Sketching and scripting</h3>
+
+            <p>Processing sketches are made up of one or more tabs,
+                with each tab representing a piece of code. The environment
+                is designed around projects that are a few pages of code,
+                and often three to five tabs in total. This covers a
+                significant number of projects developed to test and
+                prototype ideas, often before embedding them into a larger
+                project or building a more robust application for broader
+                deployment.<br>
+                <br>
+                Processing assembles our experience in building software of
+                this kind (sketches of interactive works or data-driven
+                visualization) and simplifies the parts that we felt should
+                be easier, such as getting started quickly, and insulating
+                new users from issues like those associated with setting up
+                complicated programming frameworks.<br></p>
+
+            <h3>Don't start by trying to build a cathedral</h3>
+
+            <p>If you're already familiar with programming, it's
+                important to understand how Processing differs from other
+                development environments and languages. The Processing
+                project encourages a style of work that builds code
+                quickly, understanding that either the code will be used as
+                a quick sketch, or ideas are being tested before developing
+                a final project. This could be misconstrued as software
+                engineering heresy. Perhaps we're not far from
+                "hacking,"" but this is more appropriate for the
+                roles in which Processing is used. Why force students or
+                casual programmers to learn about graphics contexts,
+                threading, and event handling functions before they can
+                show something on the screen that interacts with the mouse?
+                The same goes for advanced developers: why should they
+                always need to start with the same two pages of code
+                whenever they begin a project?<br>
+                <br>
+                In another scenario, the ability to try things out quickly
+                is a far higher priority than sophisticated code structure.
+                Usually you don't know what the outcome will be, so you
+                might build something one week to try an initial
+                hypothesis, and build something new the next based on what
+                was learned in the first week. To this end, remember the
+                following considerations as you begin writing code with
+                Processing:</p>
+
+            <ul>
+                <li>Be careful about creating unnecessary structures in
+                    your code. As you learn about encapsulating your code
+                    into classes, it's tempting to make ever-smaller classes,
+                    because data can always be distilled further. Do you need
+                    classes at the level of molecules, atoms, or quarks? Just
+                    because atoms go smaller doesn't mean that we need to
+                    work at a lower level of abstraction. If a class is half
+                    a page, does it make sense to have six additional
+                    subclasses that are each half a page long? Could the same
+                    thing be accomplished with a single class that is a page
+                    and a half in total?</li>
+
+                <li>Consider the scale of the project. It's not always
+                    necessary to build enterprise-level software on the first
+                    day. Explore first: figure out the minimum code necessary
+                    to help answer your questions and satisfy your
+                    curiosity.</li>
+            </ul>
+
+            <p>
+                The argument is not to avoid continually rewriting,
+                but rather to delay engineering work until it's
+                appropriate. The threshold for where to begin engineering a
+                piece of software is much later than for traditional
+                programming projects because there is a kind of
+                <em>art</em> to the early process of quick iteration.<br>
+                <br>
+                Of course, once things are working, avoid the urge to
+                rewrite for its own sake. A rewrite should be used when
+                addressing a completely different problem. If you've
+                managed to hit the nail on the head, you should refactor to
+                clean up function names and class interactions. But a full
+                rewrite of already finished code is almost always a bad
+                idea, no matter how "ugly" it may seem.<br>
+            </p>
+
+        </div>
+
+
+        <h1>
+            <a name="ch3">Ch.3 - Coordinate System and Shapes</a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+
+            <p class="txt">
+                Before we begin programming with Processing, we must first channel our eighth grade selves, pull out a
+                piece of graph paper, and draw a line. The shortest distance between two points is a good old fashioned
+                line, and this is where we begin, with two points on that graph paper.<br>
+            </p>
+
+            <img src="imgs/drawing-01.svg" style="width: 645px; height: 244px">
+
+            <p class="txt">
+                The above figure shows a line between point A (1,0) and point B (4,5). If you wanted to direct a friend
+                of yours to draw that same line, you would give them a shout and say "draw a line from the point
+                one-zero to the point four-five, please." Well, for the moment, imagine your friend was a computer and
+                you wanted to instruct this digital pal to display that same line on its screen. The same command
+                applies (only this time you can skip the pleasantries and you will be required to employ a precise
+                formatting). Here, the instruction will look like this:
+            </p>
+
+            <pre><span style="color: #006699;">line</span>(1,0,4,5);
+</pre>
+            Even without having studied the syntax of writing code, the above statement should make a fair amount of
+            sense. We are providing a <em>command</em> (which we will refer to as a "function") for the machine to
+            follow entitled "line." In addition, we are specifying some arguments for how that line should be drawn,
+            from point A (1,0) to point B (4,5). If you think of that line of code as a sentence, the function is a verb
+            and the arguments are the objects of the sentence. The code sentence also ends with a semicolon instead of a
+            period.
+            <br>
+            <!--<img src="imgs/1.2.jpg">-->
+            <img src="imgs/drawing-02.svg" style="width: 645px; height: 85px">
+            <br>
+            The key here is to realize that the computer screen is nothing more than a fancier piece of graph paper.
+            Each pixel of the screen is a coordinate - two numbers, an "x" (horizontal) and a "y" (vertical) - that
+            determines the location of a point in space. And it is our job to specify what shapes and colors should
+            appear at these pixel coordinates.
+            <br>
+            Nevertheless, there is a catch here. The graph paper from eighth grade ("Cartesian coordinate system")
+            placed (0,0) in the center with the y-axis pointing up and the x-axis pointing to the right (in the positive
+            direction, negative down and to the left). The coordinate system for pixels in a computer window, however,
+            is reversed along the y-axis. (0,0) can be found at the top left with the positive direction to the right
+            horizontally and down vertically.
+            <br>
+            <!--<img src="imgs/1.3.jpg">-->
+            <img src="imgs/drawing-03.svg" style="width: 645px; height: 244px">
+            <p></p>
+            <h3>Simple Shapes</h3>
+            <p>
+                The vast majority of the programming examples you'll see with Processing are visual in nature. These
+                examples, at their core, involve drawing shapes and setting pixels. Let's begin by looking at four
+                primitive shapes.
+                <br>
+                <!--<img src="imgs/1.4.jpg">-->
+                <img src="imgs/drawing-04.svg" style="width: 645px; height: 244px">
+                For each shape, we will ask ourselves what information is required to specify the location and size (and
+                later color) of that shape and learn how Processing expects to receive that information. In each of the
+                diagrams below, we'll assume a window with a width of 10 pixels and height of 10 pixels. This isn't
+                particularly realistic since when you really start coding you will most likely work with much larger
+                windows (10x10 pixels is barely a few millimeters of screen space.) Nevertheless for demonstration
+                purposes, it is nice to work with smaller numbers in order to present the pixels as they might appear on
+                graph paper (for now) to better illustrate the inner workings of each line of code.
+                <br>
+                A <a href="http://www.processing.org/reference/point_.html"><strong>point()</strong></a> is the easiest
+                of the shapes and a good place to start. To draw a point, we only need an x and y coordinate.
+                <br>
+                <!--<img src="imgs/1.5.jpg">-->
+                <img src="imgs/drawing-05.svg" style="width: 500px; height: 270px">
+                <br>
+                A <a href="http://www.processing.org/reference/line_.html"><strong>line()</strong></a> isn't terribly
+                difficult either and simply requires two points: (x1,y1) and (x2,y2):
+                <br>
+                <!--<img src="imgs/1.6.jpg">-->
+                <img src="imgs/drawing-06.svg" style="width: 500px; height: 260px">
+                <br>
+                Once we arrive at drawing a <a
+                    href="http://www.processing.org/reference/rect_.html"><strong>rect()</strong></a>, things become a
+                bit more complicated. In Processing, a rectangle is specified by the coordinate for the top left corner
+                of the rectangle, as well as its width and height.
+                <br>
+                <!--<img src="imgs/1.7.jpg">-->
+                <img src="imgs/drawing-07.svg" style="width: 595px; height: 300px">
+                <br>
+                A second way to draw a rectangle involves specifying the centerpoint, along with width and height. If we
+                prefer this method, we first indicate that we want to use the "CENTER" mode before the instruction for
+                the rectangle itself. Note that Processing is case-sensitive.
+                <br>
+                <!--<img src="imgs/1.8.jpg">-->
+                <img src="imgs/drawing-08.svg" style="width: 635px; height: 290px">
+                <br>
+                Finally, we can also draw a rectangle with two points (the top left corner and the bottom right corner).
+                The mode here is "CORNERS".
+                <br>
+                <!--<img src="imgs/1.9.jpg">-->
+                <img src="imgs/drawing-09.svg" style="width: 625px; height: 280px">
+                <br>
+                Once we have become comfortable with the concept of drawing a rectangle, an <a
+                    href="http://www.processing.org/reference/ellipse_.html"><strong>ellipse()</strong></a> is a snap.
+                In fact, it is identical to <strong>rect()</strong> with the difference being that an ellipse is drawn
+                where the bounding box of the rectangle would be. The default mode for <em>ellipse()</em> is "CENTER",
+                rather than "CORNER."
+                <br>
+                <img src="imgs/drawing-10.svg" style="width: 620px; height: 280px">
+                <br>
+                <img src="imgs/drawing-11.svg" style="width: 645px; height: 285px">
+                <br>
+                <img src="imgs/drawing-12.svg" style="width: 645px; height: 280px">
+                <br>
+
+
+                It is important to acknowledge that these ellipses do not look particularly circular. Processing has a
+                built-in methodology for selecting which pixels should be used to create a circular shape. Zoomed in
+                like this, we get a bunch of squares in a circle-like pattern, but zoomed out on a computer screen, we
+                get a nice round ellipse. Processing also gives us the power to develop our own algorithms for coloring
+                in individual pixels (in fact, we can already imagine how we might do this using
+                "point" over and over again), but for now, we are content with allowing the "ellipse" statement to do
+                the hard work. (For more about pixels, start with: <a
+                    href="http://processing.org/reference/pixels.html">the pixels reference page</a>, though be warned
+                this is a great deal more advanced than this tutorial.)
+                <br>
+                Now let's look at what some code with shapes in more realistic setting, with window dimensions of 200 by
+                200. Note the use of the <a href="http://www.processing.org/reference/size_.html">size()</a> function to
+                specify the width and height of the window.
+                <br>
+                <img src="imgs/1.11.jpg">
+                <br>
+            </p>
+            <pre><span style="color: #006699;">size</span>(200,200);
+<span style="color: #006699;">rectMode</span>(<span style="color: #718A62;">CENTER</span>);
+<span style="color: #006699;">rect</span>(100,100,20,100);
+<span style="color: #006699;">ellipse</span>(100,70,60,60);
+<span style="color: #006699;">ellipse</span>(81,70,16,32); 
+<span style="color: #006699;">ellipse</span>(119,70,16,32); 
+<span style="color: #006699;">line</span>(90,150,80,160);
+<span style="color: #006699;">line</span>(110,150,120,160);
+</pre>
+
+        </div>
+        
+
+        <h1>
+            <a name="ch4">
+                Ch.4 - Color</a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+
+        </div>
+
+
+
+        <h1>
+            <a name="ch5">
+                Ch.5 - Objects</a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+            
+        </div>
+
+
+
+        <h1>
+            <a name="ch6">
+                Ch.6 - Interactivity
+            </a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+            
+        </div>
+
+
+
+        <h1>
+            <a name="ch7">
+                Ch.7 - Typography
+            </a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+            
+        </div>
+
+
+
+        <h1>
+            <a name="ch8">
+                Ch.8 - Strings and Drawing Text
+            </a>
+            <a href="#toc">(↑)</a>
+        </h1>
+
+        <div class=content>
+            
+        </div>
+
+
+    </div>

@@ -1,0 +1,18 @@
+<div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="{{ publication_url }}" class="publication card text-themed">
+    {%- if publication_img -%}
+    <img id="{{ publication_id }}-img" class="card-img-top" src="{{ publication_img }}" alt="{{ publication_name }}" />
+    {%- endif -%}
+    <div class="card-body">
+      <h5 id="{{ publication_id }}-name" class="card-title">
+        {{ publication_name }}
+      </h5>
+      <p id="{{ publication_id }}-desc" class="card-text">{{ publication_desc }}</p>
+      <p id="{{ publication_id }}-tools" class="card-text">
+        {%- for tool in publication_tools -%}
+        <span class="badge badge-pill text-primary border border-primary ml-1">{{ tool }}</span>
+        {%- endfor -%}
+      </p>
+    </div>
+  </a>
+</div>

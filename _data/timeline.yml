@@ -1,0 +1,44 @@
+- title: Junior Software Developer <br> <a href="https://https://www.evotec.com/">Evotec</a>
+  from: 2021
+  to: present
+
+- title: AI Architect | ML Engineer <br> <a href="https://kellify.com/">Kellify</a>
+  from: 2020
+  to: 2021
+  description: |
+    <ul>
+    <li> Hedonic value forecasting of visual features in artworks and images via deep learning models </li>
+    <li> Art market analysis, including unsupervised clustering of artists and auction items and identification of growing trends within the art market </li>
+    <li> RestAPI development of data services and deep learning applications </li>
+    </ul>
+
+- title: Co-founder | Editor-in-chief | Webmaster <br> <a href="https://www.eikonproject.org/">EIKON Project</a>
+  from: 2017
+  to: present
+  description: |
+    <ul>
+    <li> Workflow management between executive, editorial, and PR boards </li>
+    <li> Magazine editorial design and graphic design </li>
+    <li> Website design and development </li>
+    </ul>
+
+- title: Master's Double Degree in Advanced Robotics <br> <a href="https://master-emaro.ec-nantes.fr/">École centrale de Nantes</a>
+  from: 2018
+  to: 2020
+  description: |
+    Final Grade: 100/100 (GPA: 3,81) <br>
+    <ul>
+    <li> Robotics Coursework: Dynamic Control, System Identification, Mobile Robotics, Ambient Intelligence, Social Robotics, Serial Manipulators </li>
+    <li> Programming Coursework: Machine Learning, Computer Vision, Optimization Techniques </li>
+    </ul>
+
+- title: Bachelor's Degree in Electronics Engineering and I.T. <br> <a href="https://corsi.unige.it/9273">University of Genoa</a>
+  from: 2015
+  to: 2018
+  description: |
+    Final Grade: 110/110 cum laude (GPA: 3,85) <br>
+    <ul>
+    <li> Programming Coursework: Computer Programming (C/C++), Informatics and Telematics Programming (C#), Databases </li>
+    <li> EE Coursework: Embedded Systems, Signal Processing, Image Processing, Electromagnetic Fields, VHDL Design, Network Protocols </li>
+    <li> Optional Courses: Quantum Mechanics, Philosophy of Cognitive Sciences, Philosophy of Mind, Perception and Cognition Neuroscience, Philosophy of Politics, Aesthetics, Anthropology </li>
+    </ul>

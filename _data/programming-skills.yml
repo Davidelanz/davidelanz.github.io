@@ -1,0 +1,31 @@
+- name: Python
+  percentage: 100
+  color: danger
+
+- name: C/C++/C#
+  percentage: 80
+  color: danger
+
+- name: MySQL
+  percentage: 60
+  color: danger
+
+- name: Neo4J/Cypher
+  percentage: 60
+  color: danger
+
+- name: HTML/CSS
+  percentage: 90
+  color: secondary
+
+- name: JavaScript
+  percentage: 50
+  color: secondary
+
+- name: PHP
+  percentage: 30
+  color: secondary
+
+- name: MATLAB
+  percentage: 60
+  color: primary

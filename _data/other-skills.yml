@@ -1,0 +1,16 @@
+- name: Docker
+  percentage: 100
+  color: info
+
+- name: ROS/Gazebo
+  percentage: 90
+  color: info
+
+- name: Adobe Photoshop
+  percentage: 70
+  color: success
+
+- name: Unreal Engine 5
+  percentage: 20
+  color: success
+
