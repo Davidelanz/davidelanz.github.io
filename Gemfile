@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-gem "jekyll"
-# This will help ensure the proper Jekyll version is running.
-# gem "jekyll", "~> 3.9.0"
+# gem "jekyll"
+# https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll
+gem "github-pages", "~> 3.9.3", group: :jekyll_plugins
 
 gem "jemoji"
 
