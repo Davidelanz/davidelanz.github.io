@@ -7,7 +7,7 @@ gem "github-pages", "~> 3.9.3", group: :jekyll_plugins
 gem "jemoji"
 
 # Theme
-# gem "davidelanza-portfolio", path: "./themes/davidelanza-portfolio"
+gem "jekyll-portfolio-theme",  github: "davidelanz/jekyll-portfolio-theme", branch: "main"
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
