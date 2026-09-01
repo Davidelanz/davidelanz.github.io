@@ -103,7 +103,7 @@ export const noteGroups: NoteGroup[] = [
         detail: "Standford · cheatsheet · Author: Afshine and Shervine Amidi",
       },
       {
-        title: "Deep Learning CS 230",
+        title: "Stanford CS 230 · Deep Learning",
         file: "stanford_cs230_deeplearn.pdf",
         detail: "Standford · cheatsheet · Author: Afshine and Shervine Amidi",
       },
