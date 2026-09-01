@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 export function SelectedWork() {
   return (
     <section className="section shell" id="works">
-      <SectionHeading number="01">selected work</SectionHeading>
+      <SectionHeading number="01">selected works</SectionHeading>
       <div className="item-list">
         {projects.map((project, index) => {
           const content = (

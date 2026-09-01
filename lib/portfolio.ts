@@ -83,7 +83,7 @@ export const education: typeof experience = [
     period: "2025 — current",
     role: "Bachelor of Fine Arts",
     org: "University of Fine Arts Hamburg (HFBK)",
-    detail: "Specialization in Grafic Art / Photography",
+    detail: "Specialization in Graphic Art / Photography",
   },
   {
     period: "2018 — 2020",
