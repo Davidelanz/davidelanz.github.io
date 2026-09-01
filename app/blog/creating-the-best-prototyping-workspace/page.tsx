@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { ArticlePage } from "@/components/ArticlePage";
+import { definePostMetadata } from "../post-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = definePostMetadata({
   title: "Creating the Best Prototyping Workspace",
   description: "A Docker-based Jupyter and Conda setup for fast Python prototyping.",
-  other: { date: "2021-06-05", tags: ["Docker", "Jupyter", "Conda", "Python"] },
-};
+  date: "2021-06-05",
+  tags: ["Docker", "Jupyter", "Conda", "Python"],
+});
 
 export default function Page() {
   return (

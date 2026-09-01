@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { ArticlePage } from "@/components/ArticlePage";
+import { definePostMetadata } from "../post-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = definePostMetadata({
   title: "Set up a Neo4j server with Docker importing huge CSV datasheets",
   description:
     "Use neo4j-admin through Docker to initialize a graph database from large CSV datasets.",
-  other: { date: "2021-07-03", tags: ["Graphs", "Neo4j", "Docker"] },
-};
+  date: "2021-07-03",
+  tags: ["Graphs", "Neo4j", "Docker"],
+});
 
 export default function Page() {
   return (

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { ArticlePage } from "@/components/ArticlePage";
+import { definePostMetadata } from "../post-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = definePostMetadata({
   title: "Getting started with R and RStudio",
   description: "R and RStudio setup via docker. R programming language fundamentals.",
-  other: { date: "2022-01-02", tags: ["R", "RStudio", "Docker"] },
-};
+  date: "2022-01-02",
+  tags: ["R", "RStudio", "Docker"],
+});
 
 export default function Page() {
   return (

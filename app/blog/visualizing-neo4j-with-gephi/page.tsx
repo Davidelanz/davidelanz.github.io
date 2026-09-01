@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { ArticlePage } from "@/components/ArticlePage";
+import { definePostMetadata } from "../post-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = definePostMetadata({
   title: "Visualizing huge Neo4j Graphs with Gephi",
   description:
     "Set up Gephi and stream data from a Neo4j server as an open alternative for exploring large graphs.",
-  other: { date: "2021-07-18", tags: ["Graphs", "Neo4j", "Gephi"] },
-};
+  date: "2021-07-18",
+  tags: ["Graphs", "Neo4j", "Gephi"],
+});
 
 export default function Page() {
   return (

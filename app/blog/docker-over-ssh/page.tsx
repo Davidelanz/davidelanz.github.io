@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { ArticlePage } from "@/components/ArticlePage";
+import { definePostMetadata } from "../post-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = definePostMetadata({
   title: "Connect to Docker Container on a Remote Server over SSH",
   description:
     "Enable SSH tunneling from a remote Docker container and connect directly with VS Code.",
-  other: { date: "2021-06-10", tags: ["Docker", "VSCode"] },
-};
+  date: "2021-06-10",
+  tags: ["Docker", "VSCode"],
+});
 
 export default function Page() {
   return (
