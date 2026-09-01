@@ -1,4 +1,4 @@
-# Davide Lanza - Software Developmet Portfolio
+# Davide Lanza [dev] - Software Developmet Portfolio
 
 Next.js portfolio and blog, published through GitHub Pages.
 

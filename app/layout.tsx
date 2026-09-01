@@ -5,13 +5,24 @@ import "@/styles/main.scss";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dev.davidelanza.it"),
-  title: { default: "Davide Lanza - Software & Robotics Engineer", template: "%s — Davide Lanza" },
+  title: {
+    default: "Davide Lanza [dev] - Software & Robotics Engineer",
+    template: "%s — Davide Lanza [dev]",
+  },
   description:
     "Development portfolio presenting selected works and academia contributions, along with work experience and technical blog posts.",
   openGraph: {
-    title: "Davide Lanza — Software & Robotics Engineer",
+    title: "Davide Lanza [dev] — Software & Robotics Engineer",
     description: "Software, robotics, and notes from the field.",
     type: "website",
+    url: "/",
+    siteName: "Davide Lanza [dev]",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "Davide Lanza [dev] — Software & Robotics Engineer",
+    description: "Software, robotics, and notes from the field.",
   },
 };
 

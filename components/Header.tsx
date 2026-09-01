@@ -12,7 +12,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="shell site-header__inner">
-        <Link className="site-header__brand" href="/" aria-label="Davide Lanza, home">
+        <Link className="site-header__brand" href="/" aria-label="Davide Lanza [dev], home">
           dl<span>@dev</span>:~$
         </Link>
         <nav className="site-header__nav" aria-label="Main navigation">
