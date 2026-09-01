@@ -1,0 +1,6 @@
+// Entry point: partials are grouped by responsibility instead of one monolithic stylesheet.
+@use "base";
+@use "shell";
+@use "home";
+@use "blog";
+@use "notes";

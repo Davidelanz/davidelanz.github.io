@@ -1,12 +1,11 @@
-# Local Site Directories
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+# Next.js
+.next/
+node_modules/
+out/
+.pnpm-store/
 
-# Ruby Gems
-.bundle
-Gemfile.lock
-
-# Log Files
+# Logs
 *.log
+
+# macOS
+.DS_Store

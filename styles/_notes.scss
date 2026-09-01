@@ -1,0 +1,51 @@
+@use "tokens" as *;
+
+.notes-group {
+  margin-top: 70px;
+}
+.notes-group > h2 {
+  margin: 0 0 18px;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+}
+.notes-group > div {
+  border-top: 1px solid $ink;
+}
+.notes-group a {
+  display: grid;
+  grid-template-columns: 1fr 1fr 55px;
+  gap: 24px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid $line;
+}
+.notes-group a:hover span {
+  color: $accent;
+}
+.notes-group span {
+  font-size: 13px;
+  font-weight: 700;
+}
+.notes-group small {
+  color: $muted;
+  font-size: 10px;
+}
+.notes-group b {
+  color: $accent;
+  font-size: 9px;
+  text-align: right;
+}
+
+@media (max-width: $mobile) {
+  .notes-group a {
+    grid-template-columns: 1fr 48px;
+    gap: 10px;
+  }
+  .notes-group small {
+    grid-column: 1;
+  }
+  .notes-group b {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+}

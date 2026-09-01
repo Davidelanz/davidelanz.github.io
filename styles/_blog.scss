@@ -1,0 +1,155 @@
+@use "tokens" as *;
+
+.listing-page,
+.notes-page {
+  min-height: 80vh;
+  padding: 120px 0;
+}
+.listing-page > h1,
+.notes-page > h1 {
+  margin: 26px 0 16px;
+  font-size: clamp(56px, 9vw, 108px);
+  letter-spacing: -0.08em;
+}
+.blog-list {
+  margin-top: 65px;
+  border-top: 1px solid $ink;
+}
+.blog-row {
+  display: grid;
+  grid-template-columns: 125px 1fr 25px;
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid $line;
+}
+.blog-row time,
+.blog-row span {
+  color: $muted;
+  font-size: 10px;
+}
+.blog-row h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+}
+.blog-row p {
+  max-width: 720px;
+  margin: 0 0 15px;
+  color: $muted;
+  font-size: 11px;
+  line-height: 1.65;
+}
+.blog-row:hover h2 {
+  color: $accent;
+}
+
+.article-page {
+  padding: 85px 0 120px;
+}
+.back-link {
+  color: $muted;
+  font-size: 11px;
+}
+.article-header {
+  padding: 60px 0;
+  border-bottom: 1px solid $line;
+}
+.article-meta {
+  display: flex;
+  gap: 28px;
+  color: $accent;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.article-header h1 {
+  max-width: 960px;
+  margin: 24px 0;
+  font-size: clamp(38px, 7vw, 78px);
+  line-height: 1.04;
+  letter-spacing: -0.07em;
+}
+.article-header > p {
+  max-width: 740px;
+  color: $muted;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.markdown {
+  max-width: 790px;
+  margin: 65px auto 0;
+  font-size: 13px;
+  line-height: 1.85;
+}
+.markdown h2 {
+  margin: 65px 0 18px;
+  padding-top: 24px;
+  border-top: 1px solid $line;
+  font-size: 27px;
+  letter-spacing: -0.04em;
+}
+.markdown h3 {
+  margin-top: 42px;
+  font-size: 19px;
+}
+.markdown a {
+  color: $accent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.markdown img,
+.markdown object,
+.markdown iframe {
+  max-width: 100%;
+  height: auto;
+}
+.markdown pre {
+  overflow: auto;
+  padding: 20px;
+  background: $ink;
+  color: #eee;
+  font-size: 11px;
+  line-height: 1.65;
+}
+.markdown code {
+  padding: 2px 4px;
+  background: $soft;
+}
+.markdown pre code {
+  padding: 0;
+  background: none;
+}
+.markdown blockquote {
+  margin: 30px 0;
+  padding-left: 22px;
+  border-left: 3px solid $accent;
+  color: $muted;
+}
+.markdown table {
+  display: block;
+  overflow: auto;
+  border-collapse: collapse;
+}
+.markdown th,
+.markdown td {
+  padding: 9px;
+  border: 1px solid $line;
+  text-align: left;
+}
+.not-found {
+  min-height: 75vh;
+  padding-top: 130px;
+}
+.not-found h1 {
+  margin: 20px 0;
+  font-size: 110px;
+  letter-spacing: -0.1em;
+}
+
+@media (max-width: $mobile) {
+  .blog-row {
+    grid-template-columns: 1fr 22px;
+  }
+  .blog-row time {
+    grid-column: 1 / -1;
+  }
+}

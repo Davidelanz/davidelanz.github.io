@@ -1,0 +1,222 @@
+@use "tokens" as *;
+
+.masthead {
+  min-height: 72vh;
+  padding: clamp(90px, 13vw, 160px) 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.masthead__prompt {
+  margin: 0 0 30px;
+  color: $accent;
+  font-size: 11px;
+}
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(58px, 10.5vw, 138px);
+  line-height: 0.86;
+  letter-spacing: -0.09em;
+}
+.masthead__role {
+  margin: 28px 0 0;
+  font-size: clamp(18px, 2vw, 26px);
+  letter-spacing: -0.04em;
+}
+.masthead__intro {
+  margin: 20px 0 0;
+  color: $muted;
+  font-size: 14px;
+}
+.masthead__links {
+  display: flex;
+  gap: 24px;
+  margin-top: 38px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.masthead__links a:hover {
+  color: $accent;
+}
+
+// Shared bordered rows keep work, experience and writing visually consistent.
+.item-list,
+.timeline,
+.writing-list {
+  border-top: 1px solid $ink;
+}
+.item-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 180px 24px;
+  gap: 24px;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid $line;
+}
+.item-row:hover {
+  background: $soft;
+}
+.item-row h2,
+.timeline h2,
+.writing-list h2,
+.publication-list h2 {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: -0.04em;
+}
+.item-row p,
+.timeline p,
+.publication-list p {
+  margin: 7px 0 0;
+  color: $muted;
+  font-size: 11px;
+  line-height: 1.55;
+}
+.item-row__index {
+  color: $accent;
+  font-size: 10px;
+}
+.item-row__meta {
+  color: $muted;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.timeline__row {
+  display: grid;
+  grid-template-columns: 150px 1fr 1.25fr;
+  gap: 30px;
+  padding: 27px 0;
+  border-bottom: 1px solid $line;
+}
+.timeline__row time {
+  color: $muted;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.timeline__row > div p {
+  color: $accent;
+  text-transform: uppercase;
+}
+.studies {
+  margin-top: 20px;
+}
+.studies summary {
+  cursor: pointer;
+  width: fit-content;
+  padding: 10px 0;
+  font-size: 11px;
+  font-weight: 700;
+  list-style: none;
+}
+.studies summary::-webkit-details-marker {
+  display: none;
+}
+.studies__open {
+  display: none;
+}
+.studies[open] .studies__closed {
+  display: none;
+}
+.studies[open] .studies__open {
+  display: inline;
+}
+.studies[open] .timeline {
+  margin-top: 20px;
+}
+
+.publication-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid $ink;
+  counter-reset: papers;
+}
+.publication-list li {
+  position: relative;
+  padding: 25px 0 25px 48px;
+  border-bottom: 1px solid $line;
+  counter-increment: papers;
+}
+.publication-list li::before {
+  content: "0" counter(papers);
+  position: absolute;
+  left: 0;
+  top: 27px;
+  color: $accent;
+  font-size: 10px;
+}
+.publication-list a:hover h2 {
+  color: $accent;
+}
+
+.writing-list a {
+  display: grid;
+  grid-template-columns: 130px 1fr 24px;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid $line;
+}
+.writing-list a:hover h2 {
+  color: $accent;
+}
+.writing-list time {
+  color: $muted;
+  font-size: 10px;
+}
+.writing-list span {
+  font-size: 16px;
+}
+
+.notes-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 32px;
+  background: $ink;
+  color: #fff;
+}
+.notes-link h2 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 46px);
+  letter-spacing: -0.06em;
+}
+.notes-link p {
+  margin: 14px 0 0;
+  color: #aaa;
+  font-size: 11px;
+}
+.notes-link > span {
+  color: $accent;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+@media (max-width: $mobile) {
+  .masthead {
+    min-height: 66vh;
+  }
+  .item-row {
+    grid-template-columns: 34px 1fr 22px;
+    gap: 14px;
+  }
+  .item-row__meta {
+    display: none;
+  }
+  .timeline__row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .writing-list a {
+    grid-template-columns: 1fr 22px;
+  }
+  .writing-list time {
+    grid-column: 1 / -1;
+  }
+  .notes-link {
+    align-items: start;
+    gap: 35px;
+    padding: 24px;
+  }
+}
