@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { noteGroups } from "@/lib/notes";
+import { NotesIndex } from "@/components/NotesIndex";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -16,20 +16,7 @@ export default function NotesPage() {
       <p className="page-intro">
         Course notes, drafts and cheatsheets. Authorship is stated where the material is not mine.
       </p>
-      {noteGroups.map((group) => (
-        <section className="notes-group" key={group.title}>
-          <h2>{group.title}</h2>
-          <div>
-            {group.items.map((note) => (
-              <a href={`/notes/${note.file}`} key={note.file}>
-                <span>{note.title}</span>
-                <small>{note.detail}</small>
-                <b>PDF ↓</b>
-              </a>
-            ))}
-          </div>
-        </section>
-      ))}
+      <NotesIndex />
     </main>
   );
 }
