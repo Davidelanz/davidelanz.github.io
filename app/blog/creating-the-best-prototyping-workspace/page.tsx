@@ -21,7 +21,7 @@ export default function Page() {
         <p>
           <a href="https://github.com/Davidelanz/jupyter-docker">
             <img
-              src="https://img.shields.io/badge/GutHub-Davidelanz%2Fjupyter--docker-white"
+              src="https://img.shields.io/badge/GitHub-Davidelanz%2Fjupyter--docker-white"
               alt=""
             />
           </a>
@@ -51,19 +51,19 @@ export default function Page() {
         <p>
           <a href="https://docs.conda.io/en/latest/">Conda</a> and{" "}
           <a href="https://jupyter.org/">Jupyter Lab</a> are probably the best combination for
-          easily manage packages and test code snippets while prototyping, especially in Machine and
-          Deep Learning fields. For instance, some models could require{" "}
-          <a href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf">Tensorflow 1.15</a>
+          easily managing packages and testing code snippets while prototyping, especially in the
+          machine learning and deep learning fields. For instance, some models may require{" "}
+          <a href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf">TensorFlow 1.15</a>
           , others{" "}
-          <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf">Tensorflow 2.0</a>,
+          <a href="https://www.tensorflow.org/versions/r2.0/api_docs/python/tf">TensorFlow 2.0</a>,
           older ones <a href="https://caffe2.ai/">Caffe2</a>, or some other framework, and with such
-          a setup, you can easily switch environments and python versions with a simple click.
+          a setup, you can easily switch environments and Python versions with a simple click.
         </p>
         <p>
           Since I am working a lot with <a href="https://www.docker.com/">Docker</a> on remote
-          servers, I need also a ready-to-use Docker image. Hence, I built an image integrating
-          Jupyter, Conda, and some little tools which I think could provide the “best prototyping
-          workspace” with a very low effort. Indeed, the{" "}
+          servers, I also need a ready-to-use Docker image. Therefore, I built an image integrating
+          Jupyter, Conda, and a few small tools that I think provide the “best prototyping
+          workspace” with very little effort. The{" "}
           <a href="https://hub.docker.com/r/davidelanz/jupyter">davidelanz/jupyter</a> docker image
           provides a quick, dockerized setup for Jupyter Lab with multiple Conda environments.
         </p>
@@ -119,7 +119,7 @@ export default function Page() {
                 </a>
               </td>
               <td>
-                The image comes already with a Python3.7 Conda environment with OpenCV support
+                The image already comes with a Python 3.7 Conda environment with OpenCV support
                 called <code>opencv-py3.7</code>
               </td>
             </tr>
@@ -142,12 +142,12 @@ export default function Page() {
         </p>
         <pre>
           <code>
-            docker pull davidelanz/jupyter docker run \ -p &lt;CONTANER_PORT&gt;:8888 \ -v
+            docker pull davidelanz/jupyter docker run \ -p &lt;CONTAINER_PORT&gt;:8888 \ -v
             &lt;EXTERNAL_FOLDER&gt;:/workspace \ --name &lt;CONTAINER_NAME&gt; davidelanz/jupyter
           </code>
         </pre>
         <p>
-          Your workspace will be available at <code>http://localhost:&lt;CONTANER_PORT&gt;</code>.
+          Your workspace will be available at <code>http://localhost:&lt;CONTAINER_PORT&gt;</code>.
         </p>
         <h2>Build from GitHub</h2>
         <p>
@@ -166,7 +166,7 @@ export default function Page() {
         </p>
         <blockquote>
           <p>
-            The image comes already with a Python3.7 environment with OpenCV support called{" "}
+            The image already comes with a Python 3.7 environment with OpenCV support called{" "}
             <code>opencv-py3.7</code>.
           </p>
         </blockquote>
@@ -186,7 +186,7 @@ export default function Page() {
             &amp;&amp; \ python -m ipykernel install --name &lt;DESIRED_ENV_NAME&gt; --user
           </code>
         </pre>
-        <p>With Jupyter installed you get the list of currently installed kernels with:</p>
+        <p>With Jupyter installed, you can list the currently installed kernels with:</p>
         <pre>
           <code>jupyter kernelspec list</code>
         </pre>

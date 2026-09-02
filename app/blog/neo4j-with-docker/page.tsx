@@ -3,7 +3,7 @@ import { ArticlePage } from "@/components/ArticlePage";
 import { definePostMetadata } from "../post-metadata";
 
 export const metadata: Metadata = definePostMetadata({
-  title: "Set up a Neo4j server with Docker importing huge CSV datasheets",
+  title: "Set Up a Neo4j Server with Docker and Import Huge CSV Datasets",
   description:
     "Use neo4j-admin through Docker to initialize a graph database from large CSV datasets.",
   date: "2021-07-03",
@@ -20,7 +20,7 @@ export default function Page() {
     >
       <>
         <p>
-          From both a work and a research perspective, it is clear how fundamental graph data is -
+          From both a work and a research perspective, it is clear how fundamental graph data is:
           from disease detection, genetics, and healthcare to banking and engineering, graphs are
           emerging as a powerful analysis paradigm for hard problems.{" "}
           <a href="https://neo4j.com/">Neo4j</a> gives developers and data scientists the most
@@ -29,13 +29,13 @@ export default function Page() {
           <a href="https://neo4j.com/pricing/">almost</a>) free.
         </p>
         <p>
-          Neo4j relies on <a href="https://neo4j.com/developer/cypher/">Cypher</a> query language (
-          <a href="http://opencypher.org/">open source</a>). Cypher allows users to store and
-          retrieve data from the graph database. Cypher’s{" "}
+          Neo4j relies on the <a href="https://neo4j.com/developer/cypher/">Cypher</a> query
+          language (<a href="http://opencypher.org/">open source</a>). Cypher allows users to store
+          and retrieve data from the graph database. Cypher’s{" "}
           <a href="https://neo4j.com/docs/cypher-manual/current/clauses/load-csv/">
             <code>LOAD CSV</code>
           </a>{" "}
-          is great for importing small-data sets into our running database. Nevertheless, dealing
+          is great for importing small datasets into our running database. Nevertheless, dealing
           with <strong>big data</strong> can be pretty tedious (if not ludicrously slow). To
           initialize an unused database with large amounts of data from CSV files we need to use the{" "}
           <a href="https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin/">
@@ -46,8 +46,8 @@ export default function Page() {
         <p>
           Neo4j Admin is the primary tool for managing your Neo4j instance. It is a command-line
           tool that is installed as part of the product and can be executed with several commands.
-          Here, we show how to set up a Neo4j server via a Docker image on a local machine,
-          importing first big data on a brand new graph database, and then running the server in a{" "}
+          Here, we show how to set up a Neo4j server via a Docker image on a local machine, first
+          importing large datasets into a brand-new graph database and then running the server in a{" "}
           <a href="https://neo4j.com/pricing/">self-hosted</a> fashion. And again, all this for
           free.
         </p>
@@ -70,7 +70,7 @@ export default function Page() {
           </li>
           <li>
             <a href="#upgrade-to-neo4j-enterprise--bloom">
-              Upgrade to Neo4J Enterprise &amp; Bloom
+              Upgrade to Neo4j Enterprise &amp; Bloom
             </a>
           </li>
         </ul>
@@ -79,29 +79,29 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          Before loading our CSV data into our server, we have to convert it in a Neo4j-compliant
+          Before loading our CSV data into our server, we have to convert it into a Neo4j-compliant
           fashion. Here, we will be using the{" "}
           <a href="https://github.com/neo4j-contrib/developer-resources/tree/gh-pages/data/northwind">
             NorthWind dataset
           </a>
-          , an often-used SQL dataset. This data depicts a product sale system - storing and
+          , a commonly used SQL dataset. This data depicts a product sales system—storing and
           tracking customers, products, customer orders, warehouse stock, shipping, suppliers, and
           even employees and their sales territories:
         </p>
         <div className="text-center">
           <img
-            alt="Northwind dataser ER diagram"
+            alt="Northwind dataset ER diagram"
             src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg"
             width={800}
           />
         </div>
         <p>
           Although the NorthWind dataset is often used to demonstrate SQL and relational databases,
-          the data also can be structured as a graph:
+          the data can also be structured as a graph:
         </p>
         <div className="text-center">
           <img
-            alt="Northwind dataser ER diagram"
+            alt="Northwind dataset graph diagram"
             src="https://dist.neo4j.com/wp-content/uploads/northwind_graph_simple.svg"
             width={700}
           />
@@ -130,7 +130,7 @@ export default function Page() {
                 Less detailed and clear (e.g. to model sales, we need an Orders-to-Employees foreign
                 key relationship)
               </td>
-              <td>More detailed and clear (e.g we know that an employee SOLD an order)</td>
+              <td>More detailed and clear (e.g., we know that an employee SOLD an order)</td>
             </tr>
             <tr>
               <td>Faster for unconnected data</td>
@@ -539,8 +539,8 @@ export default function Page() {
         </p>
         <ol>
           <li>
-            Import data on the default database called <code>neo4j</code> (the only one provided by
-            the Community edition) with an interactive run of the container executing{" "}
+            Import data into the default database, called <code>neo4j</code> (the only one provided
+            by the Community edition) with an interactive run of the container executing{" "}
             <code>neo4j-admin import</code>, storing database files on persistent Docker volumes
           </li>
           <li>
@@ -573,8 +573,8 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          In your docker volume folder <code>/neo4j-import/_data</code>, create a{" "}
-          <code>csv_files</code> folder where to store your data:
+          In your Docker volume folder <code>/neo4j-import/_data</code>, create a{" "}
+          <code>csv_files</code> folder in which to store your data:
         </p>
         <pre>
           <code>
@@ -583,7 +583,7 @@ export default function Page() {
           </code>
         </pre>
         <p>
-          Then, import data on the default database with a interactive run of the container
+          Then, import data into the default database with an interactive run of the container
           executing <code>neo4j-admin import</code>, storing database files on the docker volume{" "}
           <code>neo4j-data</code>:
         </p>
@@ -599,7 +599,7 @@ export default function Page() {
             --relationships=SOLD=import/csv_files/sold_prepared.csv \
           </code>
         </pre>
-        <p>What all these parameters mean?</p>
+        <p>What do all these parameters mean?</p>
         <ul>
           <li>
             <code>docker run</code> options:
@@ -688,7 +688,7 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          Now we finally have our data imported in our Dockdr persistent volume{" "}
+          Now we finally have our data imported into our Docker persistent volume{" "}
           <code>neo4j-data</code>. We can now start the container with the following command:
         </p>
         <pre>
@@ -709,7 +709,7 @@ export default function Page() {
             --name=neo4j-server \ neo4j:4.3.1-community
           </code>
         </pre>
-        <p>What all these parameters mean?</p>
+        <p>What do all these parameters mean?</p>
         <ul>
           <li>
             <code>docker run</code> options:
@@ -743,17 +743,17 @@ export default function Page() {
             <ul>
               <li>
                 <code>NEO4J_dbms_connector_http_listen__address=:6476</code> and{" "}
-                <code>NEO4J_dbms_connector_http_advertised__address=:6476</code> specifiy the HTTP
+                <code>NEO4J_dbms_connector_http_advertised__address=:6476</code> specify the HTTP
                 listen port for incoming connections
               </li>
               <li>
                 <code>NEO4J_dbms_connector_https_listen__address=:6477</code> and{" "}
-                <code>NEO4J_dbms_connector_https_advertised__address=:6477</code> specifiy the HTTPS
+                <code>NEO4J_dbms_connector_https_advertised__address=:6477</code> specify the HTTPS
                 listen port for incoming connections
               </li>
               <li>
                 <code>NEO4J_dbms_connector_bolt_listen__address=:7687</code> and{" "}
-                <code>NEO4J_dbms_connector_bolt_advertised__address=:7687</code> specifiy the bolt
+                <code>NEO4J_dbms_connector_bolt_advertised__address=:7687</code> specify the Bolt
                 listen port for incoming connections
               </li>
               <li>
@@ -783,15 +783,15 @@ export default function Page() {
             width={800}
           />
         </div>
-        <h2>Upgrade to Neo4J Enterprise &amp; Bloom</h2>
+        <h2>Upgrade to Neo4j Enterprise &amp; Bloom</h2>
         <p>
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
           If you want to use the enterprise version with{" "}
-          <a href="https://neo4j.com/product/bloom/">Neo4j Bloom</a> (both NOT available for free),
-          you need the <code>neo4j:4.3.1-enterprise</code> docker image and a valid activation key
-          for the Bloom server. Then, proceed with the following steps:
+          <a href="https://neo4j.com/product/bloom/">Neo4j Bloom</a> (neither is available for
+          free), you need the <code>neo4j:4.3.1-enterprise</code> Docker image and a valid
+          activation key for the Bloom server. Then, proceed with the following steps:
         </p>
         <ol>
           <li>
@@ -802,8 +802,8 @@ export default function Page() {
             the <code>neo4j-plugins</code> docker volume
           </li>
           <li>
-            create a new <code>neo4j-licenses</code> volume and place in it your ```bloom.license``
-            file
+            create a new <code>neo4j-licenses</code> volume and place your{" "}
+            <code>bloom.license</code> file in it
           </li>
           <li>
             now you are ready to start the server:

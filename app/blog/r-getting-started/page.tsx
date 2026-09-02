@@ -30,7 +30,7 @@ export default function Page() {
           their work.
         </p>
         <p>
-          Here, we show how to set up RStudio server via a Docker image on a local machine. Then, we
+          Here, we show how to set up RStudio Server via a Docker image on a local machine. Then, we
           run some basic commands to learn the R fundamentals.
         </p>
         <h2 id="contents"> Contents </h2>
@@ -133,17 +133,16 @@ export default function Page() {
           that it is a very specialized language for statistical analysis, data science, and
           academia, it is highly rated and broadly adopted. Python is definitely a popular language
           for data science and academia, but R definitely has its place as a specialized language
-          that works in a lot of areas, whereas python is more of a general-purpose language.
+          that works in many areas, whereas Python is more of a general-purpose language.
         </p>
         <p>
           R was created in 1993 as an implementation of the{" "}
           <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S language</a> made at
-          Bell labs in 1976. That’s the reason why R is a <strong>mature</strong> language and why
-          it is <strong>conservatively maintained</strong>. The base package of R is very rarely
-          changed, and updates are usually backward compatible. So, changes to R rarely will break:
-          if you can use some 20-years-old R code, it will probably still run! R has an amazing
-          wealth of code that’s already been written and used for decades. Moreover R graphics using
-          the{" "}
+          Bell Labs in 1976. That’s why R is a <strong>mature</strong> language and why it is{" "}
+          <strong>conservatively maintained</strong>. The base package of R is very rarely changed,
+          and updates are usually backward compatible. Therefore, changes to R rarely break existing
+          code: 20-year-old R code will probably still run! R has an amazing wealth of code that’s
+          already been written and used for decades. Moreover R graphics using the{" "}
           <a href="https://ggplot2.tidyverse.org/">
             <code>ggplot2</code>
           </a>{" "}
@@ -168,11 +167,11 @@ export default function Page() {
         </p>
         <p>
           R is great as an interface or an <strong>intermediary language</strong> between other
-          languages. There are a lot of other languages can integrate in R working closely with it,
-          either reproducible analyses, creating a good-looking documents, or just improving speed.
-          Since R is <strong>single threaded</strong>, for example, we can boost its calculation
-          speed with some C++ code. R works well with latex and markdown as well, and with{" "}
-          <a href="https://pandoc.org/">pandoc</a> you can create really great documents. Javascript
+          languages. Many other languages can integrate closely with R, whether for reproducible
+          analyses, creating good-looking documents, or simply improving performance. Since R is{" "}
+          <strong>single-threaded</strong>, for example, we can boost its calculation speed with
+          some C++ code. R also works well with LaTeX and Markdown, and with{" "}
+          <a href="https://pandoc.org/">Pandoc</a>, you can create excellent documents. JavaScript
           libraries come into play when you export R code to HTML documents, and so on…
         </p>
         <h2>Setting up R and RStudio via Docker</h2>
@@ -188,19 +187,19 @@ export default function Page() {
         <pre>
           <code>docker run --rm -ti rocker/r-base</code>
         </pre>
-        <p>If we want instead to get started with an RStudio® instance, we need to execute:</p>
+        <p>If we want to get started with an RStudio® instance instead, we need to execute:</p>
         <pre>
           <code>docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio</code>
         </pre>
         <p>
-          Then, we go at <a href="localhost:8787">localhost:8787</a> and log in using user/password{" "}
-          <code>rstudio</code>/<code>yourpassword</code>.
+          Then, we go to <a href="http://localhost:8787">localhost:8787</a> and log in using the
+          username and password <code>rstudio</code>/<code>yourpassword</code>.
         </p>
         <blockquote>
           <p>
             If a password is not provided, a randomly generated password will be given in the docker
-            log for the container. Check the terminal output or use <code>docker logs</code> command
-            to check.
+            log for the container. Check the terminal output or use the <code>docker logs</code>{" "}
+            command to check.
           </p>
         </blockquote>
         <h2>RStudio Interface and Markdown Scripts</h2>
@@ -534,7 +533,7 @@ export default function Page() {
           </p>
         </blockquote>
         <p>
-          Within the package system of R, there is a ecosystem called{" "}
+          Within R’s package system, there is an ecosystem called{" "}
           <a href="https://www.tidyverse.org/">tidyverse</a>. The tidyverse is an opinionated
           collection of R packages designed for data science. All packages share an underlying
           design philosophy, grammar, and data structures.
@@ -671,11 +670,11 @@ export default function Page() {
           </p>
         </blockquote>
         <p>
-          In order to understand how it works, we need to know first what the <code>%...%</code>{" "}
-          operators mean in R. Indeed, <code>%&gt;%</code> has no builtin meaning but the user (or a
-          package) is free to define operators of the form <code>%whatever%</code> in any way they
-          like. For example, this function will return a string consisting of its left argument
-          followed by a comma and space and then it’s right argument:
+          To understand how it works, we first need to know what the <code>%...%</code> operators
+          mean in R. Indeed, <code>%&gt;%</code> has no builtin meaning but the user (or a package)
+          is free to define operators of the form <code>%whatever%</code> in any way they like. For
+          example, this function will return a string consisting of its left argument followed by a
+          comma and space and then it’s right argument:
         </p>
         <pre>
           <code className="language-r">
@@ -862,28 +861,28 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          Probably one of the most if not the most popular package in R is the{" "}
+          One of the most popular packages in R, if not the most popular, is the{" "}
           <a href="https://ggplot2.tidyverse.org/">ggplot2</a> package.
           <code>ggplot</code> is a system for declaratively creating graphics, based on{" "}
           <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=as_li_ss_tl">
             The Grammar of Graphics
           </a>{" "}
-          (“gg” stands for Grammar of Graphics). With <code>ggplot</code> You provide the data, tell{" "}
-          <code>ggplot</code> how to map variables to aesthetics, what graphical primitives to use,
-          and it takes care of the details.
+          (“gg” stands for Grammar of Graphics). With <code>ggplot</code>, you provide the data,
+          tell <code>ggplot</code> how to map variables to aesthetics, what graphical primitives to
+          use, and it takes care of the details.
         </p>
         <p>
-          <code>ggplot</code> it is used all over the world by high-level academics, and PhDs, but
-          also a lot of journalism reports use <code>ggplot</code> and R to actually create complex,
-          highly detailed, and visually appealing visualizations.
+          <code>ggplot</code> is used worldwide by leading academics and PhD researchers, while many
+          journalists also use <code>ggplot</code> and R to create complex, highly detailed, and
+          visually appealing visualizations.
         </p>
         <blockquote>
           <p>
-            A ggplot specific characteristic which is likely not going to change (until an eventual
-            future iteration “ggplot3” if it ever happens) is that Hadley Wickham created this
-            package before he discovered the pipe operator. So,{" "}
+            A ggplot-specific characteristic that is unlikely to change (until a future iteration,
+            “ggplot3,” if it ever happens) is that Hadley Wickham created this package before he
+            discovered the pipe operator. So,{" "}
             <strong>we can’t just pipe ggplot into the next function</strong>. That is the reason
-            why we use <strong>instead the plus operator</strong> to carry on to the next action.
+            why we use <strong>the plus operator instead</strong> to carry on to the next action.
           </p>
         </blockquote>
         <p>Code:</p>
@@ -1140,7 +1139,7 @@ export default function Page() {
             <code>datapasta</code>
           </a>{" "}
           is about reducing resistance associated with copying and pasting data to and from R. It
-          allows you to quickly copy from data (even html tables on websites!)
+          allows you to quickly copy data (even HTML tables on websites!)
         </p>
         <h3>esquisse</h3>
         <p>

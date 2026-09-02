@@ -3,7 +3,7 @@ import { ArticlePage } from "@/components/ArticlePage";
 import { definePostMetadata } from "../post-metadata";
 
 export const metadata: Metadata = definePostMetadata({
-  title: "Connect to Docker Container on a Remote Server over SSH",
+  title: "Connect to a Docker Container on a Remote Server over SSH",
   description:
     "Enable SSH tunneling from a remote Docker container and connect directly with VS Code.",
   date: "2021-06-10",
@@ -44,13 +44,13 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          I work a lot with Machine Learning and Deep Learning algorithms wrote in Python. Because
-          of the various framework available (such as
+          I work extensively with machine learning and deep learning algorithms written in Python.
+          Because of the various frameworks available (such as{" "}
           <a href="https://pytorch.org/">PyTorch</a>,
-          <a href="https://www.tensorflow.org/">Tensorflow</a>,
+          <a href="https://www.tensorflow.org/">TensorFlow</a>,
           <a href="https://rapids.ai/">RAPIDS</a>,
           <a href="http://epistasislab.github.io/tpot/">TPOT</a> …) I use
-          <a href="https://www.docker.com/">Docker</a>a lot, usually along with a
+          <a href="https://www.docker.com/">Docker</a> a lot, usually along with a{" "}
           <strong>Jupyter-enabled image</strong> (see{" "}
           <a href="/blog/creating-the-best-prototyping-workspace">my other article</a> if you are
           interested) which allows me to do all the prototyping I need in a fast and clean way. It
@@ -61,20 +61,20 @@ export default function Page() {
           Sometimes, though, JupyterLab is not enough, and some good old
           <a href="https://code.visualstudio.com/">VSCode</a>
           coding is the best thing I can hope for, especially when dealing with{" "}
-          <strong>Python packages development</strong>
-          which I will then have to test with Jupyter. And here we encounter our problem:
+          <strong>Python package development</strong>, which I will then have to test with Jupyter.
+          And here we encounter our problem:
         </p>
         <blockquote>
           <p>
-            VSCode does not allow to connect to a remote container on a remote server. In fact, it
-            just allows you to connect to a remote machine or to your local containers. If we attach
-            VSCode to our remote server:
+            VS Code does not allow you to connect to a remote container on a remote server. It only
+            allows you to connect to a remote machine or to local containers. If we attach VS Code
+            to our remote server:
             <img
               alt="VSCode Attach via SHH"
               src="/assets/images/posts/2020-06-10-docker-over-ssh/VSCodeSSH.jpg"
               width="400"
             />
-            and then we try to attach VSCode to a running container on the remote server:
+            and then try to attach VS Code to a running container on the remote server:
             <img
               alt="VSCode Attach via Docker"
               src="/assets/images/posts/2020-06-10-docker-over-ssh/VSCodeDocker.jpg"
@@ -90,7 +90,7 @@ export default function Page() {
         </blockquote>
         <p>
           The best solution, in this case, is to enable SSH tunneling directly from the Docker
-          container, allowing VSCode to seamlessly connect to the container as if it was a
+          container, allowing VS Code to connect seamlessly to the container as if it were a
           standalone remote machine:
         </p>
         <div className="row justify-content-center mx-auto mb-4">
@@ -111,8 +111,8 @@ export default function Page() {
         <p>
           Let’s use the{" "}
           <a href="/blog/creating-the-best-prototyping-workspace">Jupyter-enabled image</a> we
-          mentioned before as the base image for our container. After pulling it from
-          <a href="https://hub.docker.com/r/davidelanz/jupyter">dockerhub</a>:
+          mentioned earlier as the base image for our container. After pulling it from{" "}
+          <a href="https://hub.docker.com/r/davidelanz/jupyter">Docker Hub</a>:
         </p>
         <pre>
           <code>docker pull davidelanz/jupyter</code>
@@ -121,15 +121,15 @@ export default function Page() {
           we can mount it exposing the container’s Jupyter port <code>8888</code> on, for example,{" "}
           <code>my.server.local:2345</code> using the option{" "}
           <code>--publish &lt;SERVER-PORT&gt;:&lt;CONTAINER_PORT&gt;</code> (or <code>-p</code>),
-          which publish a container’s port (<code>8888</code>) to the server’s specified one (
+          which publishes a container’s port (<code>8888</code>) to the specified server port (
           <code>2345</code>):
         </p>
         <pre>
           <code>docker run\ -p 2345:8888 \ --name my-jupyter-workspace \ davidelanz/jupyter</code>
         </pre>
         <p>
-          Now we can access Jupyter at <code>my.server.local:2345</code>, but can’t attach VSCode
-          nor connect via SSH to <code>my-jupyter-workspace</code> container.
+          Now we can access Jupyter at <code>my.server.local:2345</code>, but can’t attach VSCode or
+          connect via SSH to the <code>my-jupyter-workspace</code> container.
         </p>
         <h2>Mounting a Docker Container with SSH enabled</h2>
         <p>
@@ -154,7 +154,7 @@ export default function Page() {
           <code>docker container exec -it my-jupyter-workspace /bin/bash</code>
         </pre>
         <p>
-          Now we are finally inside our running container, and we can install a SSH server directly
+          Now we are finally inside our running container, and we can install an SSH server directly
           in it:
         </p>
         <pre>
@@ -165,8 +165,8 @@ export default function Page() {
         </pre>
         <blockquote>
           <p>
-            If it was not already set, we have to change then the root’s password in order to log in
-            during SSH authentication process:
+            If it has not already been set, we must change the root password to log in during the
+            SSH authentication process:
           </p>
           <pre>
             <code>echo &quot;root:&lt;NEW_PASSWORD&gt;&quot;|chpasswd</code>
@@ -175,8 +175,8 @@ export default function Page() {
         <p>
           Now we are able to start the SSH server process via <code>service ssh restart</code>, but
           we still can’t log in. In fact, we have to{" "}
-          <strong>authorize SSH connection with a root account</strong>. In order to do that, we
-          need to go to <code>/etc/ssh/sshd_config</code> and modify the option
+          <strong>authorize SSH connections with the root account</strong>. To do that, we need to
+          go to <code>/etc/ssh/sshd_config</code> and modify the option
           <code>PermitRootLogin</code> from <code>prohibit-password</code> to <code>yes</code>.
           Moreover, if it is not commented, comment the <code>UsePam yes</code> line. We can open
           the text file with <a href="https://help.ubuntu.com/community/Nano">GNU nano</a>:
@@ -213,7 +213,7 @@ export default function Page() {
             </tr>
           </tbody>
         </table>
-        <p>Then we just need to restart our ssh process:</p>
+        <p>Then we just need to restart the SSH process:</p>
         <pre>
           <code>service ssh restart</code>
         </pre>
@@ -222,9 +222,9 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          Now we can connect via command line at ports <code>2344</code> of docker server using the
-          address of the remote server (<code>my.address.local</code>) specifying the port in SSJ
-          with <code>-p &lt;port&gt;</code>:
+          Now we can connect from the command line to port <code>2344</code> on the Docker server,
+          using the remote server’s address (<code>my.address.local</code>) and specifying the SSH
+          port with <code>-p &lt;port&gt;</code>:
         </p>
         <pre>
           <code>ssh -p 2344 my.address.local</code>

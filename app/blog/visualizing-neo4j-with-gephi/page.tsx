@@ -3,7 +3,7 @@ import { ArticlePage } from "@/components/ArticlePage";
 import { definePostMetadata } from "../post-metadata";
 
 export const metadata: Metadata = definePostMetadata({
-  title: "Visualizing huge Neo4j Graphs with Gephi",
+  title: "Visualizing Huge Neo4j Graphs with Gephi",
   description:
     "Set up Gephi and stream data from a Neo4j server as an open alternative for exploring large graphs.",
   date: "2021-07-18",
@@ -23,11 +23,10 @@ export default function Page() {
           Visualizing a huge graph with <a href="https://neo4j.com/">Neo4j Community Edition</a> is
           painful, and it does not work with huge graphs.{" "}
           <a href="https://neo4j.com/product/bloom/">Neo4j Bloom</a> is a great tool for dealing
-          with such problems - indeed, it only has a problem: it is not free. A good alternative to
-          Neo4j Bloom (included in Neo4j Enterprise Edition) is{" "}
-          <a href="https://gephi.org/">Gephi</a>, a great visualization and exploration software
-          that is also open-source and free. Here, we see how to set up Gephi and stream data from a
-          Neo4j server.
+          with such problems, but it has one drawback: it is not free. A good alternative to Neo4j
+          Bloom (included in Neo4j Enterprise Edition) is <a href="https://gephi.org/">Gephi</a>,
+          excellent visualization and exploration software that is also open-source and free. Here,
+          we see how to set up Gephi and stream data from a Neo4j server.
         </p>
         <blockquote>
           <p>
@@ -36,11 +35,11 @@ export default function Page() {
             </a>{" "}
             Yes, the software released its{" "}
             <a href="https://github.com/gephi/gephi/releases/tag/v0.9.2">0.9.2 version</a> on
-            September 24th, 2017 and since then not a lot has been made. A{" "}
+            September 24, 2017, and little has been done since then. A{" "}
             <a href="https://github.com/gephi/viz-engine">new visualization engine</a> was under
             development, but right now it does not seem like a valuable alternative. Despite all
-            this, Gephi is still a very powerful tool for huge graphs visualization, just enjoy it
-            while it lasts!
+            this, Gephi is still a very powerful tool for visualizing huge graphs, so enjoy it while
+            it lasts!
           </p>
         </blockquote>
         <h2 id="contents"> Contents </h2>
@@ -69,11 +68,12 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          Excellent graph visualization is worth more than a thousand stats.{" "}
-          <a href="https://gephi.org/">Gephi</a> is a great tool to create network visualizations,
-          especially if pa APOC offers a handy procedure (<code>apoc.gephi.add</code>) that
-          seamlessly streams network data from Neo4j to Gephi. Here, we will show how to stream data
-          from a Neo4j graph database to Gephi and exploit the latter for visualization purposes.
+          An excellent graph visualization is worth more than a thousand statistics.{" "}
+          <a href="https://gephi.org/">Gephi</a> is a great tool for creating network
+          visualizations, especially because APOC offers a handy procedure (
+          <code>apoc.gephi.add</code>) that seamlessly streams network data from Neo4j to Gephi.
+          Here, we will show how to stream data from a Neo4j graph database to Gephi and exploit the
+          latter for visualization purposes.
         </p>
         <h2>Initialize the dataset</h2>
         <p>
@@ -87,13 +87,13 @@ export default function Page() {
         </p>
         <div className="text-center">
           <img
-            alt="Northwind dataser ER diagram"
+            alt="Northwind dataset ER diagram"
             src="https://dist.neo4j.com/wp-content/uploads/Northwind_diagram.jpg"
             width={800}
           />
         </div>
         <p>
-          We can import data from a CSV file in a remote location into Neo4j, so, we will initialize
+          We can import data from a CSV file at a remote location into Neo4j, so we will initialize
           our graph database as follows (run the commands between the <code>--</code> and{" "}
           <code>--&gt;</code> lines):
         </p>
@@ -145,13 +145,13 @@ export default function Page() {
           />
         </div>
         This is not pretty at all. Moreover, we are just visualizing 300 nodes out of the 916 total
-        nodes! Here is where Gephi comes to rescue us.
+        nodes! This is where Gephi comes to our rescue.
         <h2>Setting Up Gephi</h2>
         <p>
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          After <a href="https://gephi.org/users/install/">installing Gephi</a> we need to install
+          After <a href="https://gephi.org/users/install/">installing Gephi</a>, we need to install
           Gephi’s{" "}
           <a href="https://gephi.org/plugins/#/plugin/graphstreaming">Graph Streaming plugin</a>:
         </p>
@@ -169,8 +169,8 @@ export default function Page() {
         </blockquote>
         <p>
           This is why Gephi is so powerful as a visualization tool! To install it, we can easily
-          navigate <code>Tools --&gt; Plugins --&gt; Available Plugins</code> tab in Gephi, search
-          for the graph streaming plugin and install it.
+          navigate to the <code>Tools --&gt; Plugins --&gt; Available Plugins</code> tab in Gephi,
+          search for the graph streaming plugin and install it.
         </p>
         <p>
           Now, we just have to create a new project with a workspace (let’s say, “Workspace 1”) and
@@ -232,8 +232,8 @@ export default function Page() {
               well-known Gephi bug on Windows
             </a>{" "}
             is triggered if some of the nodes streamed have accented characters such as{" "}
-            <code>ö</code> or <code>å</code>. It gives a lot of trouble because It raises errors
-            like the following one, interrupting the streaming:
+            <code>ö</code> or <code>å</code>. It causes trouble because it raises errors like the
+            following one, interrupting the streaming:
           </p>
           <pre>
             <code>
@@ -253,16 +253,16 @@ export default function Page() {
           </p>
           <ul>
             <li>
-              Remove special characters from the data (like non-ASCII characters like <code>ä</code>
-              , <code>Ä</code>, <code>ü</code>, <code>Ü</code>, <code>ö</code>, <code>Ö</code>,{" "}
+              Remove special characters from the data (non-ASCII characters such as <code>ä</code>,{" "}
+              <code>Ä</code>, <code>ü</code>, <code>Ü</code>, <code>ö</code>, <code>Ö</code>,{" "}
               <code>ß</code>)
             </li>
             <li>Run Gephi on Linux inside a VM or Docker container</li>
             <li>Update Gephi to a newer version (if one is out, but that is unlikely)</li>
           </ul>
           <p>
-            I personally like the first one, so, we’re gonna clean our Neo4j graph database from all
-            non-ASCII chars. The{" "}
+            I prefer the first one, so we’re going to remove all non-ASCII characters from our Neo4j
+            graph database. The{" "}
             <a href="https://neo4j.com/labs/apoc/4.1/overview/apoc.text/apoc.text.clean/">
               <code>apoc.text.clean</code>
             </a>{" "}
@@ -335,13 +335,13 @@ export default function Page() {
           <a href="#contents">↑ back to contents ↑</a>
         </p>
         <p>
-          Gephi offers lots of cool options, but it can have some learning curve because it has so
-          many features and you can get lost when first using it. Using the <code>Appearance</code>{" "}
-          tab, we can set color, size, label color, and label size based on some metrics. For
-          instance, it is quite useful to link node size with the log of the node’s degree (in order
-          to have high-degree nodes plotted as bigger nodes), and the same applies to text labels
-          size. In the following video, we linked node and label sizes to the log-degree of the
-          corresponding nodes, and then we applied the{" "}
+          Gephi offers lots of useful options, but it has a learning curve because there are so many
+          features and you can get lost when first using it. Using the <code>Appearance</code> tab,
+          we can set color, size, label color, and label size based on some metrics. For instance,
+          it is quite useful to link node size with the log of the node’s degree (in order to plot
+          high-degree nodes as larger nodes), and the same applies to text-label size. In the
+          following video, we link node and label sizes to the log degree of the corresponding
+          nodes, and then we applied the{" "}
           <a href="https://en.wikipedia.org/wiki/Force-directed_graph_drawing">
             Fruchterman Reingold
           </a>{" "}
