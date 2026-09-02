@@ -219,6 +219,9 @@
   .masthead {
     min-height: 66vh;
   }
+  .masthead h1 {
+    font-size: clamp(40px, 14vw, 52px);
+  }
   .item-row {
     grid-template-columns: 34px 1fr 22px;
     gap: 14px;

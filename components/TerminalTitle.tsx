@@ -1,54 +1,60 @@
-import type { CSSProperties } from "react";
+"use client";
 
-type TerminalTitleProps = {
-  text: string;
-};
+import { useEffect, useState } from "react";
 
-type TerminalTitleStyle = CSSProperties & {
-  "--typing-duration": string;
-};
+type TerminalTitleProps = { text: string };
+
+const initialDelayMs = 135;
+const averageCharacterDelayMs = 100;
+const timingVariationRangeMs = 80;
+const maximumNegativeVariationMs = 25;
+const characterSeedMultiplier = 20;
+const positionSeedMultiplier = 30;
+
+function getCharacterDelay(character: string, index: number) {
+  // Produce subtle, repeatable variation without risking a server/client mismatch.
+  const timingSeed =
+    character.charCodeAt(0) * characterSeedMultiplier + index * positionSeedMultiplier;
+  const variationMs = (timingSeed % timingVariationRangeMs) - maximumNegativeVariationMs;
+  return averageCharacterDelayMs + variationMs;
+}
 
 export function TerminalTitle({ text }: TerminalTitleProps) {
-  const initialDelayMs = 135;
-  const averageCharacterDelayMs = 100;
-  const timingVariationRangeMs = 80;
-  const maximumNegativeVariationMs = 25;
-  const characterSeedMultiplier = 20;
-  const positionSeedMultiplier = 30;
+  const [visibleCharacterCount, setVisibleCharacterCount] = useState(0);
+  const isComplete = visibleCharacterCount === text.length;
 
-  let elapsed = initialDelayMs;
-  const characters = Array.from(text).map((character, index) => {
-    const delay = elapsed;
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisibleCharacterCount(text.length);
+      return;
+    }
+    setVisibleCharacterCount(0);
+  }, [text]);
 
-    // Derive a small, repeatable timing variation from the character and its position.
-    // This feels less mechanical than a fixed interval without changing between renders.
-    const timingSeed =
-      character.charCodeAt(0) * characterSeedMultiplier + index * positionSeedMultiplier;
-    const characterDelayVariationMs =
-      (timingSeed % timingVariationRangeMs) - maximumNegativeVariationMs;
+  useEffect(() => {
+    if (isComplete) return;
 
-    elapsed += averageCharacterDelayMs + characterDelayVariationMs;
-    return { character, delay };
-  });
-  const style: TerminalTitleStyle = {
-    "--typing-duration": `${elapsed}ms`,
-  };
+    const nextCharacter = text[visibleCharacterCount];
+    const delay =
+      visibleCharacterCount === 0
+        ? initialDelayMs
+        : getCharacterDelay(nextCharacter, visibleCharacterCount);
+    const timer = window.setTimeout(
+      () => setVisibleCharacterCount((currentCount) => currentCount + 1),
+      delay,
+    );
+
+    return () => window.clearTimeout(timer);
+  }, [isComplete, text, visibleCharacterCount]);
 
   return (
-    <span className="terminal-title" style={style} aria-label={text}>
-      <span className="terminal-title__text" aria-hidden="true">
-        {characters.map(({ character, delay }, index) => (
-          <span
-            className="terminal-title__character"
-            style={{ animationDelay: `${delay}ms` }}
-            key={`${character}-${index}`}
-          >
-            {character}
-          </span>
-        ))}
+    <span className="terminal-title" aria-label={text}>
+      <span className="terminal-title__measure" aria-hidden="true">
+        {text}_
       </span>
-      <span className="terminal-title__cursor" aria-hidden="true">
-        _
+      <span className="terminal-title__output" aria-hidden="true">
+        {text.slice(0, visibleCharacterCount)}
+        {isComplete && <span className="terminal-title__cursor">_</span>}
       </span>
     </span>
   );

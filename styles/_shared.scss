@@ -66,26 +66,20 @@
 
 // Shared animated title used by the masthead and index pages.
 .terminal-title {
-  display: inline-flex;
-  align-items: baseline;
+  position: relative;
+  display: inline-block;
   white-space: nowrap;
 }
-.terminal-title__character {
-  opacity: 0;
-  animation: terminal-character 1ms step-end both;
+.terminal-title__measure {
+  visibility: hidden;
+}
+.terminal-title__output {
+  position: absolute;
+  inset: 0 auto auto 0;
 }
 .terminal-title__cursor {
   color: $accent;
-  opacity: 0;
-  animation: terminal-blink 1s steps(1) var(--typing-duration) infinite;
-}
-@keyframes terminal-character {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  animation: terminal-blink 1s steps(1) infinite;
 }
 @keyframes terminal-blink {
   0%,
@@ -99,13 +93,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .terminal-title__character,
   .terminal-title__cursor {
     animation: none;
-  }
-  .terminal-title__character,
-  .terminal-title__cursor {
-    opacity: 1;
   }
 }
 
