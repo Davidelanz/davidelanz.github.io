@@ -33,10 +33,10 @@ export const projects = [
   //   href: "https://github.com/quan-dao/ECN-E2E",
   // },
   {
-    name: "Context-Dependent Meanings Recognition in HRI",
+    name: "Context-Dependent Meanings Recognition in Human-Robot Interaction",
     stack: "Python · DialogFlow",
     description:
-      "NLP model representing context and implied meaning in human-robot interaction, inspired by Gricean implicatures.",
+      "NLP model representing context and implied meaning in human-robot interaction, inspired by H. P. Grice's language theory.",
     href: "https://davidelanz.github.io/nlp-contextual-meaning/",
   },
 ];
@@ -47,7 +47,7 @@ export const experience = [
     role: "Senior Software Developer",
     org: "Evotec",
     detail:
-      "Backend R packages and data pipelines; production Shiny applications and component packages; Storybook UI systems.",
+      "Developed backend R packages and data pipelines for scientific computing, production Shiny applications, and reusable cross-platform UI components.",
   },
   {
     period: "Jan 2022 — Jan 2024",
@@ -55,28 +55,29 @@ export const experience = [
     org: "Evotec",
     previousAtSameOrg: true,
     detail:
-      "Data consistency across APIs and databases; Docker infrastructure for API services and Shiny applications.",
+      "Developed pipelines for scientific data access, transformation, and validation; maintained Docker infrastructure for API services and Shiny applications.",
   },
   {
     period: "Nov 2021 — Jan 2022",
     role: "Junior Software Developer",
     org: "Evotec",
     previousAtSameOrg: true,
-    detail: "PostgreSQL schemas, backend data workflows and Python REST APIs.",
+    detail:
+      "Designed PostgreSQL schemas and backend data workflows; developed Python REST APIs for application data access.",
   },
   {
     period: "Oct 2020 — Sep 2021",
     role: "ML Engineer",
     org: "Kellify",
     detail:
-      "SQL and Neo4j art-market data; Python cleaning and model-training pipelines; ML REST APIs and AI data-visualisation prototypes.",
+      "Developed AI systems for visual art analysis and valuation: art market databases, Python training pipelines, model APIs, and data-visualisation prototypes.",
   },
   {
     period: "Aug 2017 — now",
     role: "Co-Founder",
     org: "EIKON Project",
     detail:
-      "Association president (2020–2025); web development; brand supervision; exhibitions, editorial work, volunteers and fundraising.",
+      "Co-founded a platform for emerging photographers and digital artists; led the association, exhibitions, editorial programme, brand, website, and volunteer coordination.",
   },
 ];
 
@@ -91,13 +92,13 @@ export const education: typeof experience = [
     period: "2018 — 2020",
     role: "European Master of Advanced Robotics",
     org: "École Centrale de Nantes · University of Genoa",
-    detail: "Double degree in robotics. Final grade: 100/100.",
+    detail: "Double degree in robotics, final grade: 100/100. Additional coursework in aesthetics and cultural anthropology.",
   },
   {
     period: "2015 — 2018",
-    role: "BSc Electronics Engineering and IT",
+    role: "BSc in Electronic Engineering and IT",
     org: "University of Genoa",
-    detail: "Final grade: 110/110 cum laude.",
+    detail: "Final grade: 110/110 cum laude. Additional coursework in quantum mechanics, philosophy of mind, cognitive science, political philosophy, and theoretical philosophy.",
   },
   {
     period: "2015 — 2020",

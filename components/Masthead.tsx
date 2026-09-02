@@ -9,7 +9,7 @@ export function Masthead() {
       </h1>
       <p className="masthead__role">Software &amp; Robotics Engineer</p>
       <p className="masthead__intro">
-        Full-stack software, intelligent systems, scientific computing.
+        Full-stack software, scientific computing, cognitive models.
       </p>
       <div className="masthead__links">
         <a target="_blank" href="https://github.com/Davidelanz">
