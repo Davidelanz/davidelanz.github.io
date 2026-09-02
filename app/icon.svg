@@ -1,3 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <image width="32" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADAElEQVR4AcTWA3BcURgF4NjmILbtuqNaw9oeZlzbdoe1x45t27atbfb0v7eKk30bnJkvWd/zdO+TmUsAyBMbcpR8Inmkg4jIT9JFCsl3cpo4EgUZaQNAjniSR6SUjGD2iEgleU0CBRcBYEQukwYITyu5T0wlHdydhJJRSB8xSSTL5jr4MpKH+U8FWT/b4B4kFwsXVmLFTMc8FGPS0dGByMhIhIeH/xMXF4eqqiqMjgo+OinEYuLgsuQyEWNMIiIioKOjA2VlZSgqKjL8sZWVFW7duoWBgQEIzHOiOLaAF6nHhISFhUFJSQmmpqY4e/Yszp8/j3379kFfX5+//vLlSwhMJ1k7dusfEkxVgG11YGAgent7wSIWi/nAcnJy8PX1RXt7OwTmPVFiBWxJyVwLsFRWVsLc3Bza2tpIT0+HwDQQX1bgKBmRpADband3d/4enZjSzA/nWIGPBJIUaG1thYuLCz8h2VUiRcJZgTxJC+Tn58PIyAjGxsYoKCiAFGliBTpmK+Dn54eGhgb09PSgvr4ewcHBYOfvtm3b0N3djZaWFn5Y2AkqYUZZAdFMBdhuVldXh5eXF7y9vfkcwK4ACwsLPillZ2fD09MTO3bs4GUkjQxfz6dJSkoKli1bxgemQbigoCCcOHECSUlJYImPj4eqqio8PDzYzCmoQBemiUgk4lvV1dX1T19f35hpWOoC/BAUQmikL9DKCnxfwgIxrMBpIlqCAmJylRVwIpVLUKCFLPt7x/tqCQr8IKp/V8Qg0iK0AJsn9PT0sGvXLhw8eJDbv38/W8Knmxt6ycaJ9/33ISBsrrC0tISBgQEvoaury7GVMiAggK8bU+QtUZ54V2RKEiBh+vv7UVhYyNeHicrKyvhcMiF5xHGmO+JyLFwaya95EWoZe4JyBY0sjwBiRmL6Brbg1iv1wFWQz1EtJ+wIBWjr9T0FFn+GJjgNcvuHrEDsCMRLoEH4l8gSDpT010J9zUGNXjI7EJsAcQ0Q7wPiF2DHYFp6GIhboImZkxizAWqbZ8sZ4XIqAAAAAElFTkSuQmCC" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="22" fill="#fff" />
+  <text
+    x="5"
+    y="91"
+    fill="#111"
+    font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace"
+    font-size="78"
+    font-weight="700"
+    letter-spacing="-10"
+  >dl</text>
+  <text
+    x="69"
+    y="91"
+    fill="#ff4d00"
+    font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace"
+    font-size="74"
+    font-weight="700"
+  >@</text>
 </svg>
