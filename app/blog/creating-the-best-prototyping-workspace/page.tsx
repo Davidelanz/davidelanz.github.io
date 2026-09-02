@@ -141,10 +141,11 @@ export default function Page() {
           the container (the image exposes JupyterLab on the <code>8888</code> port):
         </p>
         <pre>
-          <code>
-            docker pull davidelanz/jupyter docker run \ -p &lt;CONTAINER_PORT&gt;:8888 \ -v
-            &lt;EXTERNAL_FOLDER&gt;:/workspace \ --name &lt;CONTAINER_NAME&gt; davidelanz/jupyter
-          </code>
+          <code>{`docker pull davidelanz/jupyter
+docker run \\
+    -p <CONTANER_PORT>:8888 \\
+    -v <EXTERNAL_FOLDER>:/workspace \\
+    --name <CONTAINER_NAME> davidelanz/jupyter`}</code>
         </pre>
         <p>
           Your workspace will be available at <code>http://localhost:&lt;CONTAINER_PORT&gt;</code>.
@@ -155,10 +156,9 @@ export default function Page() {
         </p>
         <p>The image can be directly built from the GitHub repository:</p>
         <pre>
-          <code>
-            $ git clone https://github.com/davidelanz/jupyter-docker $ cd jupyter-docker/ $ docker
-            build . -t davidelanz/jupyter
-          </code>
+          <code>{`$ git clone https://github.com/davidelanz/jupyter-docker
+$ cd jupyter-docker/
+$ docker build . -t davidelanz/jupyter`}</code>
         </pre>
         <h2>Manage Conda environments</h2>
         <p>
@@ -175,24 +175,21 @@ export default function Page() {
           console):
         </p>
         <pre>
-          <code>
-            conda create -y --name &lt;DESIRED_ENV_NAME&gt; python=&lt;DESIRED_PYTHON_VERSION&gt;
-          </code>
+          <code>{`conda create -y --name <DESIRED_ENV_NAME> python=<DESIRED_PYTHON_VERSION>`}</code>
         </pre>
         <p>Then you can load it to JupyterLab as follows:</p>
         <pre>
-          <code>
-            conda activate &lt;DESIRED_ENV_NAME&gt; &amp;&amp; \ conda install -y ipykernel
-            &amp;&amp; \ python -m ipykernel install --name &lt;DESIRED_ENV_NAME&gt; --user
-          </code>
+          <code>{`conda activate <DESIRED_ENV_NAME> && \\
+    conda install -y ipykernel && \\
+    python -m ipykernel install --name <DESIRED_ENV_NAME> --user`}</code>
         </pre>
         <p>With Jupyter installed, you can list the currently installed kernels with:</p>
         <pre>
-          <code>jupyter kernelspec list</code>
+          <code>{`jupyter kernelspec list`}</code>
         </pre>
         <p>If you want to uninstall an unwanted kernel:</p>
         <pre>
-          <code>jupyter kernelspec uninstall &lt;UNWANTED_KERNEL&gt;</code>
+          <code>{`jupyter kernelspec uninstall <UNWANTED_KERNEL>`}</code>
         </pre>
       </>
     </ArticlePage>

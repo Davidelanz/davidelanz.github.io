@@ -517,10 +517,9 @@ export default function Page() {
         <blockquote>
           <p>Note - These are the timestamp formats for Cypher:</p>
           <pre>
-            <code>
-              RETURN DATE(&quot;2019-06-01&quot;) RETURN TIME(&quot;18:40:32.142+0100&quot;) RETURN
-              DATETIME(&quot;2019-06-01T18:40:32.142+0100&quot;)
-            </code>
+            <code>{`RETURN DATE("2019-06-01")
+RETURN TIME("18:40:32.142+0100")
+RETURN DATETIME("2019-06-01T18:40:32.142+0100")`}</code>
           </pre>
         </blockquote>
         <h2>The Neo4j Docker Image</h2>
@@ -553,7 +552,7 @@ export default function Page() {
           desired tag:
         </p>
         <pre>
-          <code>docker pull:4.3.1-community</code>
+          <code>{`docker pull:4.3.1-community`}</code>
         </pre>
         <p>We will use three Docker persistent volumes:</p>
         <ul>
@@ -577,10 +576,11 @@ export default function Page() {
           <code>csv_files</code> folder in which to store your data:
         </p>
         <pre>
-          <code>
-            neo4j-import/_data/ └── csv_files/ ├── orders_prepared.csv ├── employees_prepared.csv
-            └── sold_prepared.csv
-          </code>
+          <code>{`neo4j-import/_data/
+└── csv_files/
+    ├── orders_prepared.csv
+    ├── employees_prepared.csv
+    └── sold_prepared.csv`}</code>
         </pre>
         <p>
           Then, import data into the default database with an interactive run of the container
@@ -588,16 +588,20 @@ export default function Page() {
           <code>neo4j-data</code>:
         </p>
         <pre>
-          <code>
-            docker run --interactive --tty --rm \ --env=NEO4J_AUTH=neo4j/&lt;YOUR_PASSWORD&gt; \
-            --env=NEO4JLABS_PLUGINS='[&quot;apoc&quot;, &quot;graph-data-science&quot;,
-            &quot;n10s&quot;]' \ --volume=neo4j-data:/data \
-            --volume=neo4j-import:/var/lib/neo4j/import \ --volume=neo4j-plugins:/plugins \
-            --name=neo4j-server \ neo4j:4.3.1-community \ bin/neo4j-admin import \ --database=neo4j
-            \ --skip-bad-relationships \ --nodes=Order=import/csv_files/orders_prepared.csv \
-            --nodes=Employee=import/csv_files/employees_prepared.csv \
-            --relationships=SOLD=import/csv_files/sold_prepared.csv \
-          </code>
+          <code>{`docker run --interactive --tty --rm \\
+    --env=NEO4J_AUTH=neo4j/<YOUR_PASSWORD> \\
+    --env=NEO4JLABS_PLUGINS='["apoc", "graph-data-science", "n10s"]' \\
+    --volume=neo4j-data:/data \\
+    --volume=neo4j-import:/var/lib/neo4j/import \\
+    --volume=neo4j-plugins:/plugins \\
+    --name=neo4j-server \\
+    neo4j:4.3.1-community \\
+bin/neo4j-admin import \\
+--database=neo4j \\
+--skip-bad-relationships \\
+--nodes=Order=import/csv_files/orders_prepared.csv \\
+--nodes=Employee=import/csv_files/employees_prepared.csv \\
+--relationships=SOLD=import/csv_files/sold_prepared.csv \\`}</code>
         </pre>
         <p>What do all these parameters mean?</p>
         <ul>
@@ -692,22 +696,25 @@ export default function Page() {
           <code>neo4j-data</code>. We can now start the container with the following command:
         </p>
         <pre>
-          <code>
-            docker run -d --restart always \ --env=NEO4J_AUTH=neo4j/&lt;YOUR_PASSWORD&gt; \
-            --env=NEO4JLABS_PLUGINS='[&quot;apoc&quot;,&quot;graph-data-science&quot;,
-            &quot;n10s&quot;]' \ --env=NEO4J_dbms_connector_http_listen__address=:6476 \
-            --env=NEO4J_dbms_connector_https_listen__address=:6477 \
-            --env=NEO4J_dbms_connector_bolt_listen__address=:7687 \
-            --env=NEO4J_dbms_connector_http_advertised__address=:6476 \
-            --env=NEO4J_dbms_connector_https_advertised__address=:6477 \
-            --env=NEO4J_dbms_connector_bolt_advertised__address=:7687 \
-            --env=NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.* \
-            --env=NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.* \
-            --publish=&lt;HTTP_PORT&gt;:6476 \ --publish=&lt;HTTPS_PORT&gt;:6477 \
-            --publish=&lt;BOLT_PORT&gt;:7687 \ --volume=neo4j-data:/data \
-            --volume=neo4j-import:/var/lib/neo4j/import \ --volume=neo4j-plugins:/plugins \
-            --name=neo4j-server \ neo4j:4.3.1-community
-          </code>
+          <code>{`docker run -d --restart always \\
+    --env=NEO4J_AUTH=neo4j/<YOUR_PASSWORD> \\
+    --env=NEO4JLABS_PLUGINS='["apoc","graph-data-science", "n10s"]' \\
+    --env=NEO4J_dbms_connector_http_listen__address=:6476 \\
+    --env=NEO4J_dbms_connector_https_listen__address=:6477 \\
+    --env=NEO4J_dbms_connector_bolt_listen__address=:7687 \\
+    --env=NEO4J_dbms_connector_http_advertised__address=:6476 \\
+    --env=NEO4J_dbms_connector_https_advertised__address=:6477 \\
+    --env=NEO4J_dbms_connector_bolt_advertised__address=:7687 \\
+    --env=NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.* \\
+    --env=NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.* \\
+    --publish=<HTTP_PORT>:6476 \\
+    --publish=<HTTPS_PORT>:6477 \\
+    --publish=<BOLT_PORT>:7687 \\
+    --volume=neo4j-data:/data \\
+    --volume=neo4j-import:/var/lib/neo4j/import \\
+    --volume=neo4j-plugins:/plugins \\
+    --name=neo4j-server \\
+    neo4j:4.3.1-community `}</code>
         </pre>
         <p>What do all these parameters mean?</p>
         <ul>
@@ -808,25 +815,29 @@ export default function Page() {
           <li>
             now you are ready to start the server:
             <pre>
-              <code>
-                docker run -d --restart always \ --env NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
-                --env=NEO4J_AUTH=neo4j/&lt;YOUR_PASSWORD&gt; \
-                --env=NEO4JLABS_PLUGINS='[&quot;apoc&quot;,&quot;bloom&quot;,&quot;graph-data-science&quot;,&quot;n10s&quot;]'
-                \ --env=NEO4J_dbms_connector_http_listen__address=:6476 \
-                --env=NEO4J_dbms_connector_https_listen__address=:6477 \
-                --env=NEO4J_dbms_connector_bolt_listen__address=:7687 \
-                --env=NEO4J_dbms_connector_http_advertised__address=:6476 \
-                --env=NEO4J_dbms_connector_https_advertised__address=:6477 \
-                --env=NEO4J_dbms_connector_bolt_advertised__address=:7687 \
-                --env=NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*,bloom.* \
-                --env=NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*,bloom \
-                --env=NEO4J_dbms_unmanaged__extension__classes=com.neo4j.bloom.server=/browser/bloom
-                \ --env=NEO4J_neo4j_bloom_license__file=/licenses/bloom.license \
-                --publish=&lt;HTTP_PORT&gt;:6476 \ --publish=&lt;HTTPS_PORT&gt;:6477 \
-                --publish=&lt;BOLT_PORT&gt;:7687 \ --volume=neo4j-data:/data \
-                --volume=neo4j-import:/var/lib/neo4j/import \ --volume=neo4j-licenses:/licenses \
-                --volume=neo4j-plugins:/plugins \ --name=neo4j-server \ neo4j:4.3.0-enterprise
-              </code>
+              <code>{`    docker run -d --restart always \\
+      --env NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \\
+      --env=NEO4J_AUTH=neo4j/<YOUR_PASSWORD> \\
+      --env=NEO4JLABS_PLUGINS='["apoc","bloom","graph-data-science","n10s"]' \\
+      --env=NEO4J_dbms_connector_http_listen__address=:6476 \\
+      --env=NEO4J_dbms_connector_https_listen__address=:6477 \\
+      --env=NEO4J_dbms_connector_bolt_listen__address=:7687 \\
+      --env=NEO4J_dbms_connector_http_advertised__address=:6476 \\
+      --env=NEO4J_dbms_connector_https_advertised__address=:6477 \\
+      --env=NEO4J_dbms_connector_bolt_advertised__address=:7687 \\
+      --env=NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*,bloom.* \\
+      --env=NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*,bloom \\
+      --env=NEO4J_dbms_unmanaged__extension__classes=com.neo4j.bloom.server=/browser/bloom \\
+      --env=NEO4J_neo4j_bloom_license__file=/licenses/bloom.license \\
+      --publish=<HTTP_PORT>:6476 \\
+      --publish=<HTTPS_PORT>:6477 \\
+      --publish=<BOLT_PORT>:7687 \\
+      --volume=neo4j-data:/data \\
+      --volume=neo4j-import:/var/lib/neo4j/import \\
+      --volume=neo4j-licenses:/licenses \\
+      --volume=neo4j-plugins:/plugins \\
+      --name=neo4j-server \\
+      neo4j:4.3.0-enterprise`}</code>
             </pre>
           </li>
         </ol>

@@ -98,44 +98,45 @@ export default function Page() {
           <code>--&gt;</code> lines):
         </p>
         <pre>
-          <code className="language-sql">
-            -- Create &quot;Order&quot; nodes: LOAD CSV WITH HEADERS FROM
-            'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/orders.csv'
-            AS row MERGE (order:Order &#123;orderID: row.OrderID&#125;) ON CREATE SET order.shipName
-            = row.ShipName; --&gt; Added 830 labels, created 830 nodes, set 1660 properties,
-            completed after 2298 ms. -- Create &quot;Employee&quot; nodes: LOAD CSV WITH HEADERS
-            FROM
-            'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/employees.csv'
-            AS row MERGE (order:Employee &#123;employeeID: row.EmployeeID&#125;) ON CREATE SET
-            order.firstName = row.FirstName, order.lastName = row.LastName; --&gt; Added 9 labels,
-            created 9 nodes, set 27 properties, completed after 474 ms. -- Create
-            &quot;Product&quot; nodes LOAD CSV WITH HEADERS FROM
-            'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/products.csv'
-            AS row MERGE (product:Product &#123;productID: row.ProductID&#125;) ON CREATE SET
-            product.productName = row.ProductName, product.unitPrice = toFloat(row.UnitPrice);
-            --&gt; Added 77 labels, created 77 nodes, set 231 properties, completed after 532 ms. --
-            create &quot;SOLD&quot; relationships between orders and employees: LOAD CSV WITH
-            HEADERS FROM
-            'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/orders.csv'
-            AS row MATCH (order:Order &#123;orderID: row.OrderID&#125;) MATCH (employee:Employee
-            &#123;employeeID: row.EmployeeID&#125;) MERGE (employee)-[:SOLD]-&gt;(order); --&gt;
-            Created 830 relationships, completed after 1617 ms. -- create &quot;CONTAINS&quot;
-            relationships between orders and products LOAD CSV WITH HEADERS FROM
-            'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/orders.csv'
-            AS row MATCH (order:Order &#123;orderID: row.OrderID&#125;) MATCH (product:Product
-            &#123;productID: row.ProductID&#125;) MERGE (order)-[op:CONTAINS]-&gt;(product) ON
-            CREATE SET op.unitPrice = toFloat(row.UnitPrice), op.quantity = toFloat(row.Quantity)
-            --&gt; Set 4310 properties, created 2155 relationships, completed after 1188 ms.
-          </code>
+          <code className="language-sql">{`-- Create "Order" nodes:
+LOAD CSV WITH HEADERS FROM 'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/orders.csv' AS row
+MERGE (order:Order {orderID: row.OrderID})
+ON CREATE SET order.shipName = row.ShipName;
+--> Added 830 labels, created 830 nodes, set 1660 properties, completed after 2298 ms.
+
+-- Create "Employee" nodes:
+LOAD CSV WITH HEADERS FROM 'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/employees.csv' AS row
+MERGE (order:Employee {employeeID: row.EmployeeID})
+    ON CREATE SET order.firstName = row.FirstName, order.lastName = row.LastName;
+--> Added 9 labels, created 9 nodes, set 27 properties, completed after 474 ms.
+
+-- Create "Product" nodes
+LOAD CSV WITH HEADERS FROM 'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/products.csv' AS row
+MERGE (product:Product {productID: row.ProductID})
+    ON CREATE SET product.productName = row.ProductName, product.unitPrice = toFloat(row.UnitPrice);
+--> Added 77 labels, created 77 nodes, set 231 properties, completed after 532 ms.
+
+-- create "SOLD" relationships between orders and employees:
+LOAD CSV WITH HEADERS FROM 'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/orders.csv' AS row
+MATCH (order:Order {orderID: row.OrderID})
+MATCH (employee:Employee {employeeID: row.EmployeeID})
+MERGE (employee)-[:SOLD]->(order);
+--> Created 830 relationships, completed after 1617 ms.
+
+-- create "CONTAINS" relationships between orders and products
+LOAD CSV WITH HEADERS FROM 'https://gist.githubusercontent.com/jexp/054bc6baf36604061bf407aa8cd08608/raw/8bdd36dfc88381995e6823ff3f419b5a0cb8ac4f/orders.csv' AS row
+MATCH (order:Order {orderID: row.OrderID})
+MATCH (product:Product {productID: row.ProductID})
+MERGE (order)-[op:CONTAINS]->(product)
+    ON CREATE SET op.unitPrice = toFloat(row.UnitPrice), op.quantity = toFloat(row.Quantity)
+--> Set 4310 properties, created 2155 relationships, completed after 1188 ms.`}</code>
         </pre>
         <p>
           Now, we can try to visualize our Graph via the{" "}
           <a href="https://neo4j.com/developer/neo4j-browser/">Neo4j Browser</a>:
         </p>
         <pre>
-          <code className="language-sql">
-            MATCH (e:Employee)-[r1:SOLD]-(o:Order)-[r2:CONTAINS]-(p:Product) RETURN *
-          </code>
+          <code className="language-sql">{`MATCH (e:Employee)-[r1:SOLD]-(o:Order)-[r2:CONTAINS]-(p:Product) RETURN * `}</code>
         </pre>
         <div className="text-center">
           <img
@@ -197,10 +198,13 @@ export default function Page() {
           that seamlessly streams network data from Neo4j to Gephi:
         </p>
         <pre>
-          <code>
-            apoc.gephi.add( urlOrKey :: STRING?, workspace :: STRING?, data :: ANY?, weightproperty
-            = null :: STRING?, exportproperties = [] :: LIST? OF STRING? )
-          </code>
+          <code>{`apoc.gephi.add(
+    urlOrKey :: STRING?,
+    workspace :: STRING?,
+    data :: ANY?,
+    weightproperty = null :: STRING?,
+    exportproperties = [] :: LIST? OF STRING?
+)`}</code>
         </pre>
         <div className="row justify-content-center mx-auto mb-4">
           <div className="col-md-9">
@@ -218,12 +222,11 @@ export default function Page() {
           (here we include an optional upper bound of 10000 nodes):
         </p>
         <pre>
-          <code className="language-sql">
-            MATCH path = (:Employee)-[:SOLD]-(:Order)-[:CONTAINS]-(:Product) WITH path LIMIT 10000
-            WITH collect(path) as paths CALL
-            apoc.gephi.add('http://gephimachine.local:8080','workspace1', paths) YIELD nodes,
-            relationships, time RETURN nodes, relationships, time
-          </code>
+          <code className="language-sql">{`MATCH path = (:Employee)-[:SOLD]-(:Order)-[:CONTAINS]-(:Product)
+WITH path LIMIT 10000
+WITH collect(path) as paths
+CALL apoc.gephi.add('http://gephimachine.local:8080','workspace1', paths) YIELD nodes, relationships, time
+RETURN nodes, relationships, time`}</code>
         </pre>
         <blockquote>
           <p>
@@ -236,11 +239,11 @@ export default function Page() {
             following one, interrupting the streaming:
           </p>
           <pre>
-            <code>
-              Failed to invoke procedure `apoc.gephi.add`: Caused by:
-              com.fasterxml.jackson.core.JsonParseException: Invalid UTF-8 middle byte 0x74 at [
-              Source: (apoc.export.util.CountingInputStream); line: 2, column: 138 ]
-            </code>
+            <code>{`Failed to invoke procedure \`apoc.gephi.add\`:
+  Caused by: com.fasterxml.jackson.core.JsonParseException:
+    Invalid UTF-8 middle byte 0x74 at [
+      Source: (apoc.export.util.CountingInputStream);
+       line: 2, column: 138 ]`}</code>
           </pre>
           <p>
             This, of course, does not happen when we work with a database without special
@@ -276,28 +279,43 @@ export default function Page() {
             we only affect what is returned:
           </p>
           <pre>
-            <code className="language-sql">
-              MATCH (e:Employee) RETURN apoc.map.merge(properties(e), &#123; firstName :
-              apoc.text.clean(e.firstName), lastName : apoc.text.clean(e.lastName) &#125;) --&gt;
-              Started streaming 9 records after 46 ms and completed after 144 ms. MATCH (o:Order)
-              RETURN apoc.map.merge(properties(o), &#123; shipName : apoc.text.clean(o.shipName)
-              &#125;) --&gt; Started streaming 830 records after 34 ms and completed after 210 ms.
-              MATCH (p:Product) RETURN apoc.map.merge(properties(p), &#123; productName :
-              apoc.text.clean(p.productName) &#125;) --&gt; Started streaming 77 records after 2 ms
-              and completed after 4 ms.
-            </code>
+            <code className="language-sql">{`MATCH (e:Employee)
+RETURN apoc.map.merge(properties(e), {
+  firstName : apoc.text.clean(e.firstName),
+  lastName  : apoc.text.clean(e.lastName)
+})
+--> Started streaming 9 records after 46 ms and completed after 144 ms.
+
+MATCH (o:Order)
+RETURN apoc.map.merge(properties(o), {
+  shipName : apoc.text.clean(o.shipName)
+})
+--> Started streaming 830 records after 34 ms and completed after 210 ms.
+
+MATCH (p:Product)
+RETURN apoc.map.merge(properties(p), {
+  productName : apoc.text.clean(p.productName)
+})
+--> Started streaming 77 records after 2 ms and completed after 4 ms.`}</code>
           </pre>
           <p>
             Using <code>SET</code> we actually modify the dataset:
           </p>
           <pre>
-            <code className="language-sql">
-              MATCH (e:Employee) SET e += &#123; firstName : apoc.text.clean(e.firstName), lastName
-              : apoc.text.clean(e.lastName) &#125; --&gt; Set 18 properties, completed after 318 ms.
-              MATCH (o:Order) SET o += &#123;shipName : apoc.text.clean(o.shipName)&#125; --&gt; Set
-              830 properties, completed after 50 ms. MATCH (p:Product) SET p += &#123;productName :
-              apoc.text.clean(p.productName)&#125; --&gt; Set 77 properties, completed after 4 ms.
-            </code>
+            <code className="language-sql">{`MATCH (e:Employee)
+SET e += {
+  firstName : apoc.text.clean(e.firstName),
+  lastName  : apoc.text.clean(e.lastName)
+}
+--> Set 18 properties, completed after 318 ms.
+
+MATCH (o:Order)
+SET o += {shipName : apoc.text.clean(o.shipName)}
+--> Set 830 properties, completed after 50 ms.
+
+MATCH (p:Product)
+SET p += {productName : apoc.text.clean(p.productName)}
+--> Set 77 properties, completed after 4 ms.`}</code>
           </pre>
           <p>Now we should have solved our issue.</p>
         </blockquote>
@@ -351,8 +369,8 @@ export default function Page() {
           <div className="col-md-9">
             <iframe
               className="w-100"
-              width="560"
-              height="315"
+              style={{height: "480px"}}
+              width="860"
               src="https://www.youtube.com/embed/9ieaGi5qVcc"
               title="YouTube video player"
               frameBorder="0"

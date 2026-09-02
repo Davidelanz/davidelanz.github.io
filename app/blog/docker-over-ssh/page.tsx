@@ -115,7 +115,7 @@ export default function Page() {
           <a href="https://hub.docker.com/r/davidelanz/jupyter">Docker Hub</a>:
         </p>
         <pre>
-          <code>docker pull davidelanz/jupyter</code>
+          <code>{`docker pull davidelanz/jupyter`}</code>
         </pre>
         <p>
           we can mount it exposing the container’s Jupyter port <code>8888</code> on, for example,{" "}
@@ -125,7 +125,10 @@ export default function Page() {
           <code>2345</code>):
         </p>
         <pre>
-          <code>docker run\ -p 2345:8888 \ --name my-jupyter-workspace \ davidelanz/jupyter</code>
+          <code>{`docker run\\
+    -p 2345:8888 \\
+    --name my-jupyter-workspace \\
+    davidelanz/jupyter`}</code>
         </pre>
         <p>
           Now we can access Jupyter at <code>my.server.local:2345</code>, but can’t attach VSCode or
@@ -141,27 +144,30 @@ export default function Page() {
           <code>my.server.local:2344</code>:
         </p>
         <pre>
-          <code>
-            docker run\ -p 2344:22 \ -p 2345:8888 \ --name my-jupyter-workspace \ davidelanz/jupyter
-          </code>
+          <code>{`docker run\\
+    -p 2344:22 \\
+    -p 2345:8888 \\
+    --name my-jupyter-workspace \\
+    davidelanz/jupyter`}</code>
         </pre>
         <p>Now, we have to enter the container. First, we enter the server via SSH:</p>
         <pre>
-          <code>ssh my.server.local</code>
+          <code>{`ssh my.server.local`}</code>
         </pre>
         <p>Then, we attach to the container with:</p>
         <pre>
-          <code>docker container exec -it my-jupyter-workspace /bin/bash</code>
+          <code>{`docker container exec -it my-jupyter-workspace /bin/bash`}</code>
         </pre>
         <p>
           Now we are finally inside our running container, and we can install an SSH server directly
           in it:
         </p>
         <pre>
-          <code>
-            apt-get update &amp;&amp; \ apt-get upgrade -y &amp;&amp; \ apt-get -y install
-            openssh-server &amp;&amp; \ mkdir -p /var/run/sshd &amp;&amp; \ service ssh start
-          </code>
+          <code>{`apt-get update && \\
+    apt-get upgrade -y && \\
+    apt-get -y install openssh-server && \\
+    mkdir -p /var/run/sshd && \\
+    service ssh start`}</code>
         </pre>
         <blockquote>
           <p>
@@ -169,7 +175,7 @@ export default function Page() {
             SSH authentication process:
           </p>
           <pre>
-            <code>echo &quot;root:&lt;NEW_PASSWORD&gt;&quot;|chpasswd</code>
+            <code>{`echo "root:<NEW_PASSWORD>"|chpasswd`}</code>
           </pre>
         </blockquote>
         <p>
@@ -182,7 +188,7 @@ export default function Page() {
           the text file with <a href="https://help.ubuntu.com/community/Nano">GNU nano</a>:
         </p>
         <pre>
-          <code>apt-get install nano &amp;&amp; nano /etc/ssh/sshd_config</code>
+          <code>{`apt-get install nano && nano /etc/ssh/sshd_config`}</code>
         </pre>
         <table>
           <thead>
@@ -215,7 +221,7 @@ export default function Page() {
         </table>
         <p>Then we just need to restart the SSH process:</p>
         <pre>
-          <code>service ssh restart</code>
+          <code>{`service ssh restart`}</code>
         </pre>
         <h2>Connect via command line</h2>
         <p>
@@ -227,7 +233,7 @@ export default function Page() {
           port with <code>-p &lt;port&gt;</code>:
         </p>
         <pre>
-          <code>ssh -p 2344 my.address.local</code>
+          <code>{`ssh -p 2344 my.address.local`}</code>
         </pre>
         <h2>Connect via VSCode</h2>
         <p>
@@ -237,9 +243,11 @@ export default function Page() {
           We can now add <code>my.address.local:2344</code> to the SSH configuration file:
         </p>
         <pre>
-          <code>
-            Host my-remote-container HostName my.address.local User root Port 2344 ForwardAgent yes
-          </code>
+          <code>{`Host my-remote-container
+  HostName my.address.local
+  User root
+  Port 2344
+  ForwardAgent yes`}</code>
         </pre>
         <p>
           and we can use the VSCode{" "}

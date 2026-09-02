@@ -185,11 +185,11 @@ export default function Page() {
           inside a container just with:
         </p>
         <pre>
-          <code>docker run --rm -ti rocker/r-base</code>
+          <code>{`docker run --rm -ti rocker/r-base`}</code>
         </pre>
         <p>If we want to get started with an RStudio® instance instead, we need to execute:</p>
         <pre>
-          <code>docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio</code>
+          <code>{`docker run -e PASSWORD=yourpassword --rm -p 8787:8787 rocker/rstudio`}</code>
         </pre>
         <p>
           Then, we go to <a href="http://localhost:8787">localhost:8787</a> and log in using the
@@ -248,10 +248,10 @@ export default function Page() {
           in blocks:
         </p>
         <pre>
-          --- title: "Hello R Markdown" author: "Awesome Me" date: "2018-02-14" output:
-          html_document --- This is a paragraph in an R Markdown document. Below is a code chunk:
-          ```&#123;r&#125; fit = lm(dist ~ speed, data = cars) b = coef(fit) plot(cars) abline(fit)
-          ``` The slope of the regression is `r b[1]`.
+          <code className="language-markdown">{`    fit = lm(dist ~ speed, data = cars)
+    b   = coef(fit)
+    plot(cars)
+    abline(fit)`}</code>
         </pre>
         <h2>Basic Syntax and Hotkeys</h2>
         <p>
@@ -274,15 +274,14 @@ export default function Page() {
         </ul>
         <p>An example code chuck is the following one:</p>
         <pre>
-          <code className="language-r">
-            7 # this number will be displayed x &lt;- 1 # 1 will be assigned to x 2 -&gt; y #
-            assignment can work the other way around as well z = x + y # equal can be used as well
-            for value assignment
-          </code>
+          <code className="language-r">{`7         # this number will be displayed
+x <- 1    # 1 will be assigned to x
+2 -> y    # assignment can work the other way around as well
+z = x + y # equal can be used as well for value assignment `}</code>
         </pre>
         <p>When the chunk is ran, the output displayed on the console is:</p>
         <pre>
-          <code>[1] 7</code>
+          <code>{`[1] 7`}</code>
         </pre>
         <h2>Data Types and R objects</h2>
         <p>
@@ -333,20 +332,35 @@ export default function Page() {
         </ul>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Logical TRUE, FALSE v &lt;- TRUE print(class(v)) # Numeric 12.3, 5, 999 v &lt;- 23.5
-            print(class(v)) # Integer 2L, 34L, 0L v &lt;- 2L print(class(v)) # Complex 3 + 2i v
-            &lt;- 2+5i print(class(v)) # Character 'a', '&quot;good&quot;, &quot;TRUE&quot;, '23.4'
-            v &lt;- &quot;TRUE&quot; print(class(v)) # Raw &quot;Hello&quot; is stored as 48 65 6c
-            6c 6f v &lt;- charToRaw(&quot;Hello&quot;) print(class(v)) v
-          </code>
+          <code className="language-r">{`# Logical TRUE, FALSE 
+v <- TRUE 
+print(class(v))
+# Numeric 12.3, 5, 999 
+v <- 23.5
+print(class(v))
+# Integer 2L, 34L, 0L 
+v <- 2L
+print(class(v))
+# Complex 3 + 2i 
+v <- 2+5i
+print(class(v))
+# Character 'a', '"good", "TRUE", '23.4' 
+v <- "TRUE"
+print(class(v))
+# Raw "Hello" is stored as 48 65 6c 6c 6f 
+v <- charToRaw("Hello")
+print(class(v))
+v`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            [1] &quot;logical&quot; [1] &quot;numeric&quot; [1] &quot;integer&quot; [1]
-            &quot;complex&quot; [1] &quot;character&quot; [1] &quot;raw&quot; [1] 48 65 6c 6c 6f
-          </code>
+          <code>{`[1] "logical"
+[1] "numeric"
+[1] "integer"
+[1] "complex"
+[1] "character"
+[1] "raw"
+[1] 48 65 6c 6c 6f`}</code>
         </pre>
         <p>
           <code>c()</code> is a generic function which combines its arguments. The default method
@@ -355,16 +369,16 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Create a vector. apple &lt;- c('red','green',&quot;yellow&quot;) print(apple) # Get
-            the class of the vector. print(class(apple))
-          </code>
+          <code className="language-r">{`# Create a vector.
+apple <- c('red','green',"yellow")
+print(apple)
+# Get the class of the vector.
+print(class(apple))`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            [1] &quot;red&quot; &quot;green&quot; &quot;yellow&quot; [1] &quot;character&quot;
-          </code>
+          <code>{`[1] "red"    "green"  "yellow"
+[1] "character"`}</code>
         </pre>
         <h3>Lists</h3>
         <p>
@@ -378,17 +392,24 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Create a list. list1 &lt;- list(c(2,5,3),21.3,sin, TRUE) # Print the list.
-            print(list1)
-          </code>
+          <code className="language-r">{`# Create a list.
+list1 <- list(c(2,5,3),21.3,sin, TRUE)
+# Print the list.
+print(list1)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            [[1]] [1] 2 5 3 [[2]] [1] 21.3 [[3]] function (x) .Primitive(&quot;sin&quot;) [[4]] [1]
-            TRUE
-          </code>
+          <code>{`[[1]]
+[1] 2 5 3
+
+[[2]]
+[1] 21.3
+
+[[3]]
+function (x)  .Primitive("sin")
+
+[[4]]
+[1] TRUE`}</code>
         </pre>
         <h3>Matrices</h3>
         <p>
@@ -401,18 +422,15 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Create a matrix. M = matrix( c('a','a','b','c','b','a'), nrow = 2, ncol = 3, byrow =
-            TRUE) print(M)
-          </code>
+          <code className="language-r">{`# Create a matrix.
+M = matrix( c('a','a','b','c','b','a'), nrow = 2, ncol = 3, byrow = TRUE)
+print(M)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            {" "}
-            [,1] [,2] [,3] [1,] &quot;a&quot; &quot;a&quot; &quot;b&quot; [2,] &quot;c&quot;
-            &quot;b&quot; &quot;a&quot;
-          </code>
+          <code>{`     [,1] [,2] [,3]
+[1,] "a"  "a"  "b" 
+[2,] "c"  "b"  "a" `}</code>
         </pre>
         <h3>Arrays</h3>
         <p>
@@ -425,19 +443,25 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Create an array. a &lt;- array(c('green','yellow'),dim = c(3,3,2)) print(a)
-          </code>
+          <code className="language-r">{`# Create an array.
+a <- array(c('green','yellow'),dim = c(3,3,2))
+print(a)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            , , 1 [,1] [,2] [,3] [1,] &quot;green&quot; &quot;yellow&quot; &quot;green&quot; [2,]
-            &quot;yellow&quot; &quot;green&quot; &quot;yellow&quot; [3,] &quot;green&quot;
-            &quot;yellow&quot; &quot;green&quot; , , 2 [,1] [,2] [,3] [1,] &quot;yellow&quot;
-            &quot;green&quot; &quot;yellow&quot; [2,] &quot;green&quot; &quot;yellow&quot;
-            &quot;green&quot; [3,] &quot;yellow&quot; &quot;green&quot; &quot;yellow&quot;
-          </code>
+          <code>{`, , 1
+
+     [,1]     [,2]     [,3]    
+[1,] "green"  "yellow" "green" 
+[2,] "yellow" "green"  "yellow"
+[3,] "green"  "yellow" "green" 
+
+, , 2
+
+     [,1]     [,2]     [,3]    
+[1,] "yellow" "green"  "yellow"
+[2,] "green"  "yellow" "green" 
+[3,] "yellow" "green"  "yellow"`}</code>
         </pre>
         <blockquote>
           <p>
@@ -477,16 +501,19 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Create a vector. apple_colors &lt;-
-            c('green','green','yellow','red','red','red','green') # Create a factor object.
-            factor_apple &lt;- factor(apple_colors) # Print the factor. print(factor_apple)
-            print(nlevels(factor_apple))
-          </code>
+          <code className="language-r">{`# Create a vector.
+apple_colors <- c('green','green','yellow','red','red','red','green')
+# Create a factor object.
+factor_apple <- factor(apple_colors)
+# Print the factor.
+print(factor_apple)
+print(nlevels(factor_apple))`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>[1] green green yellow red red red green Levels: green red yellow [1] 3</code>
+          <code>{`[1] green  green  yellow red    red    red    green 
+Levels: green red yellow
+[1] 3`}</code>
         </pre>
         <h3>Data Frames</h3>
         <p>
@@ -504,20 +531,22 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # Create the data frame. BMI &lt;- data.frame( name = c(&quot;John&quot;,
-            &quot;Jill&quot;,&quot;Mark&quot;), gender = factor(c(&quot;Male&quot;,
-            &quot;Male&quot;,&quot;Female&quot;)), height = c(152, 171.5, 165), weight = c(81,93,
-            78), Age = c(42,38,26) ) print(BMI)
-          </code>
+          <code className="language-r">{`# Create the data frame.
+BMI <-  data.frame(
+   name = c("John", "Jill","Mark"),
+   gender = factor(c("Male", "Male","Female")), 
+   height = c(152, 171.5, 165), 
+   weight = c(81,93, 78),
+   Age = c(42,38,26)
+)
+print(BMI)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            {" "}
-            name gender height weight Age 1 John Male 152.0 81 42 2 Jill Male 171.5 93 38 3 Mark
-            Female 165.0 78 26
-          </code>
+          <code>{`  name gender height weight Age
+1 John   Male  152.0     81  42
+2 Jill   Male  171.5     93  38
+3 Mark Female  165.0     78  26`}</code>
         </pre>
         <h2>Manage Data in R: tidyverse</h2>
         <p>
@@ -617,21 +646,25 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">library(tidyverse) mpg</code>
+          <code className="language-r">{`library(tidyverse)
+mpg`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            # A tibble: 234 × 11 manufacturer model displ year cyl trans drv cty hwy fl class
-            &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
-            &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 1 audi a4 1.8 1999 4 auto(l5) f 18 29 p
-            compact 2 audi a4 1.8 1999 4 manual(m5) f 21 29 p compact 3 audi a4 2 2008 4 manual(m6)
-            f 20 31 p compact 4 audi a4 2 2008 4 auto(av) f 21 30 p compact 5 audi a4 2.8 1999 6
-            auto(l5) f 16 26 p compact 6 audi a4 2.8 1999 6 manual(m5) f 18 26 p compact 7 audi a4
-            3.1 2008 6 auto(av) f 18 27 p compact 8 audi a4 quattro 1.8 1999 4 manual(m5) 4 18 26 p
-            compact 9 audi a4 quattro 1.8 1999 4 auto(l5) 4 16 25 p compact 10 audi a4 quattro 2
-            2008 4 manual(m6) 4 20 28 p compact # … with 224 more rows
-          </code>
+          <code>{`# A tibble: 234 × 11
+   manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
+   <chr>        <chr>      <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr>  
+ 1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact
+ 2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact
+ 3 audi         a4           2    2008     4 manual(m6) f        20    31 p     compact
+ 4 audi         a4           2    2008     4 auto(av)   f        21    30 p     compact
+ 5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compact
+ 6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compact
+ 7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compact
+ 8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact
+ 9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact
+10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact
+# … with 224 more rows`}</code>
         </pre>
         <blockquote>
           <p>
@@ -645,7 +678,7 @@ export default function Page() {
           explanations is available via the help page:
         </p>
         <pre>
-          <code className="language-r">?mpg</code>
+          <code className="language-r">{`?mpg`}</code>
         </pre>
         <h3>%…% and Pipe Operators</h3>
         <p>
@@ -677,14 +710,13 @@ export default function Page() {
           comma and space and then it’s right argument:
         </p>
         <pre>
-          <code className="language-r">
-            &quot;%,%&quot; &lt;- function(x, y) paste0(x, &quot;, &quot;, y) # test run
-            &quot;Hello&quot; %,% &quot;World&quot;
-          </code>
+          <code className="language-r">{`"%,%" <- function(x, y) paste0(x, ", ", y)
+# test run
+"Hello" %,% "World"`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>[1] &quot;Hello, World&quot;</code>
+          <code>{`[1] "Hello, World"`}</code>
         </pre>
         <p>
           Regarding common <code>%...% </code> operators:
@@ -814,47 +846,59 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            mpg %&gt;% # &quot;filter&quot; - return all rows that satisfy conditions dplyr::filter(
-            model == 'a4', # filter only a4 models ) %&gt;% # &quot;arrange&quot; - reorder your
-            rows dplyr::arrange( displ, cyl, # reorder by &quot;displ&quot;, then by &quot;cyl&quot;
-            ) %&gt;% # &quot;mutate&quot; - add column preserving all the other ones dplyr::mutate(
-            old = year &lt; 2000, # add a &quot;old&quot; column that is true if &quot;year&quot; is
-            before 2000 full_wheel_drive = drv == 'f', # add a &quot;full_wheel_drive&quot; column )
-            %&gt;% # &quot;select&quot; - choose columns to keep or remove dplyr::select( -drv #
-            remove &quot;full_wheel_drive&quot; )
-          </code>
+          <code className="language-r">{`mpg %>% 
+  # "filter" - return all rows that satisfy conditions
+  dplyr::filter(
+      model == 'a4', # filter only a4 models
+  ) %>% 
+  # "arrange" - reorder your rows
+  dplyr::arrange(
+      displ, cyl, # reorder by "displ", then by "cyl"
+  ) %>%
+  # "mutate" - add column preserving all the other ones
+  dplyr::mutate(
+    old = year < 2000, # add a "old" column that is true if "year" is before 2000
+    full_wheel_drive = drv == 'f', # add a "full_wheel_drive" column
+  ) %>%
+  # "select" - choose columns to keep or remove
+  dplyr::select(
+      -drv # remove "full_wheel_drive"
+  )`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            A tibble: 7 × 12 manufacturer model displ year cyl trans cty hwy fl class old
-            full_wheel_drive &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-            &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt; &lt;lgl&gt; 1 audi a4 1.8
-            1999 4 auto(l5) 18 29 p compact TRUE TRUE 2 audi a4 1.8 1999 4 manual(m5) 21 29 p
-            compact TRUE TRUE 3 audi a4 2 2008 4 manual(m6) 20 31 p compact FALSE TRUE 4 audi a4 2
-            2008 4 auto(av) 21 30 p compact FALSE TRUE 5 audi a4 2.8 1999 6 auto(l5) 16 26 p compact
-            TRUE TRUE 6 audi a4 2.8 1999 6 manual(m5) 18 26 p compact TRUE TRUE 7 audi a4 3.1 2008 6
-            auto(av) 18 27 p compact FALSE TRUE
-          </code>
+          <code>{`A tibble: 7 × 12
+  manufacturer model displ  year   cyl trans        cty   hwy fl    class   old   full_wheel_drive
+  <chr>        <chr> <dbl> <int> <int> <chr>      <int> <int> <chr> <chr>   <lgl> <lgl>           
+1 audi         a4      1.8  1999     4 auto(l5)      18    29 p     compact TRUE  TRUE            
+2 audi         a4      1.8  1999     4 manual(m5)    21    29 p     compact TRUE  TRUE            
+3 audi         a4      2    2008     4 manual(m6)    20    31 p     compact FALSE TRUE            
+4 audi         a4      2    2008     4 auto(av)      21    30 p     compact FALSE TRUE            
+5 audi         a4      2.8  1999     6 auto(l5)      16    26 p     compact TRUE  TRUE            
+6 audi         a4      2.8  1999     6 manual(m5)    18    26 p     compact TRUE  TRUE            
+7 audi         a4      3.1  2008     6 auto(av)      18    27 p     compact FALSE TRUE            `}</code>
         </pre>
         <p>
           The <code>dplyr</code> package allows us to aggregate data as well.
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            mpg %&gt;% # create aggregate stats and sort dplyr::count(model,sort = TRUE) %&gt;% #
-            select only more than 8 counts dplyr::filter(n &gt; 8)
-          </code>
+          <code className="language-r">{`mpg %>%   
+  # create aggregate stats and sort
+  dplyr::count(model,sort = TRUE) %>% 
+  # select only more than 8 counts
+  dplyr::filter(n > 8)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            {" "}
-            model n &lt;chr&gt; &lt;int&gt; 1 caravan 2wd 11 2 ram 1500 pickup 4wd 10 3 civic 9 4
-            dakota pickup 4wd 9 5 jetta 9 6 mustang 9
-          </code>
+          <code>{`  model                   n
+  <chr>               <int>
+1 caravan 2wd            11
+2 ram 1500 pickup 4wd    10
+3 civic                   9
+4 dakota pickup 4wd       9
+5 jetta                   9
+6 mustang                 9`}</code>
         </pre>
         <h2>Plot Your Data: ggplot</h2>
         <p>
@@ -887,14 +931,20 @@ export default function Page() {
         </blockquote>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            ggplot(data = mpg) # make a ggplot with the mpg dataframe (without any layer, it is
-            still a white canvas) + geom_point( # add a geom_point layer, i.e., a scatter plot
-            mapping = aes( # &quot;aes&quot; means &quot;aesthetic&quot;, it states how to
-            color/stylize/... the geom_point x = displ, y = hwy # scatter point mapping to the
-            dataframe ) ) ggplot(data = mpg) + geom_point( mapping = aes( x = displ, y = hwy, color
-            = class # add color classes to the scatter points ) )
-          </code>
+          <code className="language-r">{`ggplot(data = mpg) # make a ggplot with the mpg dataframe (without any layer, it is still a white canvas)
+    + geom_point( # add a geom_point layer, i.e., a scatter plot
+        mapping = aes( # "aes" means "aesthetic", it states how to color/stylize/... the geom_point
+            x = displ, y = hwy # scatter point mapping to the dataframe
+        )
+    )
+
+ggplot(data = mpg) 
+    + geom_point(
+        mapping = aes(
+            x = displ, y = hwy, 
+            color = class # add color classes to the scatter points
+        )
+    )`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -917,11 +967,13 @@ export default function Page() {
         </p>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class,
-            nrow = 2) # facet graph based on class ggplot(data = mpg) + geom_point(mapping = aes(x =
-            displ, y = hwy)) + facet_grid(drv ~ cyl) # facet grid based on (drv, cyl) pairs
-          </code>
+          <code className="language-r">{`ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2) # facet graph based on class
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl) # facet grid based on (drv, cyl) pairs`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -938,13 +990,14 @@ export default function Page() {
         </div>
         <p>Code:</p>
         <pre>
-          <code className="language-r">
-            # aestetic mapping in ggplot common to all geom_ ggplot(data = mpg, mapping = aes(x =
-            displ, y = hwy)) + geom_point() + # no more mapping (using the one defined up here)
-            geom_smooth() # no more mapping (using the one defined up here) ggplot(data = mpg,
-            mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + # add
-            coloring by class mapping geom_smooth()
-          </code>
+          <code className="language-r">{`# aestetic mapping in ggplot common to all geom_
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() +  # no more mapping (using the one defined up here)
+  geom_smooth()   # no more mapping (using the one defined up here)
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) +  # add coloring by class mapping
+  geom_smooth()`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -970,35 +1023,37 @@ export default function Page() {
         </p>
         <p>Let’s consider for this case a different dataset:</p>
         <pre>
-          <code className="language-r">diamonds</code>
+          <code className="language-r">{`diamonds`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            # A tibble: 53,940 × 10 carat cut color clarity depth table price x y z &lt;dbl&gt;
-            &lt;ord&gt; &lt;ord&gt; &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
-            &lt;dbl&gt; &lt;dbl&gt; 1 0.23 Ideal E SI2 61.5 55 326 3.95 3.98 2.43 2 0.21 Premium E
-            SI1 59.8 61 326 3.89 3.84 2.31 3 0.23 Good E VS1 56.9 65 327 4.05 4.07 2.31 4 0.29
-            Premium I VS2 62.4 58 334 4.2 4.23 2.63 5 0.31 Good J SI2 63.3 58 335 4.34 4.35 2.75 6
-            0.24 Very Good J VVS2 62.8 57 336 3.94 3.96 2.48 7 0.24 Very Good I VVS1 62.3 57 336
-            3.95 3.98 2.47 8 0.26 Very Good H SI1 61.9 55 337 4.07 4.11 2.53 9 0.22 Fair E VS2 65.1
-            61 337 3.87 3.78 2.49 10 0.23 Very Good H VS1 59.4 61 338 4 4.05 2.39 # … with 53,930
-            more rows
-          </code>
+          <code>{`# A tibble: 53,940 × 10
+   carat cut       color clarity depth table price     x     y     z
+   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+ 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+ 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+ 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+ 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+ 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+ 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+ 7  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+ 8  0.26 Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
+ 9  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+10  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
+# … with 53,930 more rows`}</code>
         </pre>
         <p>
           Since we are with a built-in dataset is that documentation giving further descriptions and
           explanations is available via the help page:
         </p>
         <pre>
-          <code className="language-r">?diamonds</code>
+          <code className="language-r">{`?diamonds`}</code>
         </pre>
         <p>We can start by plotting a bar chart of the diamond cuts:</p>
         <pre>
-          <code className="language-r">
-            # bar chart on diamonds dataset ggplot(data = diamonds) + geom_bar(mapping = aes(x =
-            cut))
-          </code>
+          <code className="language-r">{`# bar chart on diamonds dataset
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut))`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -1010,17 +1065,27 @@ export default function Page() {
         </div>
         <p>We can now filter, for example, based on the diamond carats:</p>
         <pre>
-          <code className="language-r">
-            count(diamonds) # the variable &quot;smaller&quot; receives the output of # the diamonds
-            being filtered with carat &lt; 3, # hence &quot;smaller&quot; is true when carat &lt; 3
-            smaller &lt;- diamonds %&gt;% filter(carat &lt; 3) count(smaller)
-          </code>
+          <code className="language-r">{`count(diamonds)
+
+# the variable "smaller" receives the output of 
+#  the diamonds being filtered with carat < 3,
+#  hence "smaller" is true when carat < 3
+smaller <- diamonds %>% 
+  filter(carat < 3)
+
+count(smaller)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            # A tibble: 1 × 1 n &lt;int&gt; 1 53940 # A tibble: 1 × 1 n &lt;int&gt; 1 53900
-          </code>
+          <code>{`# A tibble: 1 × 1
+      n
+  <int>
+1 53940
+
+# A tibble: 1 × 1
+      n
+  <int>
+1 53900`}</code>
         </pre>
         <p>
           Hence, we have only 40 diamonds with more than 2 carats. Now, using our original{" "}
@@ -1028,10 +1093,11 @@ export default function Page() {
           0.5:
         </p>
         <pre>
-          <code className="language-r">
-            ggplot(data = diamonds, mapping = aes(x = carat)) + geom_histogram(binwidth = 0.2)
-            ggplot(data = diamonds, mapping = aes(x = carat)) + geom_histogram(binwidth = 0.5)
-          </code>
+          <code className="language-r">{`ggplot(data = diamonds, mapping = aes(x = carat)) +
+  geom_histogram(binwidth = 0.2)
+
+ggplot(data = diamonds, mapping = aes(x = carat)) +
+  geom_histogram(binwidth = 0.5)`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -1054,10 +1120,13 @@ export default function Page() {
           how the carats distribution behaves cut-wise:
         </p>
         <pre>
-          <code className="language-r">
-            ggplot(data = diamonds) + geom_boxplot( mapping = aes( x = reorder(cut, carat, FUN =
-            median), y = carat ) )
-          </code>
+          <code className="language-r">{`ggplot(data = diamonds) +
+  geom_boxplot(
+    mapping = aes(
+      x = reorder(cut, carat, FUN = median), 
+      y = carat
+    )
+  )`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -1073,24 +1142,32 @@ export default function Page() {
         </p>
         <p>We can as well countd diamonds by color and cut, and then sort the results:</p>
         <pre>
-          <code className="language-r">
-            diamonds %&gt;% count(color, cut, sort = T) # (T is TRUE)
-          </code>
+          <code className="language-r">{`diamonds %>% 
+  count(color, cut, sort = T)  # (T is TRUE)`}</code>
         </pre>
         <p>Output:</p>
         <pre>
-          <code>
-            # A tibble: 35 × 3 color cut n &lt;ord&gt; &lt;ord&gt; &lt;int&gt; 1 G Ideal 4884 2 E
-            Ideal 3903 3 F Ideal 3826 4 H Ideal 3115 5 G Premium 2924 6 D Ideal 2834 7 E Very Good
-            2400 8 H Premium 2360 9 E Premium 2337 10 F Premium 2331 # … with 25 more rows
-          </code>
+          <code>{`# A tibble: 35 × 3
+   color cut           n
+   <ord> <ord>     <int>
+ 1 G     Ideal      4884
+ 2 E     Ideal      3903
+ 3 F     Ideal      3826
+ 4 H     Ideal      3115
+ 5 G     Premium    2924
+ 6 D     Ideal      2834
+ 7 E     Very Good  2400
+ 8 H     Premium    2360
+ 9 E     Premium    2337
+10 F     Premium    2331
+# … with 25 more rows`}</code>
         </pre>
         <p>We can then rearrange such output in a more “aesthetic” way by using a heatmap:</p>
         <pre>
-          <code className="language-r">
-            diamonds %&gt;% count(color, cut, sort = T) %&gt;% ggplot(mapping = aes(x = color, y =
-            cut)) + geom_tile(mapping = aes(fill = n))
-          </code>
+          <code className="language-r">{`diamonds %>% 
+  count(color, cut, sort = T) %>%  
+  ggplot(mapping = aes(x = color, y = cut)) + 
+  geom_tile(mapping = aes(fill = n))`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
@@ -1114,9 +1191,8 @@ export default function Page() {
           Import a csv into an R dataframe with <code>readr</code> is pretty simple:
         </p>
         <pre>
-          <code className="language-r">
-            library(readr) data &lt;- read_csv(&quot;path/to/data.csv&quot;)
-          </code>
+          <code className="language-r">{`library(readr)
+data <- read_csv("path/to/data.csv")`}</code>
         </pre>
         <blockquote>
           <p>
@@ -1155,7 +1231,7 @@ export default function Page() {
           reproduce the graph.
         </p>
         <pre>
-          <code className="language-r">install.packages(&quot;esquisse&quot;)</code>
+          <code className="language-r">{`install.packages("esquisse")`}</code>
         </pre>
         <p>
           After installing it you can find <code>esquisse</code> in the add-ins menu:
@@ -1172,12 +1248,15 @@ export default function Page() {
           automatically generate the necessary R code. For example:
         </p>
         <pre>
-          <code className="language-r">
-            library(esquisse) library(ggplot2) ggplot(diamonds) + aes(x = carat, y = price) +
-            geom_point(size = 1L, colour = &quot;#26828e&quot;) + geom_smooth(span = 0.75) + labs(x
-            = &quot;carat&quot;, y = &quot;price&quot;, title = &quot;heres my title&quot;, subtitle
-            = &quot;a view of diamonds&quot;, caption = &quot;hello caption&quot;) + theme_minimal()
-          </code>
+          <code className="language-r">{`library(esquisse)
+library(ggplot2)
+
+ggplot(diamonds) +
+    aes(x = carat, y = price) +
+    geom_point(size = 1L, colour = "#26828e") +
+    geom_smooth(span = 0.75) +
+    labs(x = "carat", y = "price", title = "heres my title", subtitle = "a view of diamonds", caption = "hello caption") +
+    theme_minimal()`}</code>
         </pre>
         <p>Plot:</p>
         <div className="text-center">
