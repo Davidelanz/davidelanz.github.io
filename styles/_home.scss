@@ -89,6 +89,28 @@
   padding: 27px 0;
   border-bottom: 1px solid $line;
 }
+.timeline__row--continues {
+  border-bottom: 0;
+}
+.timeline__row--continues:not(.timeline__row--previous) {
+  padding: 27px 0 10px;
+}
+.timeline__row--previous {
+  position: relative;
+  padding: 10px 0 27px 17px;
+}
+.timeline__row--previous.timeline__row--continues {
+  padding: 10px 0 10px 17px;
+}
+.timeline__row--previous h2 {
+  color: $muted;
+  font-size: 14px;
+}
+.timeline__row.timeline__row--previous > div p {
+  color: $muted;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
 .timeline__row time {
   color: $muted;
   font-size: 10px;

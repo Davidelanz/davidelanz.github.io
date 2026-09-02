@@ -4,16 +4,27 @@ import { SectionHeading } from "./SectionHeading";
 function Timeline({ items }: { items: typeof experience }) {
   return (
     <div className="timeline">
-      {items.map((item) => (
-        <article className="timeline__row" key={item.role}>
-          <time>{item.period}</time>
-          <div>
-            <h2>{item.role}</h2>
-            <p>{item.org}</p>
-          </div>
-          <p>{item.detail}</p>
-        </article>
-      ))}
+      {items.map((item, index) => {
+        const continuesAtSameOrg = items[index + 1]?.org === item.org;
+        const classNames = [
+          "timeline__row",
+          item.previousAtSameOrg && "timeline__row--previous",
+          continuesAtSameOrg && "timeline__row--continues",
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        return (
+          <article className={classNames} key={item.role}>
+            <time>{item.period}</time>
+            <div>
+              <h2>{item.role}</h2>
+              <p>{item.previousAtSameOrg ? "Previous role" : item.org}</p>
+            </div>
+            <p>{item.detail}</p>
+          </article>
+        );
+      })}
     </div>
   );
 }

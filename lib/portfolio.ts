@@ -53,6 +53,7 @@ export const experience = [
     period: "Jan 2022 — Jan 2024",
     role: "Software Developer",
     org: "Evotec",
+    previousAtSameOrg: true,
     detail:
       "Data consistency across APIs and databases; Docker infrastructure for API services and Shiny applications.",
   },
@@ -60,6 +61,7 @@ export const experience = [
     period: "Nov 2021 — Jan 2022",
     role: "Junior Software Developer",
     org: "Evotec",
+    previousAtSameOrg: true,
     detail: "PostgreSQL schemas, backend data workflows and Python REST APIs.",
   },
   {
