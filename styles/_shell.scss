@@ -53,6 +53,10 @@
     display: none;
   }
   .site-footer__inner {
-    gap: 20px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .site-footer__inner span {
+    white-space: nowrap;
   }
 }
