@@ -64,6 +64,51 @@
   line-height: 1.75;
 }
 
+// Shared animated title used by the masthead and index pages.
+.terminal-title {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+.terminal-title__character {
+  opacity: 0;
+  animation: terminal-character 1ms step-end both;
+}
+.terminal-title__cursor {
+  color: $accent;
+  opacity: 0;
+  animation: terminal-blink 1s steps(1) var(--typing-duration) infinite;
+}
+@keyframes terminal-character {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes terminal-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-title__character,
+  .terminal-title__cursor {
+    animation: none;
+  }
+  .terminal-title__character,
+  .terminal-title__cursor {
+    opacity: 1;
+  }
+}
+
 // Standalone utility page.
 .not-found {
   min-height: 75vh;

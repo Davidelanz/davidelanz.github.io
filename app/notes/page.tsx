@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { NotesIndex } from "@/components/NotesIndex";
+import { TerminalTitle } from "@/components/TerminalTitle";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -11,7 +12,7 @@ export default function NotesPage() {
     <main className="shell notes-page">
       <p className="page-kicker">~/notes</p>
       <h1>
-        Notes<span className="cursor">_</span>
+        <TerminalTitle text="Notes" />
       </h1>
       <p className="page-intro">
         Course notes, drafts and cheatsheets. Authorship is stated where the material is not mine.

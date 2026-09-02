@@ -1,8 +1,12 @@
+import { TerminalTitle } from "./TerminalTitle";
+
 export function Masthead() {
   return (
     <section className="masthead shell">
       <p className="masthead__prompt">davide@portfolio:~$ whoami</p>
-      <h1>Davide Lanza</h1>
+      <h1>
+        <TerminalTitle text="Davide Lanza" />
+      </h1>
       <p className="masthead__role">Software &amp; Robotics Engineer</p>
       <p className="masthead__intro">
         Full-stack software, intelligent systems, scientific computing.
