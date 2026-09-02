@@ -92,13 +92,15 @@ export const education: typeof experience = [
     period: "2018 — 2020",
     role: "European Master of Advanced Robotics",
     org: "École Centrale de Nantes · University of Genoa",
-    detail: "Double degree in robotics, final grade: 100/100. Additional coursework in aesthetics and cultural anthropology.",
+    detail:
+      "Double degree in robotics, final grade: 100/100. Additional coursework in aesthetics and cultural anthropology.",
   },
   {
     period: "2015 — 2018",
     role: "BSc in Electronic Engineering and IT",
     org: "University of Genoa",
-    detail: "Final grade: 110/110 cum laude. Additional coursework in quantum mechanics, philosophy of mind, cognitive science, political philosophy, and theoretical philosophy.",
+    detail:
+      "Final grade: 110/110 cum laude. Additional coursework in quantum mechanics, philosophy of mind, cognitive science, political philosophy, and theoretical philosophy.",
   },
   {
     period: "2015 — 2020",

@@ -369,7 +369,7 @@ SET p += {productName : apoc.text.clean(p.productName)}
           <div className="col-md-9">
             <iframe
               className="w-100"
-              style={{height: "480px"}}
+              style={{ height: "480px" }}
               width="860"
               src="https://www.youtube.com/embed/9ieaGi5qVcc"
               title="YouTube video player"
