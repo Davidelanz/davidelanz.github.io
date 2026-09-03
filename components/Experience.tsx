@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { education, experience } from "@/lib/portfolio";
 import { SectionHeading } from "./SectionHeading";
 
@@ -30,14 +33,47 @@ function Timeline({ items }: { items: typeof experience }) {
 }
 
 export function Experience() {
+  const studiesRef = useRef<HTMLDetailsElement>(null);
+
+  useEffect(() => {
+    let wasOpen: boolean | null = null;
+
+    const openStudies = () => {
+      if (!studiesRef.current) return;
+      if (wasOpen === null) wasOpen = studiesRef.current.open;
+      studiesRef.current.open = true;
+    };
+
+    const restoreStudies = () => {
+      if (studiesRef.current && wasOpen !== null) studiesRef.current.open = wasOpen;
+      wasOpen = null;
+    };
+
+    const printMedia = window.matchMedia("print");
+    const handlePrintMedia = (event: MediaQueryListEvent) => {
+      if (event.matches) openStudies();
+      else restoreStudies();
+    };
+
+    window.addEventListener("beforeprint", openStudies);
+    window.addEventListener("afterprint", restoreStudies);
+    printMedia.addEventListener("change", handlePrintMedia);
+
+    return () => {
+      window.removeEventListener("beforeprint", openStudies);
+      window.removeEventListener("afterprint", restoreStudies);
+      printMedia.removeEventListener("change", handlePrintMedia);
+    };
+  }, []);
+
   return (
     <section className="section shell" id="experience">
       <SectionHeading number="02">experience</SectionHeading>
       <Timeline items={experience} />
-      <details className="studies">
+      <details className="studies" ref={studiesRef}>
         <summary>
           <span className="studies__closed">+ show studies</span>
-          <span className="studies__open">− hide studies</span>
+          <span className="studies__open">− studies</span>
         </summary>
         <Timeline items={education} />
       </details>

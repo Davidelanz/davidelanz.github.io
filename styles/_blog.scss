@@ -4,32 +4,37 @@
   margin-top: 65px;
   border-top: 1px solid $ink;
 }
+
 .blog-row {
   display: grid;
   grid-template-columns: 125px 1fr 25px;
   gap: 30px;
   padding: 30px 0;
   border-bottom: 1px solid $line;
-}
-.blog-row time,
-.blog-row span {
-  color: $muted;
-  font-size: 10px;
-}
-.blog-row h2 {
-  margin: 0 0 10px;
-  font-size: 20px;
-  letter-spacing: -0.04em;
-}
-.blog-row p {
-  max-width: 720px;
-  margin: 0 0 15px;
-  color: $muted;
-  font-size: 11px;
-  line-height: 1.65;
-}
-.blog-row:hover h2 {
-  color: $accent;
+
+  time,
+  span {
+    color: $muted;
+    font-size: 10px;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    max-width: 720px;
+    margin: 0 0 15px;
+    color: $muted;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  &:hover h2 {
+    color: $accent;
+  }
 }
 
 .article-page {
@@ -42,7 +47,23 @@
 .article-header {
   padding: 60px 0;
   border-bottom: 1px solid $line;
+
+  h1 {
+    max-width: 960px;
+    margin: 24px 0;
+    font-size: clamp(38px, 7vw, 78px);
+    line-height: 1.04;
+    letter-spacing: -0.07em;
+  }
+
+  > p {
+    max-width: 740px;
+    color: $muted;
+    font-size: 14px;
+    line-height: 1.7;
+  }
 }
+
 .article-meta {
   display: flex;
   gap: 28px;
@@ -50,85 +71,85 @@
   font-size: 10px;
   text-transform: uppercase;
 }
-.article-header h1 {
-  max-width: 960px;
-  margin: 24px 0;
-  font-size: clamp(38px, 7vw, 78px);
-  line-height: 1.04;
-  letter-spacing: -0.07em;
-}
-.article-header > p {
-  max-width: 740px;
-  color: $muted;
-  font-size: 14px;
-  line-height: 1.7;
-}
+
 .markdown {
   max-width: 790px;
   margin: 65px auto 0;
   font-size: 13px;
   line-height: 1.85;
+
+  h2 {
+    margin: 65px 0 18px;
+    padding-top: 24px;
+    border-top: 1px solid $line;
+    font-size: 27px;
+    letter-spacing: -0.04em;
+  }
+
+  h3 {
+    margin-top: 42px;
+    font-size: 19px;
+  }
+
+  a {
+    color: $accent;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  img,
+  object,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  pre {
+    overflow: auto;
+    padding: 20px;
+    background: $ink;
+    color: #eee;
+    font-size: 11px;
+    line-height: 1.65;
+
+    code {
+      padding: 0;
+      background: none;
+    }
+  }
+
+  code {
+    padding: 2px 4px;
+    background: $soft;
+  }
+
+  blockquote {
+    margin: 30px 0;
+    padding-left: 22px;
+    border-left: 3px solid $accent;
+    color: $muted;
+  }
+
+  table {
+    display: block;
+    overflow: auto;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 9px;
+    border: 1px solid $line;
+    text-align: left;
+  }
 }
-.markdown h2 {
-  margin: 65px 0 18px;
-  padding-top: 24px;
-  border-top: 1px solid $line;
-  font-size: 27px;
-  letter-spacing: -0.04em;
-}
-.markdown h3 {
-  margin-top: 42px;
-  font-size: 19px;
-}
-.markdown a {
-  color: $accent;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.markdown img,
-.markdown object,
-.markdown iframe {
-  max-width: 100%;
-  height: auto;
-}
-.markdown pre {
-  overflow: auto;
-  padding: 20px;
-  background: $ink;
-  color: #eee;
-  font-size: 11px;
-  line-height: 1.65;
-}
-.markdown code {
-  padding: 2px 4px;
-  background: $soft;
-}
-.markdown pre code {
-  padding: 0;
-  background: none;
-}
-.markdown blockquote {
-  margin: 30px 0;
-  padding-left: 22px;
-  border-left: 3px solid $accent;
-  color: $muted;
-}
-.markdown table {
-  display: block;
-  overflow: auto;
-  border-collapse: collapse;
-}
-.markdown th,
-.markdown td {
-  padding: 9px;
-  border: 1px solid $line;
-  text-align: left;
-}
+
 @media (max-width: $mobile) {
   .blog-row {
     grid-template-columns: 1fr 22px;
-  }
-  .blog-row time {
-    grid-column: 1 / -1;
+
+    time {
+      grid-column: 1 / -1;
+    }
   }
 }

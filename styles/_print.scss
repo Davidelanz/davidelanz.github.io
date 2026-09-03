@@ -1,0 +1,234 @@
+// The home page becomes a compact, self-contained portfolio sheet when printed.
+.masthead {
+  &__print-link {
+    display: none;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+
+  html,
+  body {
+    width: 100%;
+    background: #fff;
+    color: #111;
+    font-size: 7pt;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .site-header,
+  .site-footer,
+  #blog,
+  #notes {
+    display: none !important;
+  }
+
+  body > main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .shell {
+    width: 100%;
+    margin: 0;
+  }
+
+  .masthead {
+    grid-column: 1 / -1;
+    min-height: 0;
+    padding: 0 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+
+    &__prompt {
+      display: none;
+    }
+
+    h1 {
+      grid-column: 1;
+      margin: 0;
+      font-size: 29pt;
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+    }
+
+    &__role {
+      grid-column: 1;
+      margin: 2.5mm 0 0;
+      font-size: 10pt;
+    }
+
+    &__intro {
+      grid-column: 1;
+      margin: 1.5mm 0 0;
+      font-size: 7pt;
+    }
+
+    &__links {
+      grid-column: 2;
+      grid-row: 1 / 4;
+      align-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+      margin: 0;
+      font-size: 6.5pt;
+      text-align: right;
+    }
+
+    &__print-link {
+      display: block;
+    }
+  }
+
+  .terminal-title {
+    &__print {
+      display: inline;
+    }
+
+    &__measure,
+    &__output {
+      display: none;
+    }
+  }
+
+  #works,
+  #experience,
+  #academia {
+    padding: 8mm 0 0;
+    break-inside: avoid;
+  }
+
+  .section-heading {
+    gap: 2mm;
+    margin-bottom: 3mm;
+    font-size: 6.5pt;
+  }
+
+  #works .item-list,
+  #academia .publication-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 5mm;
+  }
+
+  .item-row {
+    grid-template-columns: 5mm 1fr;
+    gap: 1mm 2mm;
+    align-items: start;
+    padding: 2.2mm 0;
+
+    h2 {
+      font-size: 7pt;
+      line-height: 1.15;
+    }
+
+    p {
+      margin-top: 0.7mm;
+      font-size: 5.5pt;
+      line-height: 1.3;
+    }
+
+    &__index {
+      font-size: 5.5pt;
+    }
+
+    &__meta {
+      grid-column: 2;
+      font-size: 5pt;
+    }
+
+    > span:last-child {
+      display: none;
+    }
+  }
+
+  .timeline {
+    h2 {
+      font-size: 7pt;
+      line-height: 1.15;
+    }
+
+    p {
+      margin-top: 0.7mm;
+      font-size: 5.5pt;
+      line-height: 1.3;
+    }
+
+    &__row,
+    &__row--continues:not(.timeline__row--previous),
+    &__row--previous,
+    &__row--previous.timeline__row--continues {
+      grid-template-columns: 21mm 1fr 1.2fr;
+      gap: 2mm;
+      padding: 1.8mm 0;
+    }
+
+    &__row--previous,
+    &__row--previous.timeline__row--continues {
+      padding-left: 2mm;
+    }
+
+    &__row time,
+    &__row--previous > div p {
+      font-size: 5pt;
+    }
+
+    &__row--previous h2 {
+      font-size: 6pt;
+    }
+  }
+
+  .studies {
+    display: block;
+    margin-top: 2mm;
+
+    summary {
+      display: block;
+      padding: 4mm 0 2mm;
+      font-size: 6.5pt;
+      letter-spacing: 0.14em;
+    }
+
+    &[open] .timeline {
+      margin-top: 0;
+      border-top: none;
+    }
+  }
+
+  .publication-list {
+    h2 {
+      font-size: 7pt;
+      line-height: 1.15;
+    }
+
+    p {
+      margin-top: 0.7mm;
+      font-size: 5.5pt;
+      line-height: 1.3;
+    }
+
+    li {
+      padding: 2.4mm 0 2.4mm 6mm;
+
+      &::before {
+        top: 2.7mm;
+        font-size: 5.5pt;
+      }
+    }
+  }
+
+  a[href^="http"]::after {
+    content: none;
+  }
+}

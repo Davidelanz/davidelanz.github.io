@@ -12,6 +12,9 @@ export function Masthead() {
         Full-stack software, scientific computing, cognitive models.
       </p>
       <div className="masthead__links">
+        <a className="masthead__print-link" href="https://dev.davidelanza.it">
+          dev.davidelanza.it ↗
+        </a>
         <a target="_blank" href="https://github.com/Davidelanz">
           github ↗
         </a>
