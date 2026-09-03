@@ -6,8 +6,7 @@
   margin-inline: auto;
 }
 .section {
-  padding: 96px 0;
-  border-top: 1px solid $line;
+  padding: 68px 0;
   scroll-margin-top: 68px;
 }
 .listing-page,
@@ -69,6 +68,9 @@
   position: relative;
   display: inline-block;
   white-space: nowrap;
+}
+.terminal-title__print {
+  display: none;
 }
 .terminal-title__measure {
   visibility: hidden;
