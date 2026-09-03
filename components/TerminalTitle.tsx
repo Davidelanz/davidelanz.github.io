@@ -49,6 +49,9 @@ export function TerminalTitle({ text }: TerminalTitleProps) {
 
   return (
     <span className="terminal-title" aria-label={text}>
+      <span className="terminal-title__print" aria-hidden="true">
+        {text}
+      </span>
       <span className="terminal-title__measure" aria-hidden="true">
         {text}_
       </span>
